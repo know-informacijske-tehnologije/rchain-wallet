@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="53"
+   height="53"
+   viewBox="0 0 53 53"
+   version="1.1"
+   id="svg21"
+   sodipodi:docname="plus.svg"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview23"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="7.1037735"
+     inkscape:cx="24.98672"
+     inkscape:cy="38.641435"
+     inkscape:window-width="1550"
+     inkscape:window-height="1004"
+     inkscape:window-x="-39"
+     inkscape:window-y="18"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg21" />
+  <defs
+     id="defs5">
+    <filter
+       id="8tm5mi26ca"
+       x="0"
+       y="0"
+       width="1"
+       height="1">
+      <feColorMatrix
+         in="SourceGraphic"
+         values="0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 1.000000 0"
+         id="feColorMatrix2" />
+    </filter>
+  </defs>
+  <g
+     stroke-linecap="round"
+     filter="url(#8tm5mi26ca)"
+     id="g13"
+     style="fill:none;fill-rule:evenodd">
+    <g
+       id="g11">
+      <path
+         style="color:#000000;fill:#1543bb;fill-rule:nonzero;-inkscape-stroke:none"
+         d="m 0,7.3808594 c -0.55228475,0 -1,0.4477153 -1,1 0,0.5522847 0.44771525,1 1,1 5.3333333,0 10.666667,0 16,0 0.552285,0 1,-0.4477153 1,-1 0,-0.5522847 -0.447715,-1 -1,-1 -5.333333,0 -10.6666667,0 -16,0 z"
+         id="path9"
+         transform="translate(19,18)"
+         sodipodi:nodetypes="csccscc" />
+    </g>
+  </g>
+</svg>

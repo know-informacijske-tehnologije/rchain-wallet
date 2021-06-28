@@ -1,0 +1,37 @@
+.Sidebar {
+  position: absolute;
+  top: 0;
+  right: var(--scrollbar-width, 0);
+  background-image: linear-gradient(to bottom, #ab0333 3%, transparent 97%);
+  width: 120px;
+  height: 100vh;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+
+  @media only screen and (max-width: 900px) {
+    display: none;
+  }
+
+  a {
+    transition: opacity 0.1s;
+
+    &:hover {
+      opacity: 0.55;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 38px;
+    }
+  }
+
+  img {
+    width: 42px;
+    height: 42px;
+  }
+}
+

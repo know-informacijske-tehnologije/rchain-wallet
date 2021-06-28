@@ -1,0 +1,58 @@
+.Expander {
+  background: #0c0a27;
+
+  .Title {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 3vmin;
+    color: white;
+
+    button {
+      --button-color: #8b0430;
+      position: relative;
+      display: flex;
+      flex-flow: row nowrap;
+      border-radius: 100%;
+      width: 6vmin;
+      height: 6vmin;
+      min-width: 48px;
+      min-height: 48px;
+      padding: 0;
+      background: transparent;
+      border: 2px solid var(--button-color);
+      transition: 0.2s border, 0.2s background;
+
+      img {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      &:hover {
+          --button-color: #cc1e46;
+      }
+
+      @at-root .Expanded#{&} {
+        background: var(--button-color);
+      }
+    }
+
+    @at-root .Expanded#{&} > * {
+      color: #cc1e46;
+    }
+  }
+
+  .Content {
+    overflow: hidden;
+    transition: height 0.2s, padding 0.2s;
+    padding: 0 3vmin;
+
+    @at-root .Expanded#{&} {
+      padding-bottom: 3vmin;
+    }
+  }
+}
