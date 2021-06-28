@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0ef22d36.chunk.css",
+    "main.js": "/static/js/main.ff641c67.chunk.js",
+    "main.js.map": "/static/js/main.ff641c67.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.fdc7f636.js",
+    "runtime-main.js.map": "/static/js/runtime-main.fdc7f636.js.map",
+    "static/js/2.82f0c17b.chunk.js": "/static/js/2.82f0c17b.chunk.js",
+    "static/js/2.82f0c17b.chunk.js.map": "/static/js/2.82f0c17b.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.0ef22d36.chunk.css.map": "/static/css/main.0ef22d36.chunk.css.map",
+    "static/js/2.82f0c17b.chunk.js.LICENSE.txt": "/static/js/2.82f0c17b.chunk.js.LICENSE.txt",
+    "static/media/bg-art.925ced29.svg": "/static/media/bg-art.925ced29.svg",
+    "static/media/globe.5daa6cad.svg": "/static/media/globe.5daa6cad.svg",
+    "static/media/logo-white-oneline.28fd041e.png": "/static/media/logo-white-oneline.28fd041e.png",
+    "static/media/logo-white.568c6496.png": "/static/media/logo-white.568c6496.png",
+    "static/media/menu-close.05136106.svg": "/static/media/menu-close.05136106.svg",
+    "static/media/menu.f4dc4b36.svg": "/static/media/menu.f4dc4b36.svg",
+    "static/media/minus.4a9e6ce8.svg": "/static/media/minus.4a9e6ce8.svg",
+    "static/media/plus.e82fcb7e.svg": "/static/media/plus.e82fcb7e.svg",
+    "static/media/social-discord.99692519.svg": "/static/media/social-discord.99692519.svg",
+    "static/media/social-github.4f234263.svg": "/static/media/social-github.4f234263.svg",
+    "static/media/social-telegram.3be1d49f.svg": "/static/media/social-telegram.3be1d49f.svg",
+    "static/media/social-twitter.fa96d5fe.svg": "/static/media/social-twitter.fa96d5fe.svg",
+    "static/media/social-youtube.7d4fe6e7.svg": "/static/media/social-youtube.7d4fe6e7.svg",
+    "static/media/wallet.94a663c7.svg": "/static/media/wallet.94a663c7.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fdc7f636.js",
+    "static/js/2.82f0c17b.chunk.js",
+    "static/css/main.0ef22d36.chunk.css",
+    "static/js/main.ff641c67.chunk.js"
+  ]
+}
