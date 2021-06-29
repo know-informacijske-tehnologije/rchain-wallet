@@ -4,7 +4,6 @@ import './index.scss';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Landing from './landing/Landing';
 import Navigation from './navigation/Navigation';
-import Sidebar from './sidebar/Sidebar';
 
 function get_scrollbar_width() {
 	const outer = document.createElement('div');
@@ -29,7 +28,6 @@ render(
   <React.StrictMode>
     <BrowserRouter>
       <Navigation />
-      <Sidebar />
       <Route path="/" component={Landing} />
     </BrowserRouter>
   </React.StrictMode>,

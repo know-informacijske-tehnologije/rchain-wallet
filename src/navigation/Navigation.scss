@@ -1,13 +1,13 @@
 .Navigation {
-  position: absolute;
+  position: relative;
   left: 0;
   top: 0;
-  right: var(--scrollbar-width, 0);
+  right: 0;
   padding-right: 120px;
-  background: linear-gradient(to bottom, #131033, #131033ee 80%, transparent);
-  z-index: 100;
+  z-index: 10000;
   height: 135px;
-  transition: height 0.2s, background 0.2s;
+  background: transparent;
+  transition: height 0.2s linear, background 0.2s;
 }
 
 .Navigation .NavigationBar {
@@ -28,7 +28,24 @@
   .Navigation.Expanded {
     padding-right: 0px;
     height: 100vh;
-    background: linear-gradient(to bottom, #131033, #131033);
+    background: #131033;
+
+    ~ .Landing {
+      margin-top: -100vh;
+      height: calc(100vh - 135px);
+      overflow: hidden;
+      opacity: 0;
+
+      &::after {
+        opacity: 0;
+      }
+    }
+  }
+
+  .Navigation ~ .Landing {
+    margin-top: -135px;
+    top: 135px;
+    transition: margin-top 0.2s linear, opacity 0.2s;
   }
 }
 

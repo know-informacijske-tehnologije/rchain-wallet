@@ -1,5 +1,6 @@
 import { createRef, useEffect } from 'react';
 import './Landing.scss';
+import Sidebar from '../sidebar/Sidebar';
 import { ReactComponent as Art } from '../assets/bg-art.svg';
 import Expander from '../expander/Expander';
 import wallet_icon from '../assets/wallet.svg';
@@ -72,18 +73,21 @@ function Landing() {
 
   return (
     <div className="Landing">
+      <Sidebar />
       <div className="Art">
         <Art ref={art_ref} />
       </div>
-      <h1>
-        <span>Community driven</span>
-        <span className="Highlight">
-          RChain wallet
-        </span>
-      </h1>
-      <h3 className="LargeMargin">
-        <span className="BigScreen">{lipsum1}</span>
-      </h3>
+      <div className="AboveFold">
+        <h1>
+          <span>Community driven</span>
+          <span className="Highlight">
+            RChain wallet
+          </span>
+        </h1>
+        <h3 className="BigScreen">
+          <span>{lipsum1}</span>
+        </h3>
+      </div>
 
       <div className="CardList LargeMargin">
         <div className="Card">

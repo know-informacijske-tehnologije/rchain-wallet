@@ -1,11 +1,9 @@
 .Landing {
   position: relative;
-  margin: 0 120px;
-  margin-top: calc(15vh + 135px);
+  padding: 0 120px;
 
   @media only screen and (max-width: 900px) {
-    margin: 0;
-    margin-top: calc(15vh + 135px);
+    padding: 0;
   }
 
   &::after {
@@ -42,21 +40,33 @@
     position: absolute;
     z-index: -100;
     width: 100%;
-    height: 50vh;
+    height: calc(100vh - 270px);
+    top: 0;
     left: 0;
     display: flex;
 
     svg {
       position: absolute;
-      height: 55vh;
+      height: 55vmax;
+      max-height: 75vh;
+      width: auto;
       left: 50%;
       top: 50%;
-      transform: translate(-50%, -40%);
+      transform: translate(-50%, -50%);
 
       path {
         transition: fill 1s, filter 1s;
       }
     }
+  }
+
+  .AboveFold {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    height: calc(100vh - 270px);
+    padding-bottom: 135px;
+    text-align: center;
   }
 
   .CardList {
