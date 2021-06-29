@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/rchain-wallet/static/css/main.4bef7218.chunk.css",
-    "main.js": "/rchain-wallet/static/js/main.ff641c67.chunk.js",
-    "main.js.map": "/rchain-wallet/static/js/main.ff641c67.chunk.js.map",
+    "main.css": "/rchain-wallet/static/css/main.10cbcf32.chunk.css",
+    "main.js": "/rchain-wallet/static/js/main.c2e10d6d.chunk.js",
+    "main.js.map": "/rchain-wallet/static/js/main.c2e10d6d.chunk.js.map",
     "runtime-main.js": "/rchain-wallet/static/js/runtime-main.372d5db6.js",
     "runtime-main.js.map": "/rchain-wallet/static/js/runtime-main.372d5db6.js.map",
-    "static/js/2.82f0c17b.chunk.js": "/rchain-wallet/static/js/2.82f0c17b.chunk.js",
-    "static/js/2.82f0c17b.chunk.js.map": "/rchain-wallet/static/js/2.82f0c17b.chunk.js.map",
+    "static/js/2.84129435.chunk.js": "/rchain-wallet/static/js/2.84129435.chunk.js",
+    "static/js/2.84129435.chunk.js.map": "/rchain-wallet/static/js/2.84129435.chunk.js.map",
     "index.html": "/rchain-wallet/index.html",
-    "static/css/main.4bef7218.chunk.css.map": "/rchain-wallet/static/css/main.4bef7218.chunk.css.map",
-    "static/js/2.82f0c17b.chunk.js.LICENSE.txt": "/rchain-wallet/static/js/2.82f0c17b.chunk.js.LICENSE.txt",
+    "static/css/main.10cbcf32.chunk.css.map": "/rchain-wallet/static/css/main.10cbcf32.chunk.css.map",
+    "static/js/2.84129435.chunk.js.LICENSE.txt": "/rchain-wallet/static/js/2.84129435.chunk.js.LICENSE.txt",
     "static/media/bg-art.925ced29.svg": "/rchain-wallet/static/media/bg-art.925ced29.svg",
     "static/media/globe.5daa6cad.svg": "/rchain-wallet/static/media/globe.5daa6cad.svg",
     "static/media/logo-white-oneline.28fd041e.png": "/rchain-wallet/static/media/logo-white-oneline.28fd041e.png",
@@ -27,8 +27,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.372d5db6.js",
-    "static/js/2.82f0c17b.chunk.js",
-    "static/css/main.4bef7218.chunk.css",
-    "static/js/main.ff641c67.chunk.js"
+    "static/js/2.84129435.chunk.js",
+    "static/css/main.10cbcf32.chunk.css",
+    "static/js/main.c2e10d6d.chunk.js"
   ]
 }
