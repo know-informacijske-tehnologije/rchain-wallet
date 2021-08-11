@@ -1,12 +1,9 @@
 import { createRef, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import './Landing.scss';
-import Sidebar from '../sidebar/Sidebar';
-import { ReactComponent as Art } from '../assets/bg-art.svg';
-import Expander from '../expander/Expander';
-import wallet_icon from '../assets/wallet.svg';
-import globe_icon from '../assets/globe.svg';
-import logo_white from '../assets/logo-white.png';
-import logo_white_oneline from '../assets/logo-white-oneline.png';
+import { navigate } from 'utils';
+import * as Components from 'components';
+import * as Assets from 'assets';
 
 const blink_interval_ms = 200;
 const light_duration_ms = 2000;
@@ -62,7 +59,8 @@ function blink_lights(svg: SVGSVGElement & { blinking?: boolean }) {
 const lipsum1 = "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.";
 const lipsum2 = "To a degree, some methods for creating work, such as employing intuition, are shared across the disciplines within the applied arts and fine art. Mark Getlein, writer, suggests the principles of design are almost instinctive.";
 
-function Landing() {
+export function Landing() {
+  let history = useHistory();
   let art_ref = createRef<SVGSVGElement>();
 
   useEffect(() => {
@@ -73,9 +71,9 @@ function Landing() {
 
   return (
     <div className="Landing">
-      <Sidebar />
+      <Components.Sidebar />
       <div className="Art">
-        <Art ref={art_ref} />
+        <Assets.BgArt ref={art_ref} />
       </div>
       <div className="AboveFold">
         <h1>
@@ -91,42 +89,52 @@ function Landing() {
 
       <div className="CardList LargeMargin">
         <div className="Card">
-          <img src={wallet_icon} alt="Wallet"/>
+          <img src={Assets.wallet} alt="Wallet"/>
           <h2>Create a new wallet</h2>
           <h4 className="Dynamic">{lipsum1}</h4>
-          <button>Create</button>
+          <button onClick={navigate(history, "/create")}>Create</button>
         </div>
 
         <div className="Card">
-          <img src={globe_icon} alt="Wallet"/>
+          <img src={Assets.globe} alt="Globe"/>
           <h2>Access your wallet</h2>
           <h4 className="Dynamic">{lipsum1}</h4>
-          <button>Access</button>
+          <button onClick={navigate(history, "/restore")}>Access</button>
         </div>
       </div>
 
       <h2>FAQ</h2>
 
-      <Expander
+      <Components.Expander
         title={<h3 className="NoMargin Left">What is MyRChainWallet?</h3>}
         content={<p>{lipsum2}</p>}/>
 
-      <Expander
+      <Components.Expander
         title={<h3 className="NoMargin Left">How do we handle private keys?</h3>}
         content={<p>{lipsum2}</p>}/>
 
-      <Expander
+      <Components.Expander
         title={<h3 className="NoMargin Left">How can I send a transaction?</h3>}
         content={<p>{lipsum2}</p>}/>
 
-      <Expander
-        title={<h3 className="NoMargin Left">Do you have a Support forum?</h3>}
-        content={<p>{lipsum2}</p>}/>
+      <Components.Expander
+        title={
+          <h3 className="NoMargin Left">
+            Do you have a Support forum?
+          </h3>}
+        content={
+          <p>
+            {lipsum2}
+          </p>}/>
 
       <div className="Footer">
         <div className="Logo">
-          <img className="BigScreen" src={logo_white} alt="MyRChainWallet Logo" />
-          <img className="SmallScreen" src={logo_white_oneline} alt="MyRChainWallet Logo" />
+          <img className="BigScreen"
+               src={Assets.logo_white}
+               alt="MyRChainWallet Logo" />
+          <img className="SmallScreen"
+               src={Assets.logo_white_oneline}
+               alt="MyRChainWallet Logo" />
         </div>
 
         <div className="LinksList">
@@ -176,5 +184,3 @@ function Landing() {
     </div>
   );
 }
-
-export default Landing;

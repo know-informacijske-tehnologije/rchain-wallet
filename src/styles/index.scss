@@ -1,0 +1,290 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  color: white;
+  width: 100vw;
+  min-height: 100vh;
+
+  background: #131033;
+  overflow: hidden;
+	scrollbar-color: #8b0430 #131033;
+	scrollbar-width: auto;
+}
+
+#root {
+  overflow: hidden scroll;
+  height: 100vh;
+}
+
+button {
+  padding: 1em;
+  border-radius: 3px;
+  border: none;
+  background-color: #8b0430;
+  color: white;
+  transition: background 0.1s, color 0.1s;
+  width: 100%;
+
+  font-family: Montserrat;
+  text-transform: uppercase;
+  font-size: 18px;
+  line-height: 1.61;
+  cursor: pointer;
+
+  &.Hanging {
+    position: absolute;
+    right: 0.25em;
+    bottom: 0.4em;
+    width: max-content;
+    height: max-content;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    opacity: 0.5;
+    transition: opacity 0.1s;
+
+    &:hover {
+      background: transparent;
+      opacity: 1;
+    }
+
+    &:disabled {
+      background: transparent;
+      opacity: 0.2;
+    }
+  }
+
+  &:hover {
+    background-color: #cc1e46;
+  }
+
+  &:disabled {
+    background-color: #14132e;
+    color: #3d3c52;
+  }
+}
+
+h1, h2, h3, h4 {
+  text-align: center;
+}
+
+p {
+  line-height: 1.86;
+  text-align: center;
+
+  label>&, &.Alt {
+    color: #626171;
+    font-size: 14px;
+
+    &.Smaller {
+      font-size: 10px;
+    }
+  }
+
+  &.Smaller {
+    font-size: 80%;
+  }
+
+  a::after, a::before {
+    content: " ";
+  }
+}
+
+h1, h2, h3, h4, p, a {
+  font-family: Montserrat;
+  color: white;
+  font-weight: normal;
+
+  &.Left {
+    text-align: left;
+  }
+}
+
+h1 {
+  /* ~50px @ 360px width */
+  /* ~100px @ 1440px width */
+  font-size: max(min(4.63 * 1vw + 30px, 100px), 50px);
+  font-weight: bold;
+}
+
+h2 {
+  /* ~35px @ 360px width */
+  /* ~50px @ 1440px width */
+  font-size: max(min(1.38 * 1vw + 33.3px, 50px), 35px);
+  font-weight: bold;
+
+  &.Alt {
+    font-size: max(min(1.2 * 1vw + 25px, 50px), 30px);
+    font-weight: normal;
+  }
+}
+
+h3 {
+  font-size: max(min(1.11 * 1vw + 14px, 30px), 18px);
+
+  &.Title {
+    border-bottom: 1px solid #090721;
+    margin: 0;
+    padding: 0.75em 1.5em;
+  }
+}
+
+h4 {
+  font-size: 18px;
+}
+
+a {
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+  transition: color 0.1s;
+
+  &:hover {
+    color: #cc1e46;
+  }
+
+  &.Alt {
+    font-size: 14px;
+    color: #cc1e46;
+
+    &:hover {
+      color: white;
+    }
+  }
+}
+
+
+label {
+  position: relative;
+
+  p {
+    line-height: 1.86;
+    text-align: left;
+    font-size: 10px;
+    color: #626171;
+    width: 100%;
+    margin-bottom: 0px;
+    transition: 0.1s color;
+  }
+
+  &:focus-within {
+    p {
+      color: white;
+    }
+  }
+}
+
+textarea, input {
+  font-family: Montserrat;
+  font-size: 14px;
+  padding: 1em;
+  border-radius: 3px;
+  background-color: #090721;
+  color: white;
+  border: none;
+  resize: none;
+
+  :placeholder {
+    color: #626171;
+  }
+
+  ~ p.Alt.Smaller {
+    margin-top: 0.5em;
+  }
+}
+
+.LineNormal {
+  line-height: normal !important;
+}
+
+.NoMargin {
+  margin: 0 !important;
+}
+
+.LargeMargin {
+  margin-bottom: 15vh !important;
+}
+
+.Highlight {
+  color: #cc1e46;
+}
+
+.Row {
+  display: flex;
+  flex-flow: row;
+
+  &.Center-Y, &.Center {
+    align-items: center;
+  }
+
+  &.Center-X, &.Center {
+    justify-content: center;
+  }
+
+  &.Separate-Y {
+    align-items: space-between;
+  }
+
+  &.Separate-X {
+    justify-content: space-between;
+  }
+}
+
+.Column {
+  display: flex;
+  flex-flow: column;
+
+  &.Center-Y, &.Center {
+    justify-content: center;
+  }
+
+  &.Center-X, &.Center {
+    align-items: center;
+  }
+
+  &.Separate-Y {
+    justify-content: space-between;
+  }
+
+  &.Separate-X {
+    align-items: space-between;
+  }
+}
+
+.Card {
+  background: #0c0a27;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: stretch;
+  align-items: stretch;
+  margin: 2em;
+
+  .Title {
+    flex: 0 0 auto;
+  }
+
+  .Body {
+    flex: 1 1 auto;
+    padding: 1em;
+  }
+}
+
+.SmallScreen {
+  display: none;
+
+  @media only screen and (max-width: 900px) {
+      display: unset;
+  }
+}
+
+.BigScreen {
+  display: none;
+
+  @media only screen and (min-width: 901px) {
+    display: unset;
+  }
+}
+

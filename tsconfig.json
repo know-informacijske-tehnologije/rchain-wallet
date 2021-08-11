@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "src",
     "target": "es5",
     "typeRoots": [
       "node_modules/@types",
@@ -30,6 +31,7 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": [
+    "src",
     "src/**/*"
   ],
   "exclude": [

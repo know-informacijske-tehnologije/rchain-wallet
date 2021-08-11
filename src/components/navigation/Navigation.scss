@@ -30,7 +30,7 @@
     height: 100vh;
     background: #131033;
 
-    ~ .Landing {
+    ~ .Landing, ~ .Restore {
       margin-top: -100vh;
       height: calc(100vh - 135px);
       overflow: hidden;
@@ -42,7 +42,7 @@
     }
   }
 
-  .Navigation ~ .Landing {
+  .Navigation ~ .Landing, .Navigation ~ .Restore {
     margin-top: -135px;
     top: 135px;
     transition: margin-top 0.2s linear, opacity 0.2s;

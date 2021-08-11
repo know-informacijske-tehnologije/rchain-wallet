@@ -14,12 +14,12 @@
     left: -100vw;
     bottom: -6vw;
     width: 200vw;
-    height: 50%;
+    height: 50vh;
 
-    background-image: url("../assets/bg-texture.png");
+    background-image: url("../../assets/bg-tex.svg");
     background-position: 0% 100%;
     background-size: 15px auto;
-    background-repeat: repeat-x;
+    background-repeat: repeat-x repeat-y;
     z-index: -200;
   }
 

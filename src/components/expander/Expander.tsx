@@ -1,7 +1,6 @@
 import './Expander.scss';
 import { useState, createRef, useEffect } from 'react';
-import plus from '../assets/plus.svg';
-import minus from '../assets/minus.svg';
+import * as Assets from "assets";
 
 type ExpanderProps = {
 	title: JSX.Element;
@@ -9,7 +8,7 @@ type ExpanderProps = {
 	is_expanded?: boolean;
 };
 
-function Expander(props: ExpanderProps) {
+export function Expander(props: ExpanderProps) {
 	let [is_expanded, set_is_expanded] = useState(props.is_expanded || false);
 	const content_ref = createRef<HTMLDivElement>();
 
@@ -41,7 +40,7 @@ function Expander(props: ExpanderProps) {
 		<div className="Title" onClick={toggle_expanded}>
 			{props.title}
 			<button>
-				<img src={is_expanded ? minus : plus}
+				<img src={is_expanded ? Assets.minus : Assets.plus}
 						alt={is_expanded ? "Contract" : "Expand"}/>
 			</button>
 		</div>
@@ -51,5 +50,3 @@ function Expander(props: ExpanderProps) {
 		</div>
 	</div>)
 }
-
-export default Expander;

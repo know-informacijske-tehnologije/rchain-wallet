@@ -1,0 +1,47 @@
+.FormScreen {
+  position: relative;
+
+  h2 {
+    margin-bottom: 0.25em;
+  }
+
+  button.Action {
+    margin-top: 2em;
+    margin-bottom: 0.25em;
+  }
+
+  input {
+    width: 35ch;
+  }
+
+  p {
+    width: 100%;
+  }
+
+  button.BigFlat {
+    padding: 2em;
+    border-radius: 3px;
+    background-color: #090721;
+    text-transform: none;
+    margin-bottom: 0.5em;
+    flex: 1 0 auto;
+
+    img {
+      margin-right: 1.5em;
+    }
+
+    h3 {
+      white-space: nowrap;
+      margin-top: 0;
+      margin-bottom: 0.5em;
+    }
+
+    p, h3 {
+      text-align: left;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+}

@@ -1,12 +1,9 @@
+import './Navigation.scss';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Navigation.scss';
-import logo_large from '../assets/logo.png';
-import logo_small from '../assets/logo-notext.png';
-import menu_icon from '../assets/menu.svg';
-import close_icon from '../assets/menu-close.svg';
+import * as Assets from 'assets';
 
-function Navigation() {
+export function Navigation() {
   const [show_menu, set_show_menu] = useState(false);
 
   const Menu = (show_menu:boolean) => {
@@ -25,12 +22,17 @@ function Navigation() {
     <div className={show_menu ? "Navigation Expanded" : "Navigation"}>
       <div className="NavigationBar">
         <Link to="/">
-          <img className="Large" src={logo_large} alt="MyRChainWallet" />
-          <img className="Small" src={logo_small} alt="MyRChainWallet" />
+          <img className="Large"
+               src={Assets.logo}
+               alt="MyRChainWallet" />
+          <img className="Small"
+               src={Assets.logo_notext}
+               alt="MyRChainWallet" />
         </Link>
 
         <div className="MenuButton" onClick={() => set_show_menu(!show_menu)}>
-          <img src={show_menu ? close_icon : menu_icon} alt="Menu Button" />
+          <img src={show_menu ? Assets.menu_close : Assets.menu}
+               alt="Menu Button" />
         </div>
 
         <div className="Links">
@@ -45,5 +47,3 @@ function Navigation() {
     </div>
   );
 }
-
-export default Navigation;
