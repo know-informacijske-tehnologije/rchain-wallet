@@ -1,5 +1,27 @@
 .Dashboard {
 	.Account, .Balance {
 		flex: 1 1 0;
+
+		button {
+			white-space: nowrap;
+		}
+	}
+
+	.Balance {
+		height: 33vh;
+		min-width: 50%;
+	}
+
+	.Toggle {
+		display: inline-flex;
+		vertical-align: sub;
+		background: #0008;
+	}
+
+	.PrivateKey {
+		max-width: 20ch;
+		min-width: 20ch;
+		word-break: break-all;
+		text-align: center;
 	}
 }

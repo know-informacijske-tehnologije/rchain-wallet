@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 export type History = ReturnType<typeof useHistory>;
 
+export type Unbox<T> = T extends PromiseLike<infer U> ? Unbox<U> : T;
+
 export enum OPERATION {
 	INITIAL,
 	PENDING,
@@ -64,7 +66,7 @@ export function write_prop(set_prop: any) {
 
 export function toggle(prop: any, set_prop: any) {
 	return () => {
-		set_prop(!prop)
+		set_prop(!prop);
 	}
 }
 

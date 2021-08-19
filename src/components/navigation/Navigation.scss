@@ -8,6 +8,31 @@
   height: 135px;
   background: transparent;
   transition: height 0.2s linear, background 0.2s;
+
+  select {
+    position: absolute;
+    bottom: 0;
+    right: 158px;
+    max-width: calc(100vw - 316px);
+    transition: bottom 0.2s, transform 0.2s, right 0.2s, max-width 0.2s, opacity 0.2s;
+
+    @media only screen and (max-width: 900px) {
+      right: 38px;
+    }
+
+    @media only screen and (max-width: 600px) {
+      right: 90px;
+      bottom: 50%;
+      transform: translateY(50%);
+      max-width: calc(100vw - 200px);
+    }
+  }
+
+  &.Expanded {
+    select {
+      opacity: 0;
+    }
+  }
 }
 
 .Navigation .NavigationBar {
@@ -30,7 +55,7 @@
     height: 100vh;
     background: #131033;
 
-    ~ .Landing, ~ .Restore {
+    ~ .Landing, ~ .Restore, ~ .Card {
       margin-top: -100vh;
       height: calc(100vh - 135px);
       overflow: hidden;

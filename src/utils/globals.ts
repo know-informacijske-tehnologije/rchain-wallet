@@ -16,9 +16,7 @@ export let networks = [
 	rc.test_net_block_merge,
 ];
 
-export let current_node = rc.local_net.hosts[0];
-
-export async function check_balance() {
+export async function check_balance(current_node: rc.RNodeInfo) {
 	if (!user) { return null; }
 	let node = rc.get_node_urls(current_node);
 
@@ -51,6 +49,7 @@ function adapt_account(acc: AccountType | AccountData, default_username: string)
 }
 
 export async function transfer(
+	current_node: rc.RNodeInfo,
 	amount: number,
 	from_account: AccountData,
 	target_account: AccountData
@@ -92,6 +91,7 @@ export function create_user(
 
 export function set_active_user(account: AccountType) {
 	user = account;
+	console.log("Setting active user", user);
 }
 
 export function remove_user(user: AccountType) {

@@ -57,6 +57,29 @@ button {
     }
   }
 
+  &.Toggle, &.Toggle.Hanging {
+    padding: 0;
+    background-color: transparent;
+    opacity: 0.8;
+    width: 2em;
+    height: 2em;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    bottom: 0.3em;
+
+    &:hover {
+      background-color: transparent;
+      opacity: 1;
+    }
+
+    &:disabled {
+      background-color: transparent;
+      opacity: 0.5;
+    }
+  }
+
   &:hover {
     background-color: #cc1e46;
   }
@@ -177,7 +200,7 @@ label {
   }
 }
 
-textarea, input {
+textarea, input, select {
   font-family: Montserrat;
   font-size: 14px;
   padding: 1em;
@@ -214,7 +237,7 @@ textarea, input {
 
 .Row {
   display: flex;
-  flex-flow: row;
+  flex-flow: row nowrap;
 
   &.Center-Y, &.Center {
     align-items: center;
@@ -230,12 +253,16 @@ textarea, input {
 
   &.Separate-X {
     justify-content: space-between;
+  }
+
+  &.Wrap {
+    flex-flow: row wrap;
   }
 }
 
 .Column {
   display: flex;
-  flex-flow: column;
+  flex-flow: column nowrap;
 
   &.Center-Y, &.Center {
     justify-content: center;
@@ -251,6 +278,10 @@ textarea, input {
 
   &.Separate-X {
     align-items: space-between;
+  }
+
+  &.Wrap {
+    flex-flow: column wrap;
   }
 }
 
