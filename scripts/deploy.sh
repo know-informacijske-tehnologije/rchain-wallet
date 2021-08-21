@@ -8,9 +8,9 @@ SSH_NAME="$1"
 
 function gitdo() {
   if [ "$SSH_NAME" == "" ]; then
-    git $@
+    git "$@"
   else
-	  GIT_SSH_COMMAND="ssh -i ~/.ssh/id_$SSH_NAME" git $@
+	  GIT_SSH_COMMAND="ssh -i ~/.ssh/id_$SSH_NAME" git "$@"
 	fi
 }
 
@@ -42,7 +42,7 @@ function rmrf() {
 	done
 
 	if ask_yn "Are you sure that you want to delete $count files?"; then
-		rm -rf "$@"
+		rm -rf $@
 	fi
 }
 
@@ -62,10 +62,10 @@ gitdo pull
 cd "$BASEDIR"
 npm run build
 
-rmrf "$BASEDIR/dist/*"
+rmrf "$BASEDIR/dist/"*
 cp -r "$BASEDIR/build/." "$BASEDIR/dist"
 
 cd "$BASEDIR/dist"
 gitdo add .
-gitdo commit -m "Update preview"
-
+gitdo commit -m 'Update preview'
+gitdo push
