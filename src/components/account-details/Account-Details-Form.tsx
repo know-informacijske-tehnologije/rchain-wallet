@@ -2,7 +2,7 @@
 import 'styles/FormScreen.scss';
 import { useState, useEffect } from 'react';
 import * as u from 'utils';
-import { ToggleEye } from 'components';
+import { ToggleButton } from 'components';
 
 export function useAccountDetails() {
   let username = u.useWritable("");
@@ -59,9 +59,10 @@ export function AccountDetailsForm(props: AccountDetailsProps) {
       <input value={password1.value}
           type={password1.toggle_value ? "text" : "password"}
           onChange={password1.write}/>
-      <ToggleEye hanging={true}
+      <ToggleButton hanging={true}
                  val={password1.toggle_value}
-                 setval={password1.set_toggle} />
+                 setval={password1.set_toggle}
+                 alt_text="Toggle show password" />
     </label>
 
     <label>
@@ -69,9 +70,10 @@ export function AccountDetailsForm(props: AccountDetailsProps) {
       <input value={password2.value}
              type={password2.toggle_value ? "text" : "password"}
              onChange={password2.write}/>
-      <ToggleEye hanging={true}
+      <ToggleButton hanging={true}
                  val={password2.toggle_value}
-                 setval={password2.set_toggle} />
+                 setval={password2.set_toggle}
+                 alt_text="Toggle show password" />
     </label>
   </>)
 }

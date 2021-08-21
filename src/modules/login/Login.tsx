@@ -1,6 +1,6 @@
 // @TODO: Move restore styles so they can be reused.
 import 'styles/FormScreen.scss';
-import { ToggleEye } from 'components';
+import { ToggleButton } from 'components';
 import { g, useWritable, useWritableWithToggle } from 'utils';
 import { Link, useHistory } from 'react-router-dom';
 
@@ -23,7 +23,7 @@ export function Login() {
     }
 
     g.set_active_user(user);
-    history.push("/dash");
+    history.push("/wallet/dash");
   }
 
   return (
@@ -47,9 +47,10 @@ export function Login() {
           <input value={password.value}
                  onChange={password.write}
                  type={password.toggle_value ? "text" : "password"}/>
-          <ToggleEye hanging={true}
+          <ToggleButton hanging={true}
                      val={password.toggle_value}
-                     setval={password.set_toggle} />
+                     setval={password.set_toggle}
+                     alt_text="Toggle show password" />
         </label>
 
         {/* @TODO: Auto login checkbox */}

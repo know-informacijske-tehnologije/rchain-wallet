@@ -65,7 +65,7 @@ export interface RChainNetwork {
 export type NetworkName = 'localnet' | 'testnet-bm' | 'testnet' | 'mainnet'
 
 const default_ports: Partial<RNodeInfo> = { grpc: 40401, http: 40403, httpAdmin: 40405 };
-const default_ports_ssl: Partial<RNodeInfo> = { grpc: 40401, http: 443, httpAdmin: 40405 };
+const default_ports_ssl: Partial<RNodeInfo> = { grpc: 40401, https: 443, httpAdmin: 40405 };
 
 export const local_net: RChainNetwork = {
 	title: 'Local network',

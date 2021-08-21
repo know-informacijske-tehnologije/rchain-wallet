@@ -1,0 +1,17 @@
+.Spinner {
+  flex: 0 0 auto;
+  width: 2em;
+  height: 2em;
+  animation: spin 1s forwards infinite linear;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+@keyframes spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}

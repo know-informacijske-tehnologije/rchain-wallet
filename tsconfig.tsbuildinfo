@@ -752,7 +752,7 @@
         "affectsGlobalScope": false
       },
       "./src/utils/rchain.ts": {
-        "version": "7b27dbaa05860f71ea1f044678ec6353cacee5af2320c44583105b4832101116",
+        "version": "cf30f323bd9861705b08e357327da76bb9d3ab2d19996ba14cede4048ebfb306",
         "signature": "8b12edee756a029eee23cf609aa0d5caf8b7447d1a5049debba1dbcb3b6016c7",
         "affectsGlobalScope": false
       },
@@ -762,18 +762,18 @@
         "affectsGlobalScope": false
       },
       "./src/utils/index.ts": {
-        "version": "3a6033dfc8f8edcb2d7b2dde63e4aa1854e7d20877ef4bfe8c79f58eb525fa7f",
+        "version": "f2ec018ad6b30eed32bebb6bfd6b3eb67f664523a6e992b9e7dbc1e95c4ca958",
         "signature": "3a6033dfc8f8edcb2d7b2dde63e4aa1854e7d20877ef4bfe8c79f58eb525fa7f",
         "affectsGlobalScope": false
       },
       "./src/components/account-details/Account-Details-Form.tsx": {
-        "version": "5e2c8cd7bc691184b9d9c8b6bbe2703f0024568563de06e522c9a999632f4e67",
+        "version": "065088fb50e9f3b99ceab383dd443b62fc19f39ab68a566724b182a82975ef95",
         "signature": "bb7815eebdfe06bee67970f51e8fafc8dd6006fccf06a55beba215d7760769a5",
         "affectsGlobalScope": false
       },
       "./src/assets/index.ts": {
-        "version": "4dd46c2ebf4049e23725647ac91bcfdccbee0ad665a800acbca760d6e1d2c9f6",
-        "signature": "31e23977c5dc208bb1a46a0611efca20f6cbbb893f3803825058954da16b6938",
+        "version": "7fcb388112b7cd4aec90586f42b9a22ad6baf33675fcd425a3fb1c02cbf67c99",
+        "signature": "7370881889f64b2f578ed11f28ffe39daa48652dd415cc65a623e0c325adaa69",
         "affectsGlobalScope": false
       },
       "./src/components/expander/Expander.tsx": {
@@ -782,7 +782,7 @@
         "affectsGlobalScope": false
       },
       "./src/components/navigation/Navigation.tsx": {
-        "version": "17841550acc6e38427cf816ac0dd364d721cfa256512d8a3e4cecc3b3be2f9af",
+        "version": "7ad9d097984de9a5a6bca89777d1f0b86f26c918fae755042e63855a39a6ac7c",
         "signature": "5b215f307e1fb936514df1cb3f9d61abdfd573a65384c38850dd5edcdca79f62",
         "affectsGlobalScope": false
       },
@@ -791,33 +791,33 @@
         "signature": "e2bf22af2deb226d5e0e8453fe00485f0bb46429a57a5de60374ee433df809e1",
         "affectsGlobalScope": false
       },
-      "./src/components/toggle-eye/ToggleEye.tsx": {
-        "version": "79714d1a9135c72b4aeb6862fcd06b3cb6eac55ec8ca7f5e5e09472558ea083e",
-        "signature": "29cc45cab0058fa7ea3de39c8a6f6b0c7b75c3f6cbd28bd8f0a4d56d01858884",
+      "./src/components/spinner/Spinner.tsx": {
+        "version": "d1b21d159757e57174f37c963580b82404ec247bf2347ab6a6658285302229a1",
+        "signature": "d0b8ca55e357cc232fda4892ce9f3558ad8d90b8d28bb5deead65c3faa9e4c58",
+        "affectsGlobalScope": false
+      },
+      "./src/components/toggle-button/ToggleButton.tsx": {
+        "version": "2aef0114efd8d640d2aafc2ee2441b26af280990d83c1c42f570cf8541d07b45",
+        "signature": "3232d75ae0c4ebf0b9acee780e90f9506c42701472def25d8ff08b2eb8541743",
         "affectsGlobalScope": false
       },
       "./src/components/index.ts": {
-        "version": "e3a1a4d48d8d901e3400f7f99b75aa09235b70c0a5b54321868134306cc27376",
-        "signature": "e3a1a4d48d8d901e3400f7f99b75aa09235b70c0a5b54321868134306cc27376",
+        "version": "5e017879180ccf3206d864f1a45bcdc4006cc82e39c918798bb59025d7cc222d",
+        "signature": "375fddb20dcbfb7f5850a81de5b592c7b655193697d490f8b9e2d9c95b56fd97",
         "affectsGlobalScope": false
       },
       "./src/modules/account/create/Create-Account.tsx": {
-        "version": "74172580059eb3d791c2843b9fd9a8b0dde5559d9aa97ef6351572a2cfacc064",
+        "version": "f436ffae00abff21cbe2f058b1604a6f95f5d67cf75912539df284c318337823",
         "signature": "acc125f5d9b3e33f86b14dc383bef3613469d48016904f95b515fc7caf5591dc",
         "affectsGlobalScope": false
       },
       "./src/modules/account/dashboard/Dashboard.tsx": {
-        "version": "70ca97d303b8dce7f7b611685d141f3f1633185855824c928d6173920572cbb6",
+        "version": "594c2efa113283e6af801b8f67731668fedfdf3ee69f2d56c46b0d454d5d9ccb",
         "signature": "c34560e2edf362dafe12ed22aeb5ac64ca272882dbda49a9a2066747c3550684",
         "affectsGlobalScope": false
       },
-      "./src/modules/account/restore/Restore.tsx": {
-        "version": "4ef153743bd9f15b650e6520492875c4d6c41db3af7114e7ca54490747c8f80b",
-        "signature": "21647e56f8ef8643f852caea7c3989dc901936e141cefa07862ba4c8a5133f31",
-        "affectsGlobalScope": false
-      },
       "./src/modules/account/restore/Restore-Account.tsx": {
-        "version": "2b6e86887ceb727987f26b37e324bf189098243d458ecd240012714d4b936fb2",
+        "version": "52f1f8c6a527b5ba806d02f4b71d082c37b5a2c1be2f8599e6fab55a529ff197",
         "signature": "55e78a66793e58a33d622721358a369a41567ce959da99181560a712bcbf0de5",
         "affectsGlobalScope": false
       },
@@ -831,24 +831,29 @@
         "signature": "e1cf6473406b9f7da335b36f96c82256f9bcb1bd13741836ef865aa10aa73b42",
         "affectsGlobalScope": false
       },
+      "./src/modules/account/restore/Restore.tsx": {
+        "version": "4ef153743bd9f15b650e6520492875c4d6c41db3af7114e7ca54490747c8f80b",
+        "signature": "21647e56f8ef8643f852caea7c3989dc901936e141cefa07862ba4c8a5133f31",
+        "affectsGlobalScope": false
+      },
       "./src/modules/landing/Landing.tsx": {
         "version": "f6107c288f6fac3a3219cedac8bbc55b80d310c3dc4c647de47d2e3a02592240",
         "signature": "92885f0758bc2df457cd9dcfecafd6aa723cf0813208af720b0faf549d68a848",
         "affectsGlobalScope": false
       },
       "./src/modules/login/Login.tsx": {
-        "version": "69888dfbd2392afab7ec948a921bc089ed83b005071f0dbeb9a22c69a4b1d4f1",
+        "version": "62d1581404355e86a94852ecb7c66d487dfd0ee17d43beb2f064aceca3a5706d",
         "signature": "4485b1909c7eb9e75cd8fb3dcbebf5960fd7d47ac8a7919e6757c3873f963d76",
         "affectsGlobalScope": false
       },
       "./src/modules/index.ts": {
-        "version": "569cb8aae0fdcf6c44d1874b340293679a1f3de1e774de3600f12be05ba2745c",
-        "signature": "569cb8aae0fdcf6c44d1874b340293679a1f3de1e774de3600f12be05ba2745c",
+        "version": "7313b80dcbe4ae605f66b87146ad14e25e924ffb1ee80698e0358a2956a842f4",
+        "signature": "5e34962073d7797316fa6ddaa9442466e05e240b9d7e275541ed12905ed83fc1",
         "affectsGlobalScope": false
       },
       "./src/index.tsx": {
-        "version": "7a3dd6cd061d8b1ca26dbd556815b7ffd2e70f3c7e861c711ce01ae97d9ba56c",
-        "signature": "8fa420ba00ba1e9c8e5c51ad58e9479770d0a29db634b2a35edd1138deefbbc7",
+        "version": "b31966cd6ff544bb06c28dc1f4b0c6b606768a57e5bfdae376a954120c26bddf",
+        "signature": "5f8eb3bcc9f188fb2ddcaf006060745541fca17621c8659645217aabfb87b485",
         "affectsGlobalScope": false
       },
       "./node_modules/react-scripts/lib/react-app.d.ts": {
@@ -2185,7 +2190,8 @@
         "./src/components/expander/Expander.tsx",
         "./src/components/navigation/Navigation.tsx",
         "./src/components/sidebar/Sidebar.tsx",
-        "./src/components/toggle-eye/ToggleEye.tsx",
+        "./src/components/spinner/Spinner.tsx",
+        "./src/components/toggle-button/ToggleButton.tsx",
         "./src/types/index.d.ts"
       ],
       "./src/components/navigation/Navigation.tsx": [
@@ -2194,6 +2200,7 @@
         "./node_modules/@types/react/jsx-runtime.d.ts",
         "./node_modules/react-scripts/lib/react-app.d.ts",
         "./src/assets/index.ts",
+        "./src/components/index.ts",
         "./src/index.tsx",
         "./src/types/index.d.ts",
         "./src/utils/index.ts"
@@ -2204,7 +2211,15 @@
         "./src/assets/index.ts",
         "./src/types/index.d.ts"
       ],
-      "./src/components/toggle-eye/ToggleEye.tsx": [
+      "./src/components/spinner/Spinner.tsx": [
+        "./node_modules/@types/react/index.d.ts",
+        "./node_modules/@types/react/jsx-runtime.d.ts",
+        "./node_modules/react-scripts/lib/react-app.d.ts",
+        "./src/assets/index.ts",
+        "./src/types/index.d.ts",
+        "./src/utils/index.ts"
+      ],
+      "./src/components/toggle-button/ToggleButton.tsx": [
         "./node_modules/@types/react/jsx-runtime.d.ts",
         "./node_modules/react-scripts/lib/react-app.d.ts",
         "./src/assets/index.ts",
@@ -3512,7 +3527,13 @@
         "./src/components/account-details/Account-Details-Form.tsx",
         "./src/components/expander/Expander.tsx",
         "./src/components/navigation/Navigation.tsx",
-        "./src/components/sidebar/Sidebar.tsx"
+        "./src/components/sidebar/Sidebar.tsx",
+        "./src/components/spinner/Spinner.tsx",
+        "./src/components/toggle-button/ToggleButton.tsx"
+      ],
+      "./src/components/spinner/Spinner.tsx": [
+        "./node_modules/@types/react/index.d.ts",
+        "./src/utils/index.ts"
       ],
       "./src/index.tsx": [
         "./node_modules/@types/react/index.d.ts",
@@ -3906,7 +3927,8 @@
       "./src/components/index.ts",
       "./src/components/navigation/Navigation.tsx",
       "./src/components/sidebar/Sidebar.tsx",
-      "./src/components/toggle-eye/ToggleEye.tsx",
+      "./src/components/spinner/Spinner.tsx",
+      "./src/components/toggle-button/ToggleButton.tsx",
       "./src/index.tsx",
       "./src/modules/account/create/Create-Account.tsx",
       "./src/modules/account/dashboard/Dashboard.tsx",
@@ -4656,6 +4678,10 @@
         1
       ],
       [
+        "./src/components/Spinner.tsx",
+        1
+      ],
+      [
         "./src/components/account-details/Account-Details-Form.tsx",
         1
       ],
@@ -4673,6 +4699,14 @@
       ],
       [
         "./src/components/sidebar/Sidebar.tsx",
+        1
+      ],
+      [
+        "./src/components/spinner/Spinner.tsx",
+        1
+      ],
+      [
+        "./src/components/toggle-button/ToggleButton.tsx",
         1
       ],
       [

@@ -3,8 +3,9 @@ import { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { g, OPERATION, Unbox } from 'utils';
 import { profile } from "assets";
+import { ToggleButton, Spinner } from 'components';
 import { NodeContext } from "index";
-import { ToggleEye } from 'components';
+import * as Assets from "assets";
 
 export function Dashboard() {
   const history = useHistory();
@@ -54,7 +55,7 @@ export function Dashboard() {
     set_balance_op(OPERATION.PENDING);
     let res: Unbox<ReturnType<typeof g.check_balance>>;
     try{
-      res = await g.check_balance(node_context.node);
+      res = await g.check_balance(node_context.read_only);
     } catch {
       res = null;
     }
@@ -75,25 +76,33 @@ export function Dashboard() {
     set_balance_op(OPERATION.DONE);
   }
 
-  function render_balance() {
-    switch (balance_op) {
+  function format_balance(val: number) {
+    return val.toLocaleString(undefined, {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 8
+    });
+  }
 
-      case OPERATION.INITIAL:
-        return (
-          <button onClick={get_balance}>
-            get balance
-          </button>);
-
-      case OPERATION.PENDING:
-        return (
-          <p>Checking balance...</p>);
-
-      case OPERATION.DONE:
-        return (<>
-          Balance
-          <p>{balance}</p>
-        </>);
+  function get_balance_button(big: boolean) {
+    if (big) {
+      return (
+        <button className="Subtle" onClick={get_balance}>
+          Get balance
+        </button>
+      );
+    } else {
+      return (
+        <button className="Toggle" onClick={get_balance}>
+          <img src={Assets.refresh} alt="Get balance button" />
+        </button>
+      );
     }
+  }
+
+  function show_balance() {
+    return (<span className="BalanceValue">
+      {format_balance(balance)}
+    </span>)
   }
 
   return (
@@ -105,20 +114,24 @@ export function Dashboard() {
         <div className="Account Column Center">
           <img src={profile} alt="Account" />
           <p className="Username">{username}</p>
-          <p className="PrivateKey">
+          <p className={pkey_hidden ? "PrivateKey" : "PrivateKey Expanded"}>
             {pkey_1}
-            {pkey_hidden ? <ToggleEye hanging={false}
+            {pkey_hidden ? <ToggleButton hanging={false}
                        val={pkey_hidden}
-                       setval={toggle_private_key} /> : <></>}
+                       setval={toggle_private_key}
+                       alt_text="Show private key"/> : <></>}
             {pkey_2}
           </p>
 
-          {(!pkey_hidden) ? <ToggleEye hanging={false}
+          {(!pkey_hidden) ? <ToggleButton hanging={false}
                                      val={pkey_hidden}
-                                     setval={toggle_private_key} /> : <></>}
+                                     setval={toggle_private_key}
+                                     alt_text="Hide private key" /> : <></>}
         </div>
-        <div className="Balance Column Center-X Center-Y">
-          { render_balance() }
+        <div className="Balance">
+          <Spinner op={balance_op}
+                   children_initial={[get_balance_button(true)]}
+                   children_done={[show_balance(), get_balance_button(false)]} />
         </div>
       </div>
     </div>

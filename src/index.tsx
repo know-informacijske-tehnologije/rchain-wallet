@@ -27,18 +27,39 @@ g.restore_user_list();
 get_scrollbar_width();
 
 export const NodeContext = React.createContext({
+	network: rc.main_net,
 	node: rc.main_net.hosts[0],
-	set_node: (_: rc.RNodeInfo) => { return; }
+	set_node: (_net_i: number, _host_i: number) => { return; },
+	read_only: rc.main_net.readOnlys[0],
+	set_read_only: (_ro_i: number) => { return; }
 });
 
 function App() {
-	let [current_node, set_current_node] = React.useState(rc.main_net.hosts[0]);
-	const set_node = (node: rc.RNodeInfo) => {
-		set_current_node(node);
+	let [network, set_network] = React.useState(rc.main_net);
+	let [node, set_current_node] = React.useState(rc.main_net.hosts[0]);
+	let [read_only, set_current_readonly] = React.useState(rc.main_net.readOnlys[0]);
+
+	const set_node = (net_i: number, host_i: number) => {
+		const nw = g.networks[net_i];
+		if (!nw) { throw new Error(`Unknown network at index ${net_i}!`); }
+		const host = nw.hosts[host_i];
+		if (!host) { throw new Error(`Unknown host in network '${network.title || network.name}' at index ${host_i}!`); }
+
+
+		let ro = read_only;
+		if (nw !== network) { ro = nw.readOnlys[0]; set_network(nw); }
+		if (host !== node) { set_current_node(host); }
+		if (ro !== read_only) { set_current_readonly(ro); }
 	};
 
+	const set_read_only = (ro_i: number) => {
+		set_current_readonly(network.readOnlys[ro_i]);
+	};
+
+	let initial_data = { network, node, read_only, set_node, set_read_only };
+
 	return (
-		<NodeContext.Provider value={{ node: current_node, set_node }}>
+		<NodeContext.Provider value={initial_data}>
 			<BrowserRouter>
 				<Components.Navigation/>
 				<Switch>
@@ -48,7 +69,7 @@ function App() {
 					<Route exact path="/restore/account" component={Modules.RestoreAccount} />
 					<Route exact path="/restore/mnemonic" component={Modules.RestoreMnemonic} />
 					<Route exact path="/restore/private-key" component={Modules.RestorePrivateKey} />
-					<Route exact path="/dash" component={Modules.Dashboard} />
+					<Route exact path="/wallet/dash" component={Modules.Dashboard} />
 					<Route component={Modules.Landing} />
 				</Switch>
 			</BrowserRouter>

@@ -23,7 +23,7 @@ export function CreateAccount() {
     const user = g.create_user(username.value, password1.value, account_data);
     g.add_user(user);
     g.set_active_user(user);
-    history.push("/dash");
+    history.push("/wallet/dash");
   }
 
   return (
