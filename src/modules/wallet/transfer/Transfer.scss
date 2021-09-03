@@ -1,0 +1,68 @@
+.Transfer {
+    display: grid;
+    grid-template-areas: "sender   break receiver"
+                         "actions actions actions";
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: 1fr auto;
+    grid-gap: 1em;
+
+    .Receiver { grid-area: receiver }
+    .Sender { grid-area: sender }
+    .Break { grid-area: break }
+    .Actions { grid-area: actions }
+
+    label {
+        input, textarea {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 8em;
+        }
+    }
+
+    .Break {
+        position: relative;
+        background: #131033;
+        height: calc(100% + 2em);
+        width: 2px;
+        margin: 0 0.5em;
+        margin-top: -1em;
+
+        img {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(-90deg);
+            background: #0c0a27;
+            padding: 0 1em;
+        }
+    }
+
+    .Actions {
+        button:first-child {
+            margin-right: 0.5em;
+        }
+    }
+
+    @media only screen and (max-width: 900px) {
+        grid-template-areas: "sender"
+                             "break"
+                             "receiver"
+                             "actions";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto;
+
+        .Break {
+            margin: 0.5em -1em;
+            margin-top: 2.3em;
+            width: calc(100% + 2em);
+            height: 2px;
+
+            img {
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+}

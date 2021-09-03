@@ -3,7 +3,6 @@
 BASEDIR="$(dirname "${BASH_SOURCE[0]}")"
 BASEDIR=$(realpath $BASEDIR/..)
 
-BACKUP_FOLDER="~/myrchainwallet_deploy_backup"
 SSH_NAME="$1"
 
 function gitdo() {

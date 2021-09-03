@@ -1,200 +1,139 @@
 .Navigation {
+  grid-area: navbar;
   position: relative;
   left: 0;
   top: 0;
   right: 0;
-  padding-right: 120px;
-  z-index: 10000;
-  height: 135px;
+  z-index: 999;
+  height: 135px0;
   background: transparent;
   transition: height 0.2s linear, background 0.2s;
 
-  .NodeSelect {
+  .SidebarContainer ~ & {
+    padding-right: 120px;
+    @media only screen and (max-width: 900px) {
+      padding-right: 0;
+    }
+  }
+
+  .NavigationBar {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
-    max-width: 2em;
-    width: 100vw;
-    transition: max-width 0.2s, left 0.2s;
-    overflow: hidden;
-    position: fixed;
-    transform: translate(-50%);
-    left: 38%;
-    z-index: 10000;
-    background-color: #131033;
+    height: 135px;
+    padding: 0 5vw;
 
-    @media only screen and (max-width: 900px) {
-      left: 25%;
+    .Logo { height: 61px; }
+    a img { height: 100%; }
+  }
+
+  .SidenavToggle {
+    opacity: 0;
+    pointer-events: none;
+    filter: saturate(0) brightness(100);
+  }
+
+  .Links {
+    display: flex;
+    flex-flow: row nowrap;
+    min-width: 2em;
+
+    a {
+      margin-right: 39px;
+      transition: color 0.1s;
     }
 
-    @media only screen and (max-width: 600px) {
-      left: 50%;
+    a:hover {
+      color: #cc1e46;
     }
 
-    .Column {
-      flex: 1 1 auto;
-      padding-left: 1em;
-      padding-right: 1em;
-      overflow: hidden;
+    a:last-child {
+      margin-right: 0;
+    }
+  }
 
-      label, label select {
-        width: 100%;
-        max-width: max-content;
-      }
+  .MenuButton, .Menu {
+    display: none;
+  }
 
-      p {
-        white-space: nowrap;
+  .Logo .Small { display: none; }
+
+  &.Wallet {
+    .Logo .Large { display: none; }
+    .Logo .Small { display: none; }
+  }
+
+  @media only screen and (max-width: 900px) {
+    .Logo .Large { display: none; }
+    .Logo .Small { display: block; }
+
+    &.Wallet {
+      .Logo .Large { display: none; }
+      .Logo .Small { display: block; }
+    }
+
+    .SidenavToggle {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    padding-right: 0;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .Links { display: none }
+
+    .MenuButton {
+      display: flex;
+      height: 100%;
+      width: 44px;
+      cursor: pointer;
+    }
+
+    .Menu {
+      display: flex;
+      height: calc(100vh - 270px);
+
+      a {
+        font-family: Montserrat;
+        font-size: calc(30px + 1vh);
+        line-height: 1.53;
+        text-align: center;
+        text-decoration: none;
+        color: white;
+
+        &:hover {
+          color: #cc1e46;
+        }
+
+        &:not(:last-child) {
+          margin-bottom: 25px;
+        }
       }
     }
 
     &.Expanded {
-      top: 0;
-      left: 50%;
-      max-width: 100vw;
+      padding-right: 0px;
+      height: 100vh;
+      background: #131033;
 
-      button {
-        padding-right: 1em;
-        flex: 1 0 auto;
+      ~ .Landing, ~ .Restore, ~ .Card {
+        position: absolute;
+        height: calc(100vh - 135px);
+        top: 135px;
+        overflow: clip;
+        opacity: 0;
+
+        &::after {
+          opacity: 0;
+        }
       }
     }
-  }
-
-  &.Expanded {
-    .NodeSelect {
-      opacity: 0;
-    }
-  }
-}
-
-.Navigation .NavigationBar {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  align-items: center;
-  height: 135px;
-}
-
-@media only screen and (max-width: 900px) {
-  .Navigation {
-    padding-right: 0px;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .Navigation.Expanded {
-    padding-right: 0px;
-    height: 100vh;
-    background: #131033;
 
     ~ .Landing, ~ .Restore, ~ .Card {
-      margin-top: -100vh;
-      height: calc(100vh - 135px);
-      overflow: hidden;
-      opacity: 0;
-
-      &::after {
-        opacity: 0;
-      }
+      transition: opacity 0.2s;
     }
   }
-
-  .Navigation ~ .Landing, .Navigation ~ .Restore {
-    margin-top: -135px;
-    top: 135px;
-    transition: margin-top 0.2s linear, opacity 0.2s;
-  }
 }
 
-.Navigation .NavigationBar > a {
-  height: 61px;
-}
-
-.Navigation a img {
-  height: 100%;
-}
-
-.Navigation a img.Small, .Navigation a img.Large {
-  margin-left: 5vw;
-}
-
-.Navigation a img.Small {
-  display: none;
-}
-
-@media only screen and (max-width: 900px) {
-  .Navigation a img.Large {
-    display: none;
-  }
-
-  .Navigation a img.Small {
-    display: block;
-  }
-}
-
-.Navigation .Links {
-  display: flex;
-  flex-flow: row nowrap;
-}
-
-.Navigation .MenuButton, .Navigation .Menu {
-  display: none;
-}
-
-@media only screen and (max-width: 600px) {
-  .Navigation .Links {
-    display: none;
-  }
-
-  .Navigation .MenuButton {
-    display: flex;
-    flex-flow: row nowrap;
-    margin-right: 38px;
-    height: 100%;
-    width: 44px;
-    cursor: pointer;
-  }
-
-  .Navigation .Menu {
-    display: flex;
-    flex-flow: row nowrap;
-  }
-
-  .Navigation .Menu {
-    display: flex;
-    flex-flow: column nowrap;
-    height: calc(100vh - 270px);
-    justify-content: center;
-    align-items: center;
-  }
-
-  .Navigation .Menu a {
-    font-family: Montserrat;
-    font-size: calc(30px + 1vh);
-    line-height: 1.53;
-    text-align: center;
-    text-decoration: none;
-    color: white;
-  }
-
-  .Navigation .Menu a:not(:last-child) {
-    margin-bottom: 25px;
-  }
-
-  .Navigation .Menu a:hover {
-    color: #cc1e46;
-  }
-}
-
-.Navigation .Links a {
-  margin-right: 39px;
-  transition: color 0.1s;
-}
-
-.Navigation .Links a:hover {
-  color: #cc1e46;
-}
-
-.Navigation .Links a:last-child {
-  margin-right: 45px;
-}

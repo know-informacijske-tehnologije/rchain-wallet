@@ -6,18 +6,27 @@
 - [x] RChain functionality
 	- [x] Connecting to different nodes
 	- [x] Checking balance
-	- [x] Transferring between accounts
-- [ ] Login
-	- [x] Basic functionality
-	- [ ] Dropdown with stored accounts
-- [ ] Create account
-	- [x] Basic functionality
-	- [ ] Display mnemonic upon account creation
-- [x] Restoring account
+	- [x] Transferring between wallets
+- [x] Create wallet
+	- [ ] Mnemonic
+		- [x] 24 word
+		- [ ] 12 word
+	- [x] Keystore
+- [x] Access wallet
 	- [x] From mnemonic
+	- [x] Via keystore
 	- [x] From private key
-- [ ] Wallet
-	- [x] Dashboard (very rudimentary, can only check balance)
-	- [ ] Transfer screen
-	- [ ] Account settings screen
-	- [ ] Design for mobile
+	- [x] From locally stored account
+- [x] Wallet
+	- [x] Dashboard
+	- [x] Settings
+		- [x] - Create keystore
+		- [x] - Save account locally
+	- [x] Transfer screen
+	- [x] Settings screen
+	- [x] Design for mobile
+	- [ ] Deploy code screen
+	- [ ] Offline signing
+- [ ] Other
+	- [ ] Display errors when they happen and inform user about what went wrong
+	- [ ] Inform user when transfer is complete

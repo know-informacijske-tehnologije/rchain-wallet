@@ -4,15 +4,20 @@ import { useState, useEffect } from 'react';
 import * as u from 'utils';
 import { ToggleButton } from 'components';
 
-export function useAccountDetails() {
-  let username = u.useWritable("");
+export function useWalletLock() {
+  let name = u.useWritable("");
   let password1 = u.useWritableWithToggle("", false);
   let password2 = u.useWritableWithToggle("", false);
 
   const [registration_valid, set_registration_valid] = useState(false);
 
   function check_validity() {
-    if (username.value.length < 3) {
+    if (name.value.length < 3) {
+      set_registration_valid(false);
+      return;
+    }
+
+    if (u.g.wallet_exists(u.g.user_list, name.value)) {
       set_registration_valid(false);
       return;
     }
@@ -30,28 +35,28 @@ export function useAccountDetails() {
     set_registration_valid(true);
   }
 
-  useEffect(check_validity, [username, password1, password2]);
+  useEffect(check_validity, [name, password1, password2]);
 
   return {
-    username,
+    name,
     password1,
     password2,
     registration_valid
   };
 }
 
-interface AccountDetailsProps {
-  state: ReturnType<typeof useAccountDetails>;
+interface WalletLockProps {
+  state: ReturnType<typeof useWalletLock>;
 };
 
-export function AccountDetailsForm(props: AccountDetailsProps) {
-  let { username, password1, password2 } = props.state;
+export function WalletLockForm(props: WalletLockProps) {
+  let { name, password1, password2 } = props.state;
 
   return (<>
     <label>
-      <p>Username (3+ characters)</p>
-      <input value={username.value}
-         onChange={username.write}/>
+      <p>Wallet name (3+ characters)</p>
+      <input value={name.value}
+         onChange={name.write}/>
     </label>
 
     <label>

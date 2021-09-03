@@ -1,5 +1,31 @@
 .FormScreen {
+  grid-area: content;
   position: relative;
+
+  .MnemonicWords {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-gap: 0.5em 5ch;
+    margin: 0 1em 2em 1em;
+    counter-reset: mnemo;
+    left: 1em;
+
+    .Word {
+      position: relative;
+
+      &::before {
+        position: absolute;
+        right: calc(100% + 1ch);
+        color: #626171;
+        counter-increment: mnemo;
+        content: counter(mnemo) ". ";
+        user-select: none;
+      }
+      text-align: center;
+    }
+  }
 
   h2 {
     margin-bottom: 0.25em;

@@ -1,0 +1,60 @@
+.Dashboard {
+	.Wallet, .Balance {
+		flex: 1 1 0;
+
+		button {
+			white-space: nowrap;
+		}
+	}
+
+	.Balance {
+		position: relative;
+		height: 33vh;
+		min-width: 50%;
+
+		.Error {
+			text-align: center;
+
+			&::before {
+				content: "";
+				display: inline-block;
+				width: 0.375em;
+				height: 0.375em;
+				margin-right: 0.25em;
+				background: #9a1b30;
+				vertical-align: middle;
+				border-radius: 100%;
+			}
+		}
+	}
+
+	.BalanceValue {
+		position: relative;
+		font-size: 200%;
+
+		&::after {
+			content: "REV";
+			position: absolute;
+			color: #626171;
+			left: calc(100% + 0.5ch);
+			bottom: 0.5ch;
+			font-size: 40%;
+		}
+	}
+
+	.Wallet {
+		.Toggle {
+			display: inline-flex;
+			vertical-align: sub;
+			background: #0008;
+		}
+
+		.Key {
+			max-width: 20ch;
+			min-width: 20ch;
+			word-break: break-all;
+			text-align: center;
+			color: #626171;
+		}
+	}
+}

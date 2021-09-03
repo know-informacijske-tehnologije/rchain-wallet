@@ -4,6 +4,10 @@
   height: 2em;
   animation: spin 1s forwards infinite linear;
 
+  &.Centered {
+    animation: spin-centered 1s forwards infinite linear;
+  }
+
   img {
     width: 100%;
     height: 100%;
@@ -12,6 +16,11 @@
 }
 
 @keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spin-centered {
   from { transform: translate(-50%, -50%) rotate(0deg); }
   to   { transform: translate(-50%, -50%) rotate(360deg); }
 }

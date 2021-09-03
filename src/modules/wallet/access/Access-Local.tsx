@@ -4,21 +4,23 @@ import { ToggleButton } from 'components';
 import { g, useWritable, useWritableWithToggle } from 'utils';
 import { Link, useHistory } from 'react-router-dom';
 
-export function Login() {
+export function AccessLocal() {
   const history = useHistory();
-  const username = useWritable("");
+  const name = useWritable("");
   const password = useWritableWithToggle("", false);
 
-  function login() {
-    let user = g.user_list.find(u => u.username === username.value);
-    if (!user) {
-      // @TODO: Show login failure message.
-      console.error("Login failed! User not found!");
+  function access() {
+    let user_index = g.wallet_index(g.user_list, name.value);
+    if (user_index === -1) {
+      // @TODO: Show unlock failure message.
+      console.error("Unlock failed! Wallet not found!");
       return;
     }
 
+    let user = g.user_list[user_index];
+
     if (user.password !== password.value) {
-      console.error("Login failed! Wrong password!");
+      console.error("Unlock failed! Wrong password!");
       return;
     }
 
@@ -28,18 +30,17 @@ export function Login() {
 
   return (
     <div className="FormScreen Column Center-X">
-      <h2 className="Alt">Sign in</h2>
+      <h2 className="Alt">Access Locally Stored Wallet</h2>
 
       <div className="Column Center-X" style={{width: "min-content"}}>
         <p className="Alt" style={{marginBottom: "3em"}}>
-          Sign in or
-          <Link className="Alt" to="/create">Create a new account</Link>
+          Unlock a wallet that you have previously locally stored in your browser
         </p>
 
         <label>
-          <p>Username</p>
-          <input value={username.value}
-                 onChange={username.write} />
+          <p>Wallet Name</p>
+          <input value={name.value}
+                 onChange={name.write} />
         </label>
 
         <label>
@@ -53,17 +54,21 @@ export function Login() {
                      alt_text="Toggle show password" />
         </label>
 
-        {/* @TODO: Auto login checkbox */}
-
         <button className="Action"
-                onClick={() => login()}>
-          Sign in
+                onClick={() => access()}>
+          Unlock
         </button>
 
         <p className="Alt">
-          Already have an account?
-          <Link className="Alt" to="/restore">Restore account</Link>
-          from backup
+          Alternatively,
+          <Link className="Alt" to="/access">
+            access an existing wallet
+          </Link>
+          <br />
+          or
+          <Link className="Alt" to="/create">
+            create a new wallet
+          </Link>
         </p>
 
       </div>

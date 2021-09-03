@@ -15,7 +15,7 @@ body {
 }
 
 #root {
-  overflow: hidden scroll;
+  overflow: hidden;
   height: 100vh;
 }
 
@@ -33,6 +33,18 @@ button {
   font-size: 18px;
   line-height: 1.61;
   cursor: pointer;
+
+  &.Subtle {
+    background-color: #090721;
+
+    &:hover {
+      background: transparent;
+    }
+  }
+
+  &.Fit {
+    width: max-content;
+  }
 
   &.Hanging {
     position: absolute;
@@ -111,6 +123,12 @@ p {
     &.Smaller {
       font-size: 10px;
     }
+  }
+
+  &.Warn {
+    color: white;
+    background: #8b0430;
+    padding: 0.5em;
   }
 
   &.Smaller {
@@ -199,6 +217,14 @@ label {
     transition: 0.1s color;
   }
 
+  .Field {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #090721;
+  }
+
   &:focus-within {
     p {
       color: white;
@@ -215,6 +241,7 @@ textarea, input, select {
   color: white;
   border: none;
   resize: none;
+  text-overflow: ellipsis;
 
   :placeholder {
     color: #626171;
@@ -229,6 +256,14 @@ textarea, input, select {
   line-height: normal !important;
 }
 
+.NoWrap {
+  white-space: nowrap;
+}
+
+.BreakAll {
+  word-break: break-all;
+}
+
 .NoMargin {
   margin: 0 !important;
 }
@@ -240,6 +275,8 @@ textarea, input, select {
 .Highlight {
   color: #cc1e46;
 }
+
+.FullWidth { width: 100%; }
 
 .Row {
   display: flex;
@@ -291,13 +328,34 @@ textarea, input, select {
   }
 }
 
+.Flex-Spacer {
+  flex: 1 1 0;
+}
+
+.Flex-Auto {
+  flex: 0 0 auto;
+}
+
+.Flex-Min {
+  flex: 0 0 min-content;
+}
+
+.Flex-Max {
+  flex: 0 0 max-content;
+}
+
+.Content {
+  grid-area: content;
+  justify-self: stretch;
+  align-self: flex-start;
+}
+
 .Card {
   background: #0c0a27;
   display: flex;
   flex-flow: column nowrap;
   justify-content: stretch;
   align-items: stretch;
-  margin: 2em;
 
   .Title {
     flex: 0 0 auto;
@@ -306,7 +364,14 @@ textarea, input, select {
   .Body {
     flex: 1 1 auto;
     padding: 1em;
+    overflow: auto;
   }
+}
+
+.App > .Card {
+  max-height: calc(100% - 4em);
+  overflow: hidden;
+  margin: 2em;
 }
 
 .SmallScreen {
@@ -325,3 +390,21 @@ textarea, input, select {
   }
 }
 
+.Layout-Default {
+  display: grid;
+  grid-template-areas:   "navbar  sidebar"
+                         "content sidebar";
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+  overflow: auto;
+}
+
+.Layout-Wallet {
+  display: grid;
+  grid-template-areas:   "sidenav   navbar"
+                         "sidenav  content";
+  grid-template-columns: auto          1fr;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+}

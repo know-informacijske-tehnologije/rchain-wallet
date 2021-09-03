@@ -5,8 +5,9 @@ import base58 from "bs58";
 import * as bip39 from "bip39";
 import * as eth_util from "ethereumjs-util";
 import * as eth_wallet from "ethereumjs-wallet";
-import { get_local, AccountData } from "./utils";
+import { PublicWallet, PrivateWallet } from "./utils";
 
+const Wallet = eth_wallet.default;
 const eth = { util: eth_util, wallet: eth_wallet.default, hdkey: eth_wallet.hdkey };
 const secp256k1 = new ec("secp256k1");
 const prefix = { coinId: "000000", version: "00" } as const;
@@ -43,7 +44,91 @@ export function decode_base58(str: string) {
 	}
 }
 
-function get_account_from_eth(eth_addr: string): AccountData | null {
+export function create_blob(obj: any, mime?: string) {
+	const str = typeof obj !== "string" ? JSON.stringify(obj) : obj;
+	const blob = new Blob([str], { type: mime });
+	return window.URL.createObjectURL(blob);
+}
+
+export interface KeystoreFile {
+	blobUrl: string;
+	name: string;
+};
+
+export async function create_keystore(password: string) {
+	if (!password || password === '') { return null; }
+
+	const wallet = Wallet.generate();
+	const res = await wallet.toV3(password, {
+		kdf: 'scrypt',
+		n: 131072
+	});
+
+	return {
+		blobUrl: create_blob(res),
+		name: wallet.getV3Filename()
+	} as KeystoreFile;
+}
+
+export async function generate_keystore(pkey: string, password: string) {
+	if (!password || password === '') { return null; }
+
+	if (!pkey.startsWith("0x")) { pkey = "0x" + pkey; }
+	let buf: Buffer;
+	try {
+		buf = eth.util.toBuffer(pkey);
+	} catch {
+		return null;
+	}
+
+	const wallet = Wallet.fromPrivateKey(buf);
+	const res = await wallet.toV3(password, {
+		kdf: 'scrypt',
+		n: 131072
+	});
+
+	return {
+		blobUrl: create_blob(res),
+		name: wallet.getV3Filename()
+	};
+}
+
+async function unlock_keystore(
+	file: Record<string, any>,
+	password: string
+) {
+	const normalized: Record<string, any> = {};
+	Object.keys(file).forEach(key => {
+		normalized[key.toLowerCase()] = file[key];
+	});
+
+	try {
+		if (normalized.encseed != null) {
+			return Wallet.fromEthSale(normalized as any, password);
+		}
+
+		if (normalized.Crypto != null || normalized.crypto != null) {
+			return await Wallet.fromV3(normalized as any, password, true);
+		}
+	} catch {
+		return null;
+	}
+
+	return null;
+}
+
+export async function get_account_from_keystore(
+	file: {[member: string]: any},
+	password: string
+) {
+	const unlocked = await unlock_keystore(file, password);
+	if (!unlocked) { return null; }
+	const pkey = unlocked.getPrivateKeyString();
+
+	return get_account_from_private_key(pkey);
+}
+
+function get_account_from_eth(eth_addr: string): PublicWallet | null {
 	if (!eth_addr) { return null; }
 	eth_addr = eth_addr.replace(/^0x/, "");
 	if (eth_addr.length !== 40) { return null; }
@@ -59,7 +144,7 @@ function get_account_from_eth(eth_addr: string): AccountData | null {
 	};
 }
 
-export function get_account_from_public_key(pub_key: string): AccountData | null {
+export function get_account_from_public_key(pub_key: string) {
 	if (!pub_key) { return null; }
 
 	pub_key = pub_key.replace(/^0x/, "");
@@ -90,7 +175,7 @@ function get_hdkey(key: eth_wallet.hdkey): HDKey {
 	return key["_hdkey"];
 }
 
-export function get_account_from_mnemonic(mnemonic: string): AccountData | null {
+export function get_account_from_mnemonic(mnemonic: string): PrivateWallet | null {
 	let seed = bip39.mnemonicToSeedSync(mnemonic);
 	let hd_wallet = eth.hdkey.fromMasterSeed(seed);
 	let key = hd_wallet.derivePath("m/44'/60'/0'/0/0");
@@ -110,11 +195,12 @@ export function get_account_from_mnemonic(mnemonic: string): AccountData | null 
 	return {
 		...acc,
 		privKey: private_key,
-		pubKey: public_key
+		pubKey: public_key,
+		mnemonic: mnemonic
 	};
 }
 
-export function get_account_from_private_key(private_key: string): AccountData | null {
+export function get_account_from_private_key(private_key: string): PrivateWallet | null {
 	if (!private_key) { return null; }
 	private_key = private_key.replace(/^0x/, "");
 	if (private_key.length !== 64) { return null; }
@@ -165,30 +251,19 @@ export function is_valid_mnemonic(phrase: string) {
 	return bip39.validateMnemonic(phrase);
 }
 
-export function create_account(): AccountData | null {
+export function create_account() {
 	const key = secp256k1.genKeyPair();
 	const private_key = key.getPrivate('hex');
 	return get_account_from_private_key(private_key);
 }
 
-export function get_restore_account(): AccountData | null {
-	let mnemonic = get_local('mnemonic');
-	let private_key = get_local('private-key');
-
-	if (mnemonic !== null) {
-		return get_account_from_mnemonic(mnemonic);
-	} else if (private_key !== null) {
-		return get_account_from_private_key(private_key);
-	} else {
-		return null;
-	}
-}
-
-export function get_account(text: string): AccountData | null {
+export function get_account(text: string) {
 	const val = text.replace(/^0x/, '').trim();
 	const is_rev = is_valid_rev_address(val);
 	if (is_rev) {
-		return { revAddr: val };
+		return {
+			revAddr: val,
+		};
 	}
 
 	const from_private = get_account_from_private_key(val);

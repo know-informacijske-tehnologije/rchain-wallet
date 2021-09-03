@@ -1,20 +1,20 @@
 import './Navigation.scss';
-import { g, rc } from 'utils';
 import { useState, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import * as Assets from 'assets';
-import { ToggleButton } from 'components';
-import { NodeContext } from 'index';
+import { LayoutContext } from 'index';
 
 export function Navigation() {
+  const layout = useContext(LayoutContext);
   const location = useLocation();
-  const node_context = useContext(NodeContext);
-  const [show_menu, set_show_menu]   = useState(false);
-  const [show_nodes, set_show_nodes] = useState(false);
 
-  const Menu = (show_menu:boolean) => {
-    if (show_menu) {
-      return <div className="Menu">
+  let in_wallet = location.pathname.startsWith("/wallet");
+
+  const [show_menu, set_show_menu]   = useState(false);
+
+  function Menu(show_menu:boolean){
+    if (show_menu && !in_wallet) {
+      return <div className="Menu Column Center-X Center-Y">
         <a href="https://github.com">Community</a>
         <a href="https://github.com">Blog</a>
         <a href="https://github.com">Support</a>
@@ -24,99 +24,48 @@ export function Navigation() {
     return null;
   };
 
-  const Nodes = () => {
-    let optgroups = [];
-    for (let i=0; i<g.networks.length; i++) {
-      let network = g.networks[i];
-      let options = [];
+  function toggle_sidenav() {
+    layout.set_sidenav_expanded(!layout.sidenav_expanded);
+  }
 
-      for (let j=0; j<network.hosts.length; j++) {
-        let host = network.hosts[j];
-        let urls = rc.get_node_urls(host);
-        options.push(
-          <option key={urls.httpUrl}
-                  value={`${i},${j}`}
-                  selected={node_context.node === host}>
-            {urls.httpUrl}
-          </option>
-        );
-      }
-
-      optgroups.push(
-        <optgroup key={network.title || network.name}
-                  label={network.title || network.name}>
-          {options}
-        </optgroup>
-      );
+  function SidenavToggle() {
+    if (in_wallet) {
+      return (<button className="SidenavToggle Toggle"
+                      onClick={toggle_sidenav}>
+        <img src={Assets.menu} alt="Toggle sidenav"/>
+      </button>);
     }
+  }
 
-    return optgroups;
-  };
-
-  const ReadOnlys = () => {
-    let options = [];
-
-    let network = node_context.network;
-    for (let i=0; i<network.readOnlys.length; i++) {
-      let read_only = network.readOnlys[i];
-      let urls = rc.get_node_urls(read_only);
-      options.push(
-        <option key={urls.httpUrl}
-                value={i}
-                selected={node_context.read_only === read_only}>
-          {urls.httpUrl}
-        </option>
-      );
+  function MenuToggle() {
+    if (!in_wallet) {
+      return (<div className="MenuButton Row"
+                   onClick={() => set_show_menu(!show_menu)}>
+                <img src={show_menu ? Assets.menu_close : Assets.menu}
+                     alt="Menu Button" />
+              </div>);
     }
+  }
 
-    return options;
-  };
-
-  const set_node = (ev: any) => {
-    let [nw_i, host_i] = ev.target.value.split(",");
-    node_context.set_node(nw_i, host_i);
-  };
-
-  const set_readonly = (ev: any) => {
-    node_context.set_read_only(ev.target.value);
-  };
-
-  const NodeSelects = () => {
-    if (show_nodes) {
-      return (<div className="Column Center-X Center-Y">
-        <label>
-          <p>Validator node</p>
-          <select onChange={set_node}>
-            { Nodes() }
-          </select>
-        </label>
-        <label>
-          <p>Read-only node</p>
-          <select onChange={set_readonly}>
-            { ReadOnlys() }
-          </select>
-          <p>&nbsp;</p>
-        </label>
-      </div>);
+  function Links() {
+    if (!in_wallet) {
+      return (<><a href="https://github.com">Community</a>
+              <a href="https://github.com">Blog</a>
+              <a href="https://github.com">Support</a></>);
     }
-  };
+  }
 
-  const NodeToggle = () => {
-    if (location.pathname.startsWith("/wallet")) {
-      return <div className={ show_nodes ? "NodeSelect Expanded" : "NodeSelect" }>
-        { NodeSelects() }
-        <ToggleButton val={show_nodes}
-                      setval={set_show_nodes}
-                      on_img={Assets.cancel}
-                      off_img={Assets.network}/>
-      </div>
-    }
-  };
+  let classname = "Navigation";
+  if (show_menu) { classname += " Expanded"; }
+  if (in_wallet) { classname += " Wallet"; }
 
   return (
-    <div className={show_menu ? "Navigation Expanded" : "Navigation"}>
+    <div className={classname}>
       <div className="NavigationBar">
-        <Link to="/">
+
+        {SidenavToggle()}
+
+        <Link className="Logo" to="/">
           <img className="Large"
                src={Assets.logo}
                alt="MyRChainWallet" />
@@ -125,17 +74,10 @@ export function Navigation() {
                alt="MyRChainWallet" />
         </Link>
 
-        { NodeToggle() }
+        { MenuToggle() }
 
-        <div className="MenuButton" onClick={() => set_show_menu(!show_menu)}>
-          <img src={show_menu ? Assets.menu_close : Assets.menu}
-               alt="Menu Button" />
-        </div>
-
-        <div className="Links">
-          <a href="https://github.com">Community</a>
-          <a href="https://github.com">Blog</a>
-          <a href="https://github.com">Support</a>
+        <div className="Links Row">
+          { Links() }
         </div>
       </div>
 

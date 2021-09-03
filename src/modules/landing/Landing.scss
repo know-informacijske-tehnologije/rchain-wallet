@@ -1,10 +1,6 @@
 .Landing {
   position: relative;
-  padding: 0 120px;
-
-  @media only screen and (max-width: 900px) {
-    padding: 0;
-  }
+  overflow: clip;
 
   &::after {
     content: "";
@@ -65,8 +61,15 @@
     flex-flow: column nowrap;
     justify-content: center;
     height: calc(100vh - 270px);
-    padding-bottom: 135px;
     text-align: center;
+
+    padding: 0 120px;
+    @media only screen and (max-width: 900px) {
+      padding: 0;
+      padding-bottom: 135px;
+    }
+
+    padding-bottom: 135px;
   }
 
   .CardList {
@@ -121,14 +124,7 @@
   }
 
   .Footer {
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 25vh;
-    z-index: 20000;
-
     display: flex;
-    flex-flow: row nowrap;
     align-items: center;
     overflow: hidden;
 
@@ -202,6 +198,10 @@
 
         .Content {
           flex: 1 1 0;
+
+          p {
+            text-align: justify;
+          }
         }
 
         &:not(:last-child) {

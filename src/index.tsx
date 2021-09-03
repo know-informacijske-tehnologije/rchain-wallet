@@ -1,10 +1,11 @@
 import React from 'react';
+import { ReactElement } from 'react';
 import { render } from 'react-dom';
 import './styles/index.scss';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { g, rc } from 'utils';
 import * as Components from 'components';
-import * as Modules from 'modules';
+import { ModalBase } from 'components/modals/ModalBase';
 
 function get_scrollbar_width() {
 	const outer = document.createElement('div');
@@ -26,18 +27,33 @@ function get_scrollbar_width() {
 g.restore_user_list();
 get_scrollbar_width();
 
+type Modal<T extends ModalBase<any>> = {
+	component: (props: T) => ReactElement,
+	props: T
+};
+
+export const LayoutContext = React.createContext({
+	sidenav_expanded: false,
+	set_sidenav_expanded: (_: boolean) => { return; },
+	modal_stack: [] as Modal<any>[],
+	push_modal: <T extends ModalBase<any>>(_data: Modal<T>) => { return; },
+	pop_modal: () => {}
+});
+
 export const NodeContext = React.createContext({
-	network: rc.main_net,
-	node: rc.main_net.hosts[0],
+	network: rc.test_net,
+	node: rc.test_net.hosts[0],
 	set_node: (_net_i: number, _host_i: number) => { return; },
-	read_only: rc.main_net.readOnlys[0],
+	read_only: rc.test_net.readOnlys[0],
 	set_read_only: (_ro_i: number) => { return; }
 });
 
 function App() {
-	let [network, set_network] = React.useState(rc.main_net);
-	let [node, set_current_node] = React.useState(rc.main_net.hosts[0]);
-	let [read_only, set_current_readonly] = React.useState(rc.main_net.readOnlys[0]);
+	let [network, set_network] = React.useState(rc.test_net);
+	let [node, set_current_node] = React.useState(rc.test_net.hosts[0]);
+	let [read_only, set_current_readonly] = React.useState(rc.test_net.readOnlys[0]);
+	let [sidenav_expanded, set_sidenav_expanded] = React.useState(false);
+	let [modal_stack, set_modal_stack] = React.useState<Modal<any>[]>([]);
 
 	const set_node = (net_i: number, host_i: number) => {
 		const nw = g.networks[net_i];
@@ -56,23 +72,29 @@ function App() {
 		set_current_readonly(network.readOnlys[ro_i]);
 	};
 
+	const push_modal  = <T extends ModalBase<any>>(modal: Modal<T>) => {
+		modal_stack.push(modal);
+		set_modal_stack([...modal_stack]);
+	};
+
+	const pop_modal = () => {
+		let modal = modal_stack.pop();
+		if (modal) {
+			set_modal_stack([...modal_stack]);
+		}
+	};
+
 	let initial_data = { network, node, read_only, set_node, set_read_only };
+	let initial_layout = { sidenav_expanded, set_sidenav_expanded, modal_stack, push_modal, pop_modal };
 
 	return (
 		<NodeContext.Provider value={initial_data}>
-			<BrowserRouter>
-				<Components.Navigation/>
-				<Switch>
-					<Route exact path="/create" component={Modules.CreateAccount} />
-					<Route exact path="/login" component={Modules.Login} />
-					<Route exact path="/restore" component={Modules.Restore} />
-					<Route exact path="/restore/account" component={Modules.RestoreAccount} />
-					<Route exact path="/restore/mnemonic" component={Modules.RestoreMnemonic} />
-					<Route exact path="/restore/private-key" component={Modules.RestorePrivateKey} />
-					<Route exact path="/wallet/dash" component={Modules.Dashboard} />
-					<Route component={Modules.Landing} />
-				</Switch>
-			</BrowserRouter>
+			<LayoutContext.Provider value={initial_layout}>
+				<BrowserRouter>
+					<Components.Routes />
+				</BrowserRouter>
+				<Components.ModalHost />
+			</LayoutContext.Provider>
 		</NodeContext.Provider>
 	);
 }

@@ -1,0 +1,110 @@
+.TabsContainer {
+    display: grid;
+    grid-template-areas: "tabs content";
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr;
+    width: 100%;
+
+    &.Small {
+        grid-template-areas: "tabs"
+                             "content";
+        grid-template-rows: auto 1fr;
+        grid-template-columns: 1fr;
+    }
+
+    @media only screen and (max-width: 900px) {
+        grid-template-areas: "tabs"
+                             "content";
+        grid-template-rows: auto 1fr;
+        grid-template-columns: 1fr;
+    }
+
+    .Tabs {
+        grid-area: tabs;
+        box-shadow: -1px 0 #090721 inset;
+
+        @media only screen and (max-width: 900px) {
+            display: flex;
+            flex-flow: row nowrap;
+            box-shadow: 0 -1px #090721 inset;
+        }
+    }
+
+    &.Small .Tabs {
+        display: flex;
+        flex-flow: row nowrap;
+        box-shadow: 0 -1px #090721 inset;
+    }
+
+    .TabContent {
+        grid-area: content;
+        padding: 1em;
+    }
+
+    &.NoPadding .TabContent {
+        padding: 0;
+    }
+
+    .Tab {
+        font-size: 16px;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        width: 100%;
+        padding: 1em 0.5em;
+        border-right: 2px solid transparent;
+        box-sizing: border-box;
+        background: transparent;
+        border-radius: 0;
+
+        &:hover {
+            color: #cc1e46;
+        }
+
+        &.Current {
+            border-right: 2px solid #cc1e46;
+            background: #090721;
+        }
+
+        > img {
+            &.Spacer {
+                opacity: 0;
+            }
+
+            height: 24px;
+            width: 24px;
+            padding: 0 1em;
+            object-fit: contain;
+            object-position: center;
+        }
+
+        @media only screen and (max-width: 900px) {
+            flex: 0 0 auto;
+            width: auto;
+            border-right: 0px solid transparent;
+            border-bottom: 2px solid transparent;
+
+            span, .Spacer { display: none }
+
+            &.Current {
+                border-right: 0px solid transparent;
+                border-bottom: 2px solid #cc1e46;
+                span { display: inline; padding-right: 1em }
+            }
+        }
+    }
+
+    &.Small .Tab {
+        flex: 0 0 auto;
+        width: auto;
+        border-right: 0px solid transparent;
+        border-bottom: 2px solid transparent;
+
+        span, .Spacer { display: none }
+
+        &.Current {
+            border-right: 0px solid transparent;
+            border-bottom: 2px solid #cc1e46;
+        }
+    }
+}

@@ -1,20 +1,20 @@
-.Sidebar {
-  position: absolute;
-  top: -135px;
-  right: 0;
-  background-image: linear-gradient(to bottom, #ab0333 3%, transparent 97%);
-  width: 120px;
+.SidebarContainer {
+  grid-area: sidebar;
+  position: relative;
+  width: 0;
   height: 100vh;
-
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-
-  z-index: 1000;
 
   @media only screen and (max-width: 900px) {
     display: none;
+  }
+
+  .Sidebar {
+    position: absolute;
+    right: 0;
+    background-image: linear-gradient(to bottom, #ab0333 3%, transparent 97%);
+    width: 120px;
+    height: 100vh;
+    z-index: 1000;
   }
 
   a {

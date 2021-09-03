@@ -241,8 +241,8 @@ function appTransfer(effects: AppTransferEff) {
 		log('TRANSFER', {amount, from: fromAccount.name, to: toAccount.name, node: node.httpUrl});
 
 		setStatus(`Deploying ...`);
-
 		const code = rho.fn_transfer_funds(fromAccount.revAddr, toAccount.revAddr, amount);
+		console.log(code);
 		const {signature} = await sendDeploy(node, fromAccount, code);
 		log('DEPLOY ID (signature)', signature);
 

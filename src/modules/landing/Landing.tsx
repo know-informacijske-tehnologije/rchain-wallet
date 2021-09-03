@@ -70,8 +70,7 @@ export function Landing() {
   }, [art_ref]);
 
   return (
-    <div className="Landing">
-      <Components.Sidebar />
+    <div className="Landing Content">
       <div className="Art">
         <Assets.BgArt ref={art_ref} />
       </div>
@@ -99,7 +98,7 @@ export function Landing() {
           <img src={Assets.globe} alt="Globe"/>
           <h2>Access your wallet</h2>
           <h4 className="Dynamic">{lipsum1}</h4>
-          <button onClick={navigate(history, "/restore")}>Access</button>
+          <button onClick={navigate(history, "/access")}>Access</button>
         </div>
       </div>
 

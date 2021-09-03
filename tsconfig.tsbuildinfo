@@ -696,6 +696,16 @@
         "signature": "df470b1c65fc51db9486ced8ff89d19c5fa2cfc5c6b3eb32d6cbab354499801e",
         "affectsGlobalScope": false
       },
+      "./src/utils/utils.ts": {
+        "version": "6e54a4cb05c31ff7175e27c0a3c87c1eda30cf02195701c925bd3b1aa9711047",
+        "signature": "5c1c04b0466581183546858306b22ae88b5a4ff875a81d49aeb35a2b37a91586",
+        "affectsGlobalScope": false
+      },
+      "./src/utils/blockchain.ts": {
+        "version": "4b77fef8f96719294d31a2bb9c739f34ae5ddcf66452acedfae9ad0419526431",
+        "signature": "bdcb2b789a35b29f0c3c9e76a8c47477604a9d5e835b47fe3c54c4abcad0f325",
+        "affectsGlobalScope": false
+      },
       "./node_modules/@tgrospic/rnode-http-js/dist-types/rnode-sign.d.ts": {
         "version": "2f86c0137cde8372a173d5992e63c956d9f7e8db22e93066ce85dda13f6e2e1e",
         "signature": "2f86c0137cde8372a173d5992e63c956d9f7e8db22e93066ce85dda13f6e2e1e",
@@ -736,29 +746,19 @@
         "signature": "af51d43d2506ad9903918aab07196d834024208f5c87a02528c66f30f6f89da8",
         "affectsGlobalScope": false
       },
-      "./src/utils/utils.ts": {
-        "version": "66eb87af1098cdd43e6732003a9b1d4204aa45c148b091d5c8608243de81d69b",
-        "signature": "df6fa9e3b0499f4079d2b1da704d6b0fa5d7410493247988bfb442959e0caf08",
-        "affectsGlobalScope": false
-      },
-      "./src/utils/blockchain.ts": {
-        "version": "9a3692a6c85fe6d304597409e07294af26a4ed1196979cdd92b39c1858ab722f",
-        "signature": "8e8aadeea6ccd2dc6bd2b4ce56de80af2be63740e7e66bed55da27ddbb6dd046",
-        "affectsGlobalScope": false
-      },
       "./src/utils/rho.ts": {
-        "version": "aae7177a176f278da962bd6a9f06d9e79c68f2ee36fdf41b5af110de0bee8aaa",
+        "version": "ec7a3838d85e538e68e80a2509c41f8e8ef181a9bdab836aed4c3fb724cd8c84",
         "signature": "a1024137153c4e0ea6c22b705983fb59c8e4d4e3ad20ebedc047e3786e4eda10",
         "affectsGlobalScope": false
       },
       "./src/utils/rchain.ts": {
-        "version": "cf30f323bd9861705b08e357327da76bb9d3ab2d19996ba14cede4048ebfb306",
+        "version": "89a8cde4da1b1a510cec7fcebddab0c15bfeb8a27d2e55fae7938a958b6fa97f",
         "signature": "8b12edee756a029eee23cf609aa0d5caf8b7447d1a5049debba1dbcb3b6016c7",
         "affectsGlobalScope": false
       },
       "./src/utils/globals.ts": {
-        "version": "f42f97be8697f1e67bc7828faaeb0dffc548e0a97809a490abe98f63ad107b80",
-        "signature": "12aecf1dfc0cbbbd9374d4c6ff58de81ecca3507c56d330e125ecbae2d04219c",
+        "version": "a89d371654617005796a0630025258b6ef49bcc2031037b85153fcc6d7fc87f8",
+        "signature": "bf4d53fce98fd6755fa254a4b9b2a6c621d214d3c76fd24f6a2ab16ba0d5f0ca",
         "affectsGlobalScope": false
       },
       "./src/utils/index.ts": {
@@ -766,14 +766,9 @@
         "signature": "3a6033dfc8f8edcb2d7b2dde63e4aa1854e7d20877ef4bfe8c79f58eb525fa7f",
         "affectsGlobalScope": false
       },
-      "./src/components/account-details/Account-Details-Form.tsx": {
-        "version": "065088fb50e9f3b99ceab383dd443b62fc19f39ab68a566724b182a82975ef95",
-        "signature": "bb7815eebdfe06bee67970f51e8fafc8dd6006fccf06a55beba215d7760769a5",
-        "affectsGlobalScope": false
-      },
       "./src/assets/index.ts": {
-        "version": "7fcb388112b7cd4aec90586f42b9a22ad6baf33675fcd425a3fb1c02cbf67c99",
-        "signature": "7370881889f64b2f578ed11f28ffe39daa48652dd415cc65a623e0c325adaa69",
+        "version": "677f510076f8d5bfd6b2000aec83b24058700f4a6e8d27a45a1d91a8f1d52058",
+        "signature": "d46fafd8609db3e9ed335332f503f0cb27082e08e25d94d5d8e06454e33ba15d",
         "affectsGlobalScope": false
       },
       "./src/components/expander/Expander.tsx": {
@@ -781,79 +776,149 @@
         "signature": "18f392776a2b9af2b745147cd55165536c5533dc7323c46948c074a302999005",
         "affectsGlobalScope": false
       },
+      "./src/components/modal-host/ModalHost.tsx": {
+        "version": "8a305d8874fd359c42e6c085e022fb95af8820044a86503cff5a3372d5675506",
+        "signature": "6a9968f58d6aa9a2832be05665c114aed51ab4e58b13b3c3603a696751e5de73",
+        "affectsGlobalScope": false
+      },
+      "./src/components/modals/ModalBase.ts": {
+        "version": "79aa08158d7524683d6c9f57a07d589e9e0226fc5b8c10d76ae01baa111d185f",
+        "signature": "fb4d82f5a34ef1fde3ad0278cee1bc8b24153dd0185980e123d81db745cf5691",
+        "affectsGlobalScope": false
+      },
+      "./src/components/modals/Pass-Confirm-Modal.tsx": {
+        "version": "ddf57e3f5387abc235c4f5dffbdce080a39ec8ac1f01e9e41002cfa5533aaa47",
+        "signature": "e9dec24d6ff6068a1a8df972bd1977ae64af43a396a0c9816de2c90a30511ac7",
+        "affectsGlobalScope": false
+      },
+      "./src/components/modals/Wallet-Lock-Modal.tsx": {
+        "version": "818925fe4926e3ac1a7519537468a80e09de19d32bc5be24007ed6eb9a7b95bd",
+        "signature": "b84c181542555bf548bf4321d33a9e3852b8759e59105a097de291a83e84fc0c",
+        "affectsGlobalScope": false
+      },
       "./src/components/navigation/Navigation.tsx": {
-        "version": "7ad9d097984de9a5a6bca89777d1f0b86f26c918fae755042e63855a39a6ac7c",
+        "version": "e70b66d6ccda0177585fd567dcab0f2e6764ea06610da5d18268f99670e4e83d",
         "signature": "5b215f307e1fb936514df1cb3f9d61abdfd573a65384c38850dd5edcdca79f62",
         "affectsGlobalScope": false
       },
-      "./src/components/sidebar/Sidebar.tsx": {
-        "version": "ebd691da1adac081e369ef710dca020a45b31b35df9156083e89041766fbe6a5",
-        "signature": "e2bf22af2deb226d5e0e8453fe00485f0bb46429a57a5de60374ee433df809e1",
-        "affectsGlobalScope": false
-      },
-      "./src/components/spinner/Spinner.tsx": {
-        "version": "d1b21d159757e57174f37c963580b82404ec247bf2347ab6a6658285302229a1",
-        "signature": "d0b8ca55e357cc232fda4892ce9f3558ad8d90b8d28bb5deead65c3faa9e4c58",
-        "affectsGlobalScope": false
-      },
-      "./src/components/toggle-button/ToggleButton.tsx": {
-        "version": "2aef0114efd8d640d2aafc2ee2441b26af280990d83c1c42f570cf8541d07b45",
-        "signature": "3232d75ae0c4ebf0b9acee780e90f9506c42701472def25d8ff08b2eb8541743",
-        "affectsGlobalScope": false
-      },
-      "./src/components/index.ts": {
-        "version": "5e017879180ccf3206d864f1a45bcdc4006cc82e39c918798bb59025d7cc222d",
-        "signature": "375fddb20dcbfb7f5850a81de5b592c7b655193697d490f8b9e2d9c95b56fd97",
-        "affectsGlobalScope": false
-      },
-      "./src/modules/account/create/Create-Account.tsx": {
-        "version": "f436ffae00abff21cbe2f058b1604a6f95f5d67cf75912539df284c318337823",
-        "signature": "acc125f5d9b3e33f86b14dc383bef3613469d48016904f95b515fc7caf5591dc",
-        "affectsGlobalScope": false
-      },
-      "./src/modules/account/dashboard/Dashboard.tsx": {
-        "version": "594c2efa113283e6af801b8f67731668fedfdf3ee69f2d56c46b0d454d5d9ccb",
-        "signature": "c34560e2edf362dafe12ed22aeb5ac64ca272882dbda49a9a2066747c3550684",
-        "affectsGlobalScope": false
-      },
-      "./src/modules/account/restore/Restore-Account.tsx": {
-        "version": "52f1f8c6a527b5ba806d02f4b71d082c37b5a2c1be2f8599e6fab55a529ff197",
-        "signature": "55e78a66793e58a33d622721358a369a41567ce959da99181560a712bcbf0de5",
-        "affectsGlobalScope": false
-      },
-      "./src/modules/account/restore/Restore-Mnemonic.tsx": {
-        "version": "0b77aee5f8cbcb3f5805429041b698938c0c8b8c04b1f43a9cc48bb4545c66c6",
-        "signature": "f386ac7e25ec1b9135cc218e7c3f4380e3c2b6a50b1c657d3789fea2f7573ab8",
-        "affectsGlobalScope": false
-      },
-      "./src/modules/account/restore/Restore-Private-Key.tsx": {
-        "version": "d82de26b757f31a0d343c29ac93221bb84313e1bdc26ff1f810278cdeb84eb13",
-        "signature": "e1cf6473406b9f7da335b36f96c82256f9bcb1bd13741836ef865aa10aa73b42",
-        "affectsGlobalScope": false
-      },
-      "./src/modules/account/restore/Restore.tsx": {
-        "version": "4ef153743bd9f15b650e6520492875c4d6c41db3af7114e7ca54490747c8f80b",
-        "signature": "21647e56f8ef8643f852caea7c3989dc901936e141cefa07862ba4c8a5133f31",
+      "./src/components/pass-confirm/Pass-Confirm-Form.tsx": {
+        "version": "491f5b3706c943b5011af490e1f0a0124eaba4bf46c84b2810da5733f482e7fc",
+        "signature": "f02d49255c0a98c47431ca1e61def2955c68a5c34c3ce72f8eae3c1b11d9998d",
         "affectsGlobalScope": false
       },
       "./src/modules/landing/Landing.tsx": {
-        "version": "f6107c288f6fac3a3219cedac8bbc55b80d310c3dc4c647de47d2e3a02592240",
+        "version": "c351ea67b1296ac118bb1ee8d250259dd3cd149b9b5bc13436f32eb36431edd1",
         "signature": "92885f0758bc2df457cd9dcfecafd6aa723cf0813208af720b0faf549d68a848",
         "affectsGlobalScope": false
       },
-      "./src/modules/login/Login.tsx": {
-        "version": "62d1581404355e86a94852ecb7c66d487dfd0ee17d43beb2f064aceca3a5706d",
-        "signature": "4485b1909c7eb9e75cd8fb3dcbebf5960fd7d47ac8a7919e6757c3873f963d76",
+      "./src/modules/wallet/access/Access-Keystore.tsx": {
+        "version": "2a0bf0b72bee3bf5382b102efe9ec74b03eaa9c8e8ade3d5ee9df6cc41c2568b",
+        "signature": "32124f9500d322d94498144202e10a5f177c3974009867cb7fa5e2e55d510d8c",
+        "affectsGlobalScope": false
+      },
+      "./src/modules/wallet/access/Access-Local.tsx": {
+        "version": "843a2cded1521aab07fde27c9b6e60dacbbce1dfc73b3f015fecd2719a1cf541",
+        "signature": "e991955f72bca42ca07727c51da57c12958b907b93c7dc88e672f3b6b4bfc7c8",
+        "affectsGlobalScope": false
+      },
+      "./src/modules/wallet/access/Access-Mnemonic.tsx": {
+        "version": "2c837d4ab6aeb3903884b30f5c4cbdaa2329fd1f9f7c6f1c081b9233d76071c0",
+        "signature": "2168b0dc7eff6bef3b0ff80f57e72e9ba63eea104b0e20c591504e0dc1452826",
+        "affectsGlobalScope": false
+      },
+      "./src/modules/wallet/access/Access-Private-Key.tsx": {
+        "version": "d0da51b33c6a80ed42648cf48cbc3d52126eff256d091c2d56f5a33961ed50c1",
+        "signature": "c21fcf0c79af27c22033603ac5a9feb0a405808bbf7458efe248c8471fb73c19",
+        "affectsGlobalScope": false
+      },
+      "./src/modules/wallet/access/Access.tsx": {
+        "version": "cd3b32f38fb039165dc96bfc1f7e8f5de4f24aba362e87946b95f4e2960146b1",
+        "signature": "b84330cc07586b6e9d6f13d32583e20bc097486ff4ef7a758db2af554f8259ed",
+        "affectsGlobalScope": false
+      },
+      "./src/modules/wallet/create/Create-Keystore.tsx": {
+        "version": "54d6b0932f20f717319cc6ed1e6efb044940990723145a2cad77e498f875895e",
+        "signature": "0338cfa6531d71b09e5cea486a0ad4b133e9b383be035f258e5f92d6d44bcc92",
+        "affectsGlobalScope": false
+      },
+      "./src/modules/wallet/create/Create-Mnemonic.tsx": {
+        "version": "bc753df6ba18c5caf6d1d45ecd49de8468b6b78a84f03e5afde7bfcb4a7d400a",
+        "signature": "43ba9f10e8a0fcc56df7f4ea2fa98b41c9f1dbd47ca4211ca273b6d22cdbc38b",
+        "affectsGlobalScope": false
+      },
+      "./src/modules/wallet/create/Create.tsx": {
+        "version": "33380fa134c894c4d1b7cf20b4f6153a02f5fb84db129e04f0456405324576d6",
+        "signature": "416b8aeefa965ce95e588532d2d94d7a9640f104a86f2bc9f7f0d7a5c434d47d",
+        "affectsGlobalScope": false
+      },
+      "./src/modules/wallet/dashboard/Dashboard.tsx": {
+        "version": "d221439f6c48764a10ce1a3b7a44611f8ac37a35c1294cf9e4119fe1d03b4871",
+        "signature": "c34560e2edf362dafe12ed22aeb5ac64ca272882dbda49a9a2066747c3550684",
+        "affectsGlobalScope": false
+      },
+      "./src/modules/wallet/settings/Settings.tsx": {
+        "version": "35a0a1908fcdd70791544b9fcb3badcc1f6d95f1ce62a7a9d37a6db8a2f7b4da",
+        "signature": "8063e2bd0c351b38b5e0dfa3ba63f4bd47211a3fa5332f99623b104544b0b2af",
+        "affectsGlobalScope": false
+      },
+      "./src/modules/wallet/transfer/Transfer.tsx": {
+        "version": "15c218deec86a10f002ee7eaa878ce9edaff14c92afa7499f06059681e194f93",
+        "signature": "c128bee24be7d1df7021ae86a5fa13acc724ee04b2ca3219dfdf09f9452f0742",
         "affectsGlobalScope": false
       },
       "./src/modules/index.ts": {
-        "version": "7313b80dcbe4ae605f66b87146ad14e25e924ffb1ee80698e0358a2956a842f4",
-        "signature": "5e34962073d7797316fa6ddaa9442466e05e240b9d7e275541ed12905ed83fc1",
+        "version": "9a73add71bb3b19df3a69575a23ccf2a21fbb45f5394a637aee49afaf965713d",
+        "signature": "7e8eaba0350c0b87f67ecf23adbe9dfed34507c043bf1b387b5be31e6f7d6974",
+        "affectsGlobalScope": false
+      },
+      "./src/components/routes/Routes.tsx": {
+        "version": "2531e0bdc20765b8f22b1ac9d938988114ba980dda52eb151389ab4bec604acc",
+        "signature": "f48ec30ec908956276fca4164e8c287190cd05c311712783426a1623f008eaf4",
+        "affectsGlobalScope": false
+      },
+      "./src/components/sidebar/Sidebar.tsx": {
+        "version": "c0a8c965a020056ce2e6f5d7ae4acd5f13514891d994ec98e613235a0f6570b0",
+        "signature": "e2bf22af2deb226d5e0e8453fe00485f0bb46429a57a5de60374ee433df809e1",
+        "affectsGlobalScope": false
+      },
+      "./src/components/sidenav/Sidenav.tsx": {
+        "version": "a060eacf67ff03ebb6d981abb3368d8689e380f4eab8f5aa708c3fbed7853a72",
+        "signature": "1b60098b2784ad2cf2668343e6a7cd816ab4ec8626fa5b79574fbb4842f2561a",
+        "affectsGlobalScope": false
+      },
+      "./src/components/spinner/Spinner.tsx": {
+        "version": "6d429e932359a52be360c7955e2fa980c02d6b0af71b81c0b4a9a164da8e290b",
+        "signature": "45727a168bc009497886b395a41da339514bd33c8f7d71f701d653b834cccde7",
+        "affectsGlobalScope": false
+      },
+      "./src/components/tabs/Tabs.tsx": {
+        "version": "568675430038b4d243070825b556cc27b39fb4fa83603b1743ad2ddf789d0627",
+        "signature": "fa2de22bd07c742f9c4515a1e2b895fdfde7e7f227b688ba6af6d322710bb19e",
+        "affectsGlobalScope": false
+      },
+      "./src/components/toggle-button/ToggleButton.tsx": {
+        "version": "cf4bbb1f750ba47dc022261caa5e852525828eeec86702d79fffb6eac8e313be",
+        "signature": "93bbd3da3ac240f48407d5ddde8c56faf168f5f103bb30a652615515e81d254e",
+        "affectsGlobalScope": false
+      },
+      "./src/components/toggle-string/ToggleString.tsx": {
+        "version": "872583f8cdf4722035262ec86240f54bee912a5681d826ba42f5f113178f5d11",
+        "signature": "c806ce62f77e04b39ff3e6efc606982ecbffacfc9a97112bb80f0007a9440719",
+        "affectsGlobalScope": false
+      },
+      "./src/components/wallet-lock/Wallet-Lock-Form.tsx": {
+        "version": "d43553349fb8665b26eb2d8aa55701d5d54e677d24e1ef9d5036df979b4feed5",
+        "signature": "232582ef011b674b4930acfb8826aa400f3376b4381e0117023b946525209390",
+        "affectsGlobalScope": false
+      },
+      "./src/components/index.ts": {
+        "version": "88ee900e5f0b8fd099e179a9455fc2ca49254ab5ace0560abf832e09b0d8c9ef",
+        "signature": "15a1d4d7f9ea215c506ebd5aabd9c331006dc34f3aff44e00821ec0fb1e184c2",
         "affectsGlobalScope": false
       },
       "./src/index.tsx": {
-        "version": "b31966cd6ff544bb06c28dc1f4b0c6b606768a57e5bfdae376a954120c26bddf",
-        "signature": "5f8eb3bcc9f188fb2ddcaf006060745541fca17621c8659645217aabfb87b485",
+        "version": "eff6d4228df619f97c341fc53adf6da719205df89b3e7a226957e875876cff36",
+        "signature": "716322b4b317deb2facc174ebfe7410d262fb9ac48b43e5a6c0689729f9ffd75",
         "affectsGlobalScope": false
       },
       "./node_modules/react-scripts/lib/react-app.d.ts": {
@@ -2168,14 +2233,6 @@
         "./node_modules/react-scripts/lib/react-app.d.ts",
         "./src/types/index.d.ts"
       ],
-      "./src/components/account-details/Account-Details-Form.tsx": [
-        "./node_modules/@types/react/index.d.ts",
-        "./node_modules/@types/react/jsx-runtime.d.ts",
-        "./node_modules/react-scripts/lib/react-app.d.ts",
-        "./src/components/index.ts",
-        "./src/types/index.d.ts",
-        "./src/utils/index.ts"
-      ],
       "./src/components/expander/Expander.tsx": [
         "./node_modules/@types/react/index.d.ts",
         "./node_modules/@types/react/jsx-runtime.d.ts",
@@ -2186,12 +2243,51 @@
       "./src/components/index.ts": [
         "./node_modules/@types/react/jsx-runtime.d.ts",
         "./node_modules/react-scripts/lib/react-app.d.ts",
-        "./src/components/account-details/Account-Details-Form.tsx",
         "./src/components/expander/Expander.tsx",
+        "./src/components/modal-host/ModalHost.tsx",
+        "./src/components/modals/ModalBase.ts",
+        "./src/components/modals/Pass-Confirm-Modal.tsx",
+        "./src/components/modals/Wallet-Lock-Modal.tsx",
         "./src/components/navigation/Navigation.tsx",
+        "./src/components/pass-confirm/Pass-Confirm-Form.tsx",
+        "./src/components/routes/Routes.tsx",
         "./src/components/sidebar/Sidebar.tsx",
+        "./src/components/sidenav/Sidenav.tsx",
         "./src/components/spinner/Spinner.tsx",
+        "./src/components/tabs/Tabs.tsx",
         "./src/components/toggle-button/ToggleButton.tsx",
+        "./src/components/toggle-string/ToggleString.tsx",
+        "./src/components/wallet-lock/Wallet-Lock-Form.tsx",
+        "./src/types/index.d.ts"
+      ],
+      "./src/components/modal-host/ModalHost.tsx": [
+        "./node_modules/@types/react/index.d.ts",
+        "./node_modules/@types/react/jsx-runtime.d.ts",
+        "./node_modules/react-scripts/lib/react-app.d.ts",
+        "./src/index.tsx",
+        "./src/types/index.d.ts"
+      ],
+      "./src/components/modals/ModalBase.ts": [
+        "./node_modules/@types/react/jsx-runtime.d.ts",
+        "./node_modules/react-scripts/lib/react-app.d.ts",
+        "./src/types/index.d.ts"
+      ],
+      "./src/components/modals/Pass-Confirm-Modal.tsx": [
+        "./node_modules/@types/react/index.d.ts",
+        "./node_modules/@types/react/jsx-runtime.d.ts",
+        "./node_modules/react-scripts/lib/react-app.d.ts",
+        "./src/components/index.ts",
+        "./src/components/modals/ModalBase.ts",
+        "./src/index.tsx",
+        "./src/types/index.d.ts"
+      ],
+      "./src/components/modals/Wallet-Lock-Modal.tsx": [
+        "./node_modules/@types/react/index.d.ts",
+        "./node_modules/@types/react/jsx-runtime.d.ts",
+        "./node_modules/react-scripts/lib/react-app.d.ts",
+        "./src/components/index.ts",
+        "./src/components/modals/ModalBase.ts",
+        "./src/index.tsx",
         "./src/types/index.d.ts"
       ],
       "./src/components/navigation/Navigation.tsx": [
@@ -2200,16 +2296,41 @@
         "./node_modules/@types/react/jsx-runtime.d.ts",
         "./node_modules/react-scripts/lib/react-app.d.ts",
         "./src/assets/index.ts",
-        "./src/components/index.ts",
         "./src/index.tsx",
+        "./src/types/index.d.ts"
+      ],
+      "./src/components/pass-confirm/Pass-Confirm-Form.tsx": [
+        "./node_modules/@types/react/index.d.ts",
+        "./node_modules/@types/react/jsx-runtime.d.ts",
+        "./node_modules/react-scripts/lib/react-app.d.ts",
+        "./src/components/index.ts",
         "./src/types/index.d.ts",
         "./src/utils/index.ts"
       ],
+      "./src/components/routes/Routes.tsx": [
+        "./node_modules/@types/react-router-dom/index.d.ts",
+        "./node_modules/@types/react/jsx-runtime.d.ts",
+        "./node_modules/react-scripts/lib/react-app.d.ts",
+        "./src/components/index.ts",
+        "./src/modules/index.ts",
+        "./src/types/index.d.ts"
+      ],
       "./src/components/sidebar/Sidebar.tsx": [
+        "./node_modules/@types/react-router-dom/index.d.ts",
         "./node_modules/@types/react/jsx-runtime.d.ts",
         "./node_modules/react-scripts/lib/react-app.d.ts",
         "./src/assets/index.ts",
         "./src/types/index.d.ts"
+      ],
+      "./src/components/sidenav/Sidenav.tsx": [
+        "./node_modules/@types/react-router-dom/index.d.ts",
+        "./node_modules/@types/react/index.d.ts",
+        "./node_modules/@types/react/jsx-runtime.d.ts",
+        "./node_modules/react-scripts/lib/react-app.d.ts",
+        "./src/assets/index.ts",
+        "./src/index.tsx",
+        "./src/types/index.d.ts",
+        "./src/utils/index.ts"
       ],
       "./src/components/spinner/Spinner.tsx": [
         "./node_modules/@types/react/index.d.ts",
@@ -2219,11 +2340,32 @@
         "./src/types/index.d.ts",
         "./src/utils/index.ts"
       ],
+      "./src/components/tabs/Tabs.tsx": [
+        "./node_modules/@types/react/index.d.ts",
+        "./node_modules/@types/react/jsx-runtime.d.ts",
+        "./node_modules/react-scripts/lib/react-app.d.ts",
+        "./src/types/index.d.ts"
+      ],
       "./src/components/toggle-button/ToggleButton.tsx": [
         "./node_modules/@types/react/jsx-runtime.d.ts",
         "./node_modules/react-scripts/lib/react-app.d.ts",
         "./src/assets/index.ts",
         "./src/types/index.d.ts"
+      ],
+      "./src/components/toggle-string/ToggleString.tsx": [
+        "./node_modules/@types/react/jsx-runtime.d.ts",
+        "./node_modules/react-scripts/lib/react-app.d.ts",
+        "./src/components/index.ts",
+        "./src/types/index.d.ts",
+        "./src/utils/index.ts"
+      ],
+      "./src/components/wallet-lock/Wallet-Lock-Form.tsx": [
+        "./node_modules/@types/react/index.d.ts",
+        "./node_modules/@types/react/jsx-runtime.d.ts",
+        "./node_modules/react-scripts/lib/react-app.d.ts",
+        "./src/components/index.ts",
+        "./src/types/index.d.ts",
+        "./src/utils/index.ts"
       ],
       "./src/index.tsx": [
         "./node_modules/@types/react-dom/index.d.ts",
@@ -2232,75 +2374,25 @@
         "./node_modules/@types/react/jsx-runtime.d.ts",
         "./node_modules/react-scripts/lib/react-app.d.ts",
         "./src/components/index.ts",
-        "./src/modules/index.ts",
-        "./src/types/index.d.ts",
-        "./src/utils/index.ts"
-      ],
-      "./src/modules/account/create/Create-Account.tsx": [
-        "./node_modules/@types/react-router-dom/index.d.ts",
-        "./node_modules/@types/react/jsx-runtime.d.ts",
-        "./node_modules/react-scripts/lib/react-app.d.ts",
-        "./src/components/index.ts",
-        "./src/types/index.d.ts",
-        "./src/utils/index.ts"
-      ],
-      "./src/modules/account/dashboard/Dashboard.tsx": [
-        "./node_modules/@types/react-router-dom/index.d.ts",
-        "./node_modules/@types/react/index.d.ts",
-        "./node_modules/@types/react/jsx-runtime.d.ts",
-        "./node_modules/react-scripts/lib/react-app.d.ts",
-        "./src/assets/index.ts",
-        "./src/components/index.ts",
-        "./src/index.tsx",
-        "./src/types/index.d.ts",
-        "./src/utils/index.ts"
-      ],
-      "./src/modules/account/restore/Restore-Account.tsx": [
-        "./node_modules/@types/react-router-dom/index.d.ts",
-        "./node_modules/@types/react/jsx-runtime.d.ts",
-        "./node_modules/react-scripts/lib/react-app.d.ts",
-        "./src/components/index.ts",
-        "./src/types/index.d.ts",
-        "./src/utils/index.ts"
-      ],
-      "./src/modules/account/restore/Restore-Mnemonic.tsx": [
-        "./node_modules/@types/react-router-dom/index.d.ts",
-        "./node_modules/@types/react/index.d.ts",
-        "./node_modules/@types/react/jsx-runtime.d.ts",
-        "./node_modules/react-scripts/lib/react-app.d.ts",
-        "./src/types/index.d.ts",
-        "./src/utils/blockchain.ts",
-        "./src/utils/utils.ts"
-      ],
-      "./src/modules/account/restore/Restore-Private-Key.tsx": [
-        "./node_modules/@types/react-router-dom/index.d.ts",
-        "./node_modules/@types/react/index.d.ts",
-        "./node_modules/@types/react/jsx-runtime.d.ts",
-        "./node_modules/react-scripts/lib/react-app.d.ts",
-        "./src/types/index.d.ts",
-        "./src/utils/blockchain.ts",
-        "./src/utils/index.ts"
-      ],
-      "./src/modules/account/restore/Restore.tsx": [
-        "./node_modules/@types/react-router-dom/index.d.ts",
-        "./node_modules/@types/react/index.d.ts",
-        "./node_modules/@types/react/jsx-runtime.d.ts",
-        "./node_modules/react-scripts/lib/react-app.d.ts",
-        "./src/assets/index.ts",
+        "./src/components/modals/ModalBase.ts",
         "./src/types/index.d.ts",
         "./src/utils/index.ts"
       ],
       "./src/modules/index.ts": [
         "./node_modules/@types/react/jsx-runtime.d.ts",
         "./node_modules/react-scripts/lib/react-app.d.ts",
-        "./src/modules/account/create/Create-Account.tsx",
-        "./src/modules/account/dashboard/Dashboard.tsx",
-        "./src/modules/account/restore/Restore-Account.tsx",
-        "./src/modules/account/restore/Restore-Mnemonic.tsx",
-        "./src/modules/account/restore/Restore-Private-Key.tsx",
-        "./src/modules/account/restore/Restore.tsx",
         "./src/modules/landing/Landing.tsx",
-        "./src/modules/login/Login.tsx",
+        "./src/modules/wallet/access/Access-Keystore.tsx",
+        "./src/modules/wallet/access/Access-Local.tsx",
+        "./src/modules/wallet/access/Access-Mnemonic.tsx",
+        "./src/modules/wallet/access/Access-Private-Key.tsx",
+        "./src/modules/wallet/access/Access.tsx",
+        "./src/modules/wallet/create/Create-Keystore.tsx",
+        "./src/modules/wallet/create/Create-Mnemonic.tsx",
+        "./src/modules/wallet/create/Create.tsx",
+        "./src/modules/wallet/dashboard/Dashboard.tsx",
+        "./src/modules/wallet/settings/Settings.tsx",
+        "./src/modules/wallet/transfer/Transfer.tsx",
         "./src/types/index.d.ts"
       ],
       "./src/modules/landing/Landing.tsx": [
@@ -2313,11 +2405,99 @@
         "./src/types/index.d.ts",
         "./src/utils/index.ts"
       ],
-      "./src/modules/login/Login.tsx": [
+      "./src/modules/wallet/access/Access-Keystore.tsx": [
+        "./node_modules/@types/react-router-dom/index.d.ts",
+        "./node_modules/@types/react/index.d.ts",
+        "./node_modules/@types/react/jsx-runtime.d.ts",
+        "./node_modules/react-scripts/lib/react-app.d.ts",
+        "./src/components/index.ts",
+        "./src/types/index.d.ts",
+        "./src/utils/index.ts"
+      ],
+      "./src/modules/wallet/access/Access-Local.tsx": [
         "./node_modules/@types/react-router-dom/index.d.ts",
         "./node_modules/@types/react/jsx-runtime.d.ts",
         "./node_modules/react-scripts/lib/react-app.d.ts",
         "./src/components/index.ts",
+        "./src/types/index.d.ts",
+        "./src/utils/index.ts"
+      ],
+      "./src/modules/wallet/access/Access-Mnemonic.tsx": [
+        "./node_modules/@types/react-router-dom/index.d.ts",
+        "./node_modules/@types/react/index.d.ts",
+        "./node_modules/@types/react/jsx-runtime.d.ts",
+        "./node_modules/react-scripts/lib/react-app.d.ts",
+        "./src/types/index.d.ts",
+        "./src/utils/index.ts"
+      ],
+      "./src/modules/wallet/access/Access-Private-Key.tsx": [
+        "./node_modules/@types/react-router-dom/index.d.ts",
+        "./node_modules/@types/react/index.d.ts",
+        "./node_modules/@types/react/jsx-runtime.d.ts",
+        "./node_modules/react-scripts/lib/react-app.d.ts",
+        "./src/types/index.d.ts",
+        "./src/utils/index.ts"
+      ],
+      "./src/modules/wallet/access/Access.tsx": [
+        "./node_modules/@types/react-router-dom/index.d.ts",
+        "./node_modules/@types/react/jsx-runtime.d.ts",
+        "./node_modules/react-scripts/lib/react-app.d.ts",
+        "./src/assets/index.ts",
+        "./src/types/index.d.ts"
+      ],
+      "./src/modules/wallet/create/Create-Keystore.tsx": [
+        "./node_modules/@types/react-router-dom/index.d.ts",
+        "./node_modules/@types/react/jsx-runtime.d.ts",
+        "./node_modules/react-scripts/lib/react-app.d.ts",
+        "./src/components/index.ts",
+        "./src/types/index.d.ts",
+        "./src/utils/index.ts"
+      ],
+      "./src/modules/wallet/create/Create-Mnemonic.tsx": [
+        "./node_modules/@types/react-router-dom/index.d.ts",
+        "./node_modules/@types/react/index.d.ts",
+        "./node_modules/@types/react/jsx-runtime.d.ts",
+        "./node_modules/react-scripts/lib/react-app.d.ts",
+        "./src/types/index.d.ts",
+        "./src/utils/index.ts"
+      ],
+      "./src/modules/wallet/create/Create.tsx": [
+        "./node_modules/@types/react-router-dom/index.d.ts",
+        "./node_modules/@types/react/jsx-runtime.d.ts",
+        "./node_modules/react-scripts/lib/react-app.d.ts",
+        "./src/assets/index.ts",
+        "./src/types/index.d.ts"
+      ],
+      "./src/modules/wallet/dashboard/Dashboard.tsx": [
+        "./node_modules/@types/react-router-dom/index.d.ts",
+        "./node_modules/@types/react/index.d.ts",
+        "./node_modules/@types/react/jsx-runtime.d.ts",
+        "./node_modules/react-scripts/lib/react-app.d.ts",
+        "./src/assets/index.ts",
+        "./src/components/index.ts",
+        "./src/index.tsx",
+        "./src/types/index.d.ts",
+        "./src/utils/index.ts"
+      ],
+      "./src/modules/wallet/settings/Settings.tsx": [
+        "./node_modules/@types/react-router-dom/index.d.ts",
+        "./node_modules/@types/react/index.d.ts",
+        "./node_modules/@types/react/jsx-runtime.d.ts",
+        "./node_modules/react-scripts/lib/react-app.d.ts",
+        "./src/assets/index.ts",
+        "./src/components/index.ts",
+        "./src/index.tsx",
+        "./src/types/index.d.ts",
+        "./src/utils/index.ts"
+      ],
+      "./src/modules/wallet/transfer/Transfer.tsx": [
+        "./node_modules/@types/react-router-dom/index.d.ts",
+        "./node_modules/@types/react/index.d.ts",
+        "./node_modules/@types/react/jsx-runtime.d.ts",
+        "./node_modules/react-scripts/lib/react-app.d.ts",
+        "./src/assets/index.ts",
+        "./src/components/index.ts",
+        "./src/index.tsx",
         "./src/types/index.d.ts",
         "./src/utils/index.ts"
       ],
@@ -2372,7 +2552,6 @@
         "./src/types/index.d.ts"
       ],
       "./src/utils/utils.ts": [
-        "./node_modules/@tgrospic/rnode-http-js/dist-types/index.d.ts",
         "./node_modules/@types/react-router-dom/index.d.ts",
         "./node_modules/@types/react/index.d.ts",
         "./node_modules/@types/react/jsx-runtime.d.ts",
@@ -3520,34 +3699,64 @@
       "./src/assets/index.ts": [
         "./node_modules/react-scripts/lib/react-app.d.ts"
       ],
-      "./src/components/account-details/Account-Details-Form.tsx": [
-        "./node_modules/@types/react/index.d.ts"
-      ],
       "./src/components/index.ts": [
-        "./src/components/account-details/Account-Details-Form.tsx",
         "./src/components/expander/Expander.tsx",
+        "./src/components/modal-host/ModalHost.tsx",
+        "./src/components/modals/ModalBase.ts",
+        "./src/components/modals/Pass-Confirm-Modal.tsx",
+        "./src/components/modals/Wallet-Lock-Modal.tsx",
         "./src/components/navigation/Navigation.tsx",
+        "./src/components/pass-confirm/Pass-Confirm-Form.tsx",
+        "./src/components/routes/Routes.tsx",
         "./src/components/sidebar/Sidebar.tsx",
+        "./src/components/sidenav/Sidenav.tsx",
         "./src/components/spinner/Spinner.tsx",
-        "./src/components/toggle-button/ToggleButton.tsx"
+        "./src/components/tabs/Tabs.tsx",
+        "./src/components/toggle-button/ToggleButton.tsx",
+        "./src/components/toggle-string/ToggleString.tsx",
+        "./src/components/wallet-lock/Wallet-Lock-Form.tsx"
+      ],
+      "./src/components/modals/Pass-Confirm-Modal.tsx": [
+        "./src/components/modals/ModalBase.ts"
+      ],
+      "./src/components/modals/Wallet-Lock-Modal.tsx": [
+        "./src/components/modals/ModalBase.ts"
+      ],
+      "./src/components/pass-confirm/Pass-Confirm-Form.tsx": [
+        "./node_modules/@types/react/index.d.ts"
       ],
       "./src/components/spinner/Spinner.tsx": [
         "./node_modules/@types/react/index.d.ts",
         "./src/utils/index.ts"
       ],
+      "./src/components/tabs/Tabs.tsx": [
+        "./node_modules/@types/react/index.d.ts"
+      ],
+      "./src/components/toggle-string/ToggleString.tsx": [
+        "./src/utils/index.ts"
+      ],
+      "./src/components/wallet-lock/Wallet-Lock-Form.tsx": [
+        "./node_modules/@types/react/index.d.ts"
+      ],
       "./src/index.tsx": [
         "./node_modules/@types/react/index.d.ts",
+        "./src/components/index.ts",
+        "./src/components/modals/ModalBase.ts",
         "./src/utils/index.ts"
       ],
       "./src/modules/index.ts": [
-        "./src/modules/account/create/Create-Account.tsx",
-        "./src/modules/account/dashboard/Dashboard.tsx",
-        "./src/modules/account/restore/Restore-Account.tsx",
-        "./src/modules/account/restore/Restore-Mnemonic.tsx",
-        "./src/modules/account/restore/Restore-Private-Key.tsx",
-        "./src/modules/account/restore/Restore.tsx",
         "./src/modules/landing/Landing.tsx",
-        "./src/modules/login/Login.tsx"
+        "./src/modules/wallet/access/Access-Keystore.tsx",
+        "./src/modules/wallet/access/Access-Local.tsx",
+        "./src/modules/wallet/access/Access-Mnemonic.tsx",
+        "./src/modules/wallet/access/Access-Private-Key.tsx",
+        "./src/modules/wallet/access/Access.tsx",
+        "./src/modules/wallet/create/Create-Keystore.tsx",
+        "./src/modules/wallet/create/Create-Mnemonic.tsx",
+        "./src/modules/wallet/create/Create.tsx",
+        "./src/modules/wallet/dashboard/Dashboard.tsx",
+        "./src/modules/wallet/settings/Settings.tsx",
+        "./src/modules/wallet/transfer/Transfer.tsx"
       ],
       "./src/react-app-env.d.ts": [
         "./node_modules/react-scripts/lib/react-app.d.ts",
@@ -3576,7 +3785,6 @@
         "./node_modules/@tgrospic/rnode-http-js/dist-types/index.d.ts"
       ],
       "./src/utils/utils.ts": [
-        "./node_modules/@tgrospic/rnode-http-js/dist-types/index.d.ts",
         "./node_modules/@types/react-router-dom/index.d.ts",
         "./node_modules/@types/react/index.d.ts"
       ],
@@ -3922,23 +4130,36 @@
       "./node_modules/rlp/dist/types.d.ts",
       "./node_modules/source-map/source-map.d.ts",
       "./src/assets/index.ts",
-      "./src/components/account-details/Account-Details-Form.tsx",
       "./src/components/expander/Expander.tsx",
       "./src/components/index.ts",
+      "./src/components/modal-host/ModalHost.tsx",
+      "./src/components/modals/ModalBase.ts",
+      "./src/components/modals/Pass-Confirm-Modal.tsx",
+      "./src/components/modals/Wallet-Lock-Modal.tsx",
       "./src/components/navigation/Navigation.tsx",
+      "./src/components/pass-confirm/Pass-Confirm-Form.tsx",
+      "./src/components/routes/Routes.tsx",
       "./src/components/sidebar/Sidebar.tsx",
+      "./src/components/sidenav/Sidenav.tsx",
       "./src/components/spinner/Spinner.tsx",
+      "./src/components/tabs/Tabs.tsx",
       "./src/components/toggle-button/ToggleButton.tsx",
+      "./src/components/toggle-string/ToggleString.tsx",
+      "./src/components/wallet-lock/Wallet-Lock-Form.tsx",
       "./src/index.tsx",
-      "./src/modules/account/create/Create-Account.tsx",
-      "./src/modules/account/dashboard/Dashboard.tsx",
-      "./src/modules/account/restore/Restore-Account.tsx",
-      "./src/modules/account/restore/Restore-Mnemonic.tsx",
-      "./src/modules/account/restore/Restore-Private-Key.tsx",
-      "./src/modules/account/restore/Restore.tsx",
       "./src/modules/index.ts",
       "./src/modules/landing/Landing.tsx",
-      "./src/modules/login/Login.tsx",
+      "./src/modules/wallet/access/Access-Keystore.tsx",
+      "./src/modules/wallet/access/Access-Local.tsx",
+      "./src/modules/wallet/access/Access-Mnemonic.tsx",
+      "./src/modules/wallet/access/Access-Private-Key.tsx",
+      "./src/modules/wallet/access/Access.tsx",
+      "./src/modules/wallet/create/Create-Keystore.tsx",
+      "./src/modules/wallet/create/Create-Mnemonic.tsx",
+      "./src/modules/wallet/create/Create.tsx",
+      "./src/modules/wallet/dashboard/Dashboard.tsx",
+      "./src/modules/wallet/settings/Settings.tsx",
+      "./src/modules/wallet/transfer/Transfer.tsx",
       "./src/react-app-env.d.ts",
       "./src/types/index.d.ts",
       "./src/utils/blockchain.ts",
@@ -4694,7 +4915,35 @@
         1
       ],
       [
+        "./src/components/modal-host/ModalHost.tsx",
+        1
+      ],
+      [
+        "./src/components/modals/ModalBase.ts",
+        1
+      ],
+      [
+        "./src/components/modals/Pass-Confirm-Modal.tsx",
+        1
+      ],
+      [
+        "./src/components/modals/Password-Modal.tsx",
+        1
+      ],
+      [
+        "./src/components/modals/Wallet-Lock-Modal.tsx",
+        1
+      ],
+      [
         "./src/components/navigation/Navigation.tsx",
+        1
+      ],
+      [
+        "./src/components/pass-confirm/Pass-Confirm-Form.tsx",
+        1
+      ],
+      [
+        "./src/components/routes/Routes.tsx",
         1
       ],
       [
@@ -4702,7 +4951,15 @@
         1
       ],
       [
+        "./src/components/sidenav/Sidenav.tsx",
+        1
+      ],
+      [
         "./src/components/spinner/Spinner.tsx",
+        1
+      ],
+      [
+        "./src/components/tabs/Tabs.tsx",
         1
       ],
       [
@@ -4718,7 +4975,15 @@
         1
       ],
       [
+        "./src/components/toggle-string/ToggleString.tsx",
+        1
+      ],
+      [
         "./src/components/toggle/toggle.tsx",
+        1
+      ],
+      [
+        "./src/components/wallet-lock/Wallet-Lock-Form.tsx",
         1
       ],
       [
@@ -4774,6 +5039,10 @@
         1
       ],
       [
+        "./src/modules/account/transfer/Transfer.tsx",
+        1
+      ],
+      [
         "./src/modules/index.ts",
         1
       ],
@@ -4783,6 +5052,70 @@
       ],
       [
         "./src/modules/login/Login.tsx",
+        1
+      ],
+      [
+        "./src/modules/wallet/access/Access-Keystore.tsx",
+        1
+      ],
+      [
+        "./src/modules/wallet/access/Access-Local.tsx",
+        1
+      ],
+      [
+        "./src/modules/wallet/access/Access-Mnemonic.tsx",
+        1
+      ],
+      [
+        "./src/modules/wallet/access/Access-Private-Key.tsx",
+        1
+      ],
+      [
+        "./src/modules/wallet/access/Access.tsx",
+        1
+      ],
+      [
+        "./src/modules/wallet/create/Create-Keystore.tsx",
+        1
+      ],
+      [
+        "./src/modules/wallet/create/Create-Local-Wallet.tsx",
+        1
+      ],
+      [
+        "./src/modules/wallet/create/Create-Mnemonic.tsx",
+        1
+      ],
+      [
+        "./src/modules/wallet/create/Create.tsx",
+        1
+      ],
+      [
+        "./src/modules/wallet/dashboard/Dashboard.tsx",
+        1
+      ],
+      [
+        "./src/modules/wallet/restore/Restore-Account.tsx",
+        1
+      ],
+      [
+        "./src/modules/wallet/restore/Restore-Mnemonic.tsx",
+        1
+      ],
+      [
+        "./src/modules/wallet/restore/Restore-Private-Key.tsx",
+        1
+      ],
+      [
+        "./src/modules/wallet/restore/Restore.tsx",
+        1
+      ],
+      [
+        "./src/modules/wallet/settings/Settings.tsx",
+        1
+      ],
+      [
+        "./src/modules/wallet/transfer/Transfer.tsx",
         1
       ],
       [
