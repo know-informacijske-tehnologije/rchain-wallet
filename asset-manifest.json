@@ -1,19 +1,21 @@
 {
   "files": {
-    "main.css": "/rchain-wallet/static/css/main.9e3a53dc.chunk.css",
-    "main.js": "/rchain-wallet/static/js/main.eead88ea.chunk.js",
-    "main.js.map": "/rchain-wallet/static/js/main.eead88ea.chunk.js.map",
+    "main.css": "/rchain-wallet/static/css/main.64d7a0f8.chunk.css",
+    "main.js": "/rchain-wallet/static/js/main.f8f0fe0a.chunk.js",
+    "main.js.map": "/rchain-wallet/static/js/main.f8f0fe0a.chunk.js.map",
     "runtime-main.js": "/rchain-wallet/static/js/runtime-main.7dcf36b4.js",
     "runtime-main.js.map": "/rchain-wallet/static/js/runtime-main.7dcf36b4.js.map",
-    "static/js/2.e9436e2f.chunk.js": "/rchain-wallet/static/js/2.e9436e2f.chunk.js",
-    "static/js/2.e9436e2f.chunk.js.map": "/rchain-wallet/static/js/2.e9436e2f.chunk.js.map",
+    "static/js/2.e497357d.chunk.js": "/rchain-wallet/static/js/2.e497357d.chunk.js",
+    "static/js/2.e497357d.chunk.js.map": "/rchain-wallet/static/js/2.e497357d.chunk.js.map",
     "index.html": "/rchain-wallet/index.html",
-    "static/css/main.9e3a53dc.chunk.css.map": "/rchain-wallet/static/css/main.9e3a53dc.chunk.css.map",
-    "static/js/2.e9436e2f.chunk.js.LICENSE.txt": "/rchain-wallet/static/js/2.e9436e2f.chunk.js.LICENSE.txt",
+    "static/css/main.64d7a0f8.chunk.css.map": "/rchain-wallet/static/css/main.64d7a0f8.chunk.css.map",
+    "static/js/2.e497357d.chunk.js.LICENSE.txt": "/rchain-wallet/static/js/2.e497357d.chunk.js.LICENSE.txt",
+    "static/media/access.d787cf34.svg": "/rchain-wallet/static/media/access.d787cf34.svg",
     "static/media/account.09161f4c.svg": "/rchain-wallet/static/media/account.09161f4c.svg",
     "static/media/arrow.0abfb3fc.svg": "/rchain-wallet/static/media/arrow.0abfb3fc.svg",
     "static/media/bg-art.30d2130f.svg": "/rchain-wallet/static/media/bg-art.30d2130f.svg",
     "static/media/Landing.scss": "/rchain-wallet/static/media/bg-tex.d3a193a6.svg",
+    "static/media/bubble-small.78a359ca.svg": "/rchain-wallet/static/media/bubble-small.78a359ca.svg",
     "static/media/bubble.93f924df.svg": "/rchain-wallet/static/media/bubble.93f924df.svg",
     "static/media/cancel.e68cec7a.svg": "/rchain-wallet/static/media/cancel.e68cec7a.svg",
     "static/media/check.bdd7076b.svg": "/rchain-wallet/static/media/check.bdd7076b.svg",
@@ -22,7 +24,10 @@
     "static/media/eye-crossed.38912cfa.svg": "/rchain-wallet/static/media/eye-crossed.38912cfa.svg",
     "static/media/eye.33420ad8.svg": "/rchain-wallet/static/media/eye.33420ad8.svg",
     "static/media/globe.383b48c6.svg": "/rchain-wallet/static/media/globe.383b48c6.svg",
-    "static/media/key.1f7a56cf.svg": "/rchain-wallet/static/media/key.1f7a56cf.svg",
+    "static/media/key-small.353ef0b2.svg": "/rchain-wallet/static/media/key-small.353ef0b2.svg",
+    "static/media/key.9ef94a4f.svg": "/rchain-wallet/static/media/key.9ef94a4f.svg",
+    "static/media/keystore-small.07fb60c1.svg": "/rchain-wallet/static/media/keystore-small.07fb60c1.svg",
+    "static/media/keystore.20cd37c0.svg": "/rchain-wallet/static/media/keystore.20cd37c0.svg",
     "static/media/logo-white-oneline.28fd041e.png": "/rchain-wallet/static/media/logo-white-oneline.28fd041e.png",
     "static/media/logo-white.568c6496.png": "/rchain-wallet/static/media/logo-white.568c6496.png",
     "static/media/menu-close.7dfad2e3.svg": "/rchain-wallet/static/media/menu-close.7dfad2e3.svg",
@@ -39,12 +44,13 @@
     "static/media/social-twitter.6cc9ed7f.svg": "/rchain-wallet/static/media/social-twitter.6cc9ed7f.svg",
     "static/media/social-youtube.11948e01.svg": "/rchain-wallet/static/media/social-youtube.11948e01.svg",
     "static/media/trans.9df41930.svg": "/rchain-wallet/static/media/trans.9df41930.svg",
+    "static/media/wallet-small.289118e5.svg": "/rchain-wallet/static/media/wallet-small.289118e5.svg",
     "static/media/wallet.fb7e91b8.svg": "/rchain-wallet/static/media/wallet.fb7e91b8.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.7dcf36b4.js",
-    "static/js/2.e9436e2f.chunk.js",
-    "static/css/main.9e3a53dc.chunk.css",
-    "static/js/main.eead88ea.chunk.js"
+    "static/js/2.e497357d.chunk.js",
+    "static/css/main.64d7a0f8.chunk.css",
+    "static/js/main.f8f0fe0a.chunk.js"
   ]
 }
