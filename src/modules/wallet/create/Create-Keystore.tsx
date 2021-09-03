@@ -1,32 +1,65 @@
-// @TODO: Move restore styles so they can be reused.
 import 'styles/FormScreen.scss';
-import { bc, g } from 'utils';
-import { useHistory } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import { WalletLockForm, useWalletLock } from 'components';
+import { useContext, useState } from 'react';
+import * as u from 'utils';
+import { useHistory, Link } from 'react-router-dom';
+import { LayoutContext } from 'index';
+import { PassConfirmModal, Spinner } from 'components';
 
 export function CreateKeystore() {
   const history = useHistory();
-  const form_state = useWalletLock();
-  const {name, password1, registration_valid} = form_state;
+  const [keystore_op, set_keystore_op] = useState(u.OPERATION.INITIAL);
+  const [ks_blob, set_ks_blob] = useState<u.Unbox<ReturnType<typeof u.bc.create_keystore>> | null>(null);
+  const [wallet, set_wallet] = useState<u.PrivateWallet | null>(null);
+  const layout = useContext(LayoutContext);
 
-  function register() {
-    const mnemonic = bc.generate_mnemonic();
-    const account_data = bc.get_account_from_mnemonic(mnemonic);
-
-    if (account_data === null) {
-      // @TODO: Show message.
-      console.error("Unable to get wallet data from generated mnemonic.");
-      return;
+  function download_ks() {
+    if (ks_blob) {
+      u.download_blob(ks_blob.blobUrl, ks_blob.name);
     }
+  }
 
-    const user = g.create_user(name.value, password1.value, account_data);
-    if (!g.add_user(user)) {
-      // @TODO: Show message?
-      console.error("User with this wallet/name already exists.");
-      return;
-    }
-    g.set_active_user(user);
+  async function generate_keystore(pass: string) {
+      set_keystore_op(u.OPERATION.PENDING);
+      let ret;
+
+      let wallet = u.bc.create_account();
+      if (!wallet) { set_keystore_op(u.OPERATION.INITIAL); return }
+      set_wallet(wallet);
+
+      try {
+        ret = await u.bc.generate_keystore(wallet.privKey,  pass);
+      } catch(err) {
+        ret = null;
+      }
+
+      if (ret) {
+        set_ks_blob(ret);
+        u.download_blob(ret.blobUrl, ret.name);
+        set_keystore_op(u.OPERATION.DONE);
+      } else {
+        set_keystore_op(u.OPERATION.INITIAL);
+      }
+  }
+
+  function get_keystore() {
+    layout.push_modal({
+      component: PassConfirmModal,
+      props: {
+        title: "Keystore password",
+        text: "Set a password for your keystore file",
+        button: "Confirm",
+        onFinish: (val) => {
+          if (!val) { return; }
+          generate_keystore(val);
+        }
+      }
+    });
+  }
+
+  function finish() {
+    if (!wallet) { return; }
+    let user = u.g.create_user("My Wallet", "", wallet);
+    u.g.set_active_user(user);
     history.push("/wallet/dash");
   }
 
@@ -35,30 +68,33 @@ export function CreateKeystore() {
       <h2 className="Alt">Create a New Wallet</h2>
 
       <div className="Column Center-X" style={{width: "min-content"}}>
-        <p className="Alt" style={{marginBottom: "3em"}}>
-          Create a password for your locally stored wallet below or
-          <Link className="Alt" to="/access">access your existing wallet</Link>
-          from backup
+        <p className="Alt" style={{minWidth: "40ch"}}>
+          A keystore file is an encrypted, password protected
+          version of your private key. If you have your keystore
+          file handy, you can use it to access your wallet from
+          anywhere.
         </p>
 
-        <WalletLockForm state={form_state} />
-
-        {/*<p className="Alt">
-          By clicking the "REGISTER" button below, you agree to the
-          @TODO: Add link to TOS
-          <Link className="Alt" to="/">Terms of Service.</Link>
-        </p>*/}
-
-        <button className="Action"
-                onClick={() => register()}
-                disabled={!registration_valid}>
-          Create
-        </button>
+        <Spinner
+          op={keystore_op}
+          children_initial={
+            <button onClick={get_keystore}>
+              Generate keystore file
+            </button>}
+          children_done={<>
+            <button className="Subtle"
+                    onClick={download_ks}>
+              Redownload keystore
+            </button>
+            <button className="Action"
+                    onClick={finish}>
+              Continue to dashboard
+            </button></>}
+          />
 
         <p className="Alt">
-          {/* @TODO: Don't show this if there are no saved wallets */}
           or
-          <Link className="Alt" to="/login">unlock your locally stored wallet</Link>
+          <Link className="Alt" to="/access">access a locally stored wallet</Link>
         </p>
 
       </div>

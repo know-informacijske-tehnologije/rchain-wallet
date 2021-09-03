@@ -47,42 +47,6 @@ export function CreateMnemonic() {
     window.URL.revokeObjectURL(blobUrl);
   }
 
-  /*return (
-    <div className="FormScreen Column Center-X">
-      <h2 className="Alt">Create a New Wallet</h2>
-
-      <div className="Column Center-X" style={{width: "min-content"}}>
-        <p className="Warn" style={{marginBottom: "3em"}}>
-          The below words are your mnemonic phrase. Make sure to copy
-          them somewhere safe - you will not be able to access your wallet
-          without them.
-        </p>
-
-        { mnemonic_words() }
-
-        <div className="Row Separate-X FullWidth">
-          <button className="Subtle Fit" onClick={download}>
-            Download
-          </button>
-          <button className="Subtle Fit" onClick={copy}>
-            Copy
-          </button>
-        </div>
-
-        <button className="Action"
-                onClick={() => register()}>
-          Create
-        </button>
-
-        <p className="Alt">
-          or
-          <Link className="Alt" to="/access">access an existing wallet</Link>
-        </p>
-
-      </div>
-    </div>
-  );*/
-
   function set_word_1(ev: any) {
     word1.write(ev);
     check_words(ev.target.value, word8.value, word16.value);
