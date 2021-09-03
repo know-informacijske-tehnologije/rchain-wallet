@@ -3,9 +3,6 @@ import { useState, ChangeEvent } from 'react';
 import * as u from 'utils';
 import { Link, useHistory } from 'react-router-dom';
 
-// MNEMONIC FOR TESTING:
-// wrestle unique upgrade machine flag few code trade habit possible extra ice hole canoe rural
-
 function normalize_mnemonic(mnemonic: string) {
   let words = mnemonic.toLowerCase().match(/\w+/g);
   if (!words) { return ""; }
