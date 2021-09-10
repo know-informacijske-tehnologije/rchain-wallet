@@ -1,16 +1,15 @@
 import 'styles/FormScreen.scss';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import * as u from 'utils';
 import { useHistory, Link } from 'react-router-dom';
-import { LayoutContext } from 'index';
 import { PassConfirmModal, Spinner } from 'components';
 
 export function CreateKeystore() {
   const history = useHistory();
+  const layout = u.useLayout();
   const [keystore_op, set_keystore_op] = useState(u.OPERATION.INITIAL);
   const [ks_blob, set_ks_blob] = useState<u.Unbox<ReturnType<typeof u.bc.create_keystore>> | null>(null);
   const [wallet, set_wallet] = useState<u.PrivateWallet | null>(null);
-  const layout = useContext(LayoutContext);
 
   function download_ks() {
     if (ks_blob) {
@@ -23,7 +22,14 @@ export function CreateKeystore() {
       let ret;
 
       let wallet = u.bc.create_account();
-      if (!wallet) { set_keystore_op(u.OPERATION.INITIAL); return }
+      if (!wallet) {
+        layout.push_notif({
+          group_id: "create-keystore-error",
+          content: u.notif.info("Error", "Failed to generate keystore.")
+        });
+        set_keystore_op(u.OPERATION.INITIAL);
+        return
+      }
       set_wallet(wallet);
 
       try {
@@ -37,6 +43,10 @@ export function CreateKeystore() {
         u.download_blob(ret.blobUrl, ret.name);
         set_keystore_op(u.OPERATION.DONE);
       } else {
+        layout.push_notif({
+          group_id: "create-keystore-error",
+          content: u.notif.info("Error", "Failed to generate keystore.")
+        });
         set_keystore_op(u.OPERATION.INITIAL);
       }
   }

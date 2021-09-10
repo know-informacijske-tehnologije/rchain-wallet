@@ -3,7 +3,9 @@
 // likely be lost. Instead, the script itself should be modified.
 export * as bc from './blockchain';
 export * as g from './globals';
-export * as rc from './rchain';
+export * as nw from './networks';
+export * as notif from './notifications';
 export * as rho from './rho';
+export * as rnode from './rnode';
 export * from './utils';
 

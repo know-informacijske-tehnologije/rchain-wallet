@@ -11,6 +11,7 @@ export * from './wallet/create/Create-Keystore';
 export * from './wallet/create/Create-Mnemonic';
 export * from './wallet/create/Create';
 export * from './wallet/dashboard/Dashboard';
+export * from './wallet/deploy/Deploy';
 export * from './wallet/settings/Settings';
 export * from './wallet/transfer/Transfer';
 

@@ -1,26 +1,33 @@
-// @TODO: Move restore styles so they can be reused.
 import 'styles/FormScreen.scss';
 import { ToggleButton } from 'components';
-import { g, useWritable, useWritableWithToggle } from 'utils';
+import * as u from 'utils';
 import { Link, useHistory } from 'react-router-dom';
+
+const g = u.g;
 
 export function AccessLocal() {
   const history = useHistory();
-  const name = useWritable("");
-  const password = useWritableWithToggle("", false);
+  const layout = u.useLayout();
+  const name = u.useWritable("");
+  const password = u.useWritableWithToggle("", false);
 
   function access() {
     let user_index = g.wallet_index(g.user_list, name.value);
     if (user_index === -1) {
-      // @TODO: Show unlock failure message.
-      console.error("Unlock failed! Wallet not found!");
+      layout.push_notif({
+        group_id: "access-local-error",
+        content: u.notif.info("Error", `No wallet named "${name.value}" exists!`)
+      });
       return;
     }
 
     let user = g.user_list[user_index];
 
     if (user.password !== password.value) {
-      console.error("Unlock failed! Wrong password!");
+      layout.push_notif({
+        group_id: "access-local-error",
+        content: u.notif.info("Error", "Incorrect password!")
+      });
       return;
     }
 
@@ -55,6 +62,7 @@ export function AccessLocal() {
         </label>
 
         <button className="Action"
+                disabled={!name.value}
                 onClick={() => access()}>
           Unlock
         </button>

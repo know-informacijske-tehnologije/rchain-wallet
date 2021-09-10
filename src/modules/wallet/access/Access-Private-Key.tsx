@@ -5,6 +5,7 @@ import * as u from 'utils';
 
 export function AccessPrivateKey() {
   const history = useHistory();
+  const layout = u.useLayout();
   const [wallet, set_wallet] = useState<u.PrivateWallet | null>(null);
 
   function handle_change(event: ChangeEvent<HTMLInputElement>) {
@@ -17,7 +18,14 @@ export function AccessPrivateKey() {
   }
 
   function finish() {
-    if (!wallet) { return; }
+    if (!wallet) {
+      layout.push_notif({
+        group_id: "access-pkey-error",
+        content: u.notif.info("Error", "Failed to access wallet. Private key might be invalid.")
+      });
+
+      return;
+    }
 
     let w = u.g.create_user("My Wallet", "", wallet);
     u.g.set_active_user(w);

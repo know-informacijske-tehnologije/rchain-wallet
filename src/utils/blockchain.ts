@@ -1,3 +1,4 @@
+// shortname: bc
 import { keccak256 } from "js-sha3";
 import blake from "blakejs";
 import { ec } from "elliptic";
@@ -5,7 +6,8 @@ import base58 from "bs58";
 import * as bip39 from "bip39";
 import * as eth_util from "ethereumjs-util";
 import * as eth_wallet from "ethereumjs-wallet";
-import { PublicWallet, PrivateWallet } from "./utils";
+import { ethDetected, ethereumAddress } from "@tgrospic/rnode-http-js";
+import { PublicWallet, PrivateWallet, MetaMaskWallet } from "./utils";
 
 const Wallet = eth_wallet.default;
 const eth = { util: eth_util, wallet: eth_wallet.default, hdkey: eth_wallet.hdkey };
@@ -144,6 +146,22 @@ function get_account_from_eth(eth_addr: string): PublicWallet | null {
 	};
 }
 
+export async function get_account_from_metamask() {
+	if (!ethDetected) { return null; }
+	try {
+		let eth_addr = await ethereumAddress();
+
+		let acc = get_account_from_eth(eth_addr);
+		if (!acc) { return null; }
+
+		let mm_acc: MetaMaskWallet = { ...acc, ethAddr: eth_addr, is_metamask: true };
+		return mm_acc;
+	} catch (err) {
+		console.log(err);
+		return null;
+	}
+}
+
 export function get_account_from_public_key(pub_key: string) {
 	if (!pub_key) { return null; }
 
@@ -164,14 +182,12 @@ interface HDKey {
 };
 
 function get_hdkey(key: eth_wallet.hdkey): HDKey {
-	// @TODO: ethereumjs-wallet does not include the type of the HDKey.
+	// @NOTE: ethereumjs-wallet does not include the type of the HDKey.
 	// Instead, it is typed as "any". The above interface
 	// and this function are a temporary measure to mitigate this.
 	// The properties of the _hdkey object can be seen at
 	// https://github.com/cryptocoinjs/hdkey, in hdkey/lib/hdkey.js,
 	// if more needs to be exposed.
-	// @TODO: Might be worth it to get rid of ethereumjs-wallet, as we
-	// currently only use it when working with mnemonics.
 	return key["_hdkey"];
 }
 

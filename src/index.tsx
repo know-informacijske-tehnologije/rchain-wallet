@@ -1,9 +1,9 @@
 import React from 'react';
-import { ReactElement } from 'react';
+import { ReactElement, ReactNode } from 'react';
 import { render } from 'react-dom';
 import './styles/index.scss';
 import { BrowserRouter } from 'react-router-dom';
-import { g, rc } from 'utils';
+import { g, nw } from 'utils';
 import * as Components from 'components';
 import { ModalBase } from 'components/modals/ModalBase';
 
@@ -32,28 +32,43 @@ type Modal<T extends ModalBase<any>> = {
 	props: T
 };
 
+interface Notif {
+	content: ReactNode,
+	group_id?: string | null,
+	autoclose_seconds?: number | null,
+	__id?: number,
+};
+
+let notif_id = 0;
+
 export const LayoutContext = React.createContext({
 	sidenav_expanded: false,
 	set_sidenav_expanded: (_: boolean) => { return; },
+
 	modal_stack: [] as Modal<any>[],
 	push_modal: <T extends ModalBase<any>>(_data: Modal<T>) => { return; },
-	pop_modal: () => {}
+	pop_modal: () => {},
+
+	notif_stack: [] as Notif[],
+	push_notif: (_data: Notif) => { return; },
+	remove_notif: (_data: Notif) => { return; },
 });
 
 export const NodeContext = React.createContext({
-	network: rc.test_net,
-	node: rc.test_net.hosts[0],
+	network: nw.test_net,
+	node: nw.test_net.hosts[0],
 	set_node: (_net_i: number, _host_i: number) => { return; },
-	read_only: rc.test_net.readOnlys[0],
+	read_only: nw.test_net.readOnlys[0],
 	set_read_only: (_ro_i: number) => { return; }
 });
 
 function App() {
-	let [network, set_network] = React.useState(rc.test_net);
-	let [node, set_current_node] = React.useState(rc.test_net.hosts[0]);
-	let [read_only, set_current_readonly] = React.useState(rc.test_net.readOnlys[0]);
+	let [network, set_network] = React.useState(nw.test_net);
+	let [node, set_current_node] = React.useState(nw.test_net.hosts[0]);
+	let [read_only, set_current_readonly] = React.useState(nw.test_net.readOnlys[0]);
 	let [sidenav_expanded, set_sidenav_expanded] = React.useState(false);
 	let [modal_stack, set_modal_stack] = React.useState<Modal<any>[]>([]);
+	let [notif_stack, set_notif_stack] = React.useState<Notif[]>([]);
 
 	const set_node = (net_i: number, host_i: number) => {
 		const nw = g.networks[net_i];
@@ -84,25 +99,45 @@ function App() {
 		}
 	};
 
-	let initial_data = { network, node, read_only, set_node, set_read_only };
-	let initial_layout = { sidenav_expanded, set_sidenav_expanded, modal_stack, push_modal, pop_modal };
+	const push_notif = (notif: Notif) => {
+		notif.__id = ++notif_id;
 
-	return (
+		if (notif.group_id) {
+			notif_stack = notif_stack.filter(n => n.group_id !== notif.group_id);
+		}
+
+		notif_stack.push(notif);
+		set_notif_stack([...notif_stack]);
+	};
+
+	const remove_notif = (notif: Notif) => {
+		set_notif_stack(notif_stack.filter(n=>n.__id !== notif.__id));
+	};
+
+	let initial_data = { network, node, read_only, set_node, set_read_only };
+	let initial_layout = {
+		sidenav_expanded, set_sidenav_expanded,
+		modal_stack, push_modal, pop_modal,
+		notif_stack, push_notif, remove_notif
+	};
+
+	return (<>
 		<NodeContext.Provider value={initial_data}>
 			<LayoutContext.Provider value={initial_layout}>
 				<BrowserRouter>
 					<Components.Routes />
 				</BrowserRouter>
 				<Components.ModalHost />
+				<Components.NotifHost />
 			</LayoutContext.Provider>
 		</NodeContext.Provider>
-	);
+	</>);
 }
 
 render(
 	<React.StrictMode>
 		<App />
 	</React.StrictMode>,
-  document.getElementById('root')
+	document.getElementById('root')
 );
 

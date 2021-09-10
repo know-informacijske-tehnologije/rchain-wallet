@@ -1,0 +1,29 @@
+.NotifHost {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 200000;
+    background: transparent;
+    pointer-events: none;
+
+    &:empty {
+        display: none;
+    }
+
+    .Notif {
+        position: relative;
+        pointer-events: all;
+        background: #0c0a27;
+        padding: 1em;
+        margin-bottom: 1em;
+        margin-right: 1em;
+        margin-left: auto;
+        max-width: max-content;
+
+        >button.NotifClose {
+            position: absolute;
+            right: 1ch;
+            top: 1ch;
+        }
+    }
+}

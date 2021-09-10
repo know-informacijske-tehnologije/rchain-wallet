@@ -30,7 +30,7 @@
 
 	.BalanceValue {
 		position: relative;
-		font-size: 200%;
+		font-size: calc(16px + 2vw);
 
 		&::after {
 			content: "REV";

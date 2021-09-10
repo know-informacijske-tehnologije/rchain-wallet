@@ -1,60 +1,63 @@
+// shortname: g
 import { makeRNodeWeb } from '@tgrospic/rnode-http-js';
 import * as u from './utils';
-import * as rc from './rchain';
-import * as utils from './utils';
+import * as nw from './networks';
+import * as rnode from './rnode';
+
+type Node = nw.RNodeInfo;
+type ReadonlyNode = nw.RNodeReadonlyInfo;
 
 export let rnode_web = makeRNodeWeb({fetch, now: Date.now});
-export let app_node_actions = rc.make_rnode_actions(rnode_web);
 
 export let networks = [
-	// rc.main_net,
-	rc.local_net,
-	rc.test_net,
-	rc.test_net_block_merge,
+	nw.main_net,
+	nw.local_net,
+	nw.test_net,
+	nw.test_net_block_merge,
 ];
 
-export async function check_balance(current_node: rc.RNodeInfo) {
+export async function check_balance(current_node: ReadonlyNode) {
 	if (!user) { return null; }
-	let node = rc.get_node_urls(current_node);
 
-	return await app_node_actions.appCheckBalance({
-		node: node,
-		revAddr: user.revAddr
-	});
+	return await rnode.check_balance(current_node, user.revAddr);
 }
 
 export async function transfer(
-	current_node: rc.RNodeInfo,
+	current_node: Node,
 	amount: number,
 	from_account: u.NamedWallet,
-	target_account: u.NamedWallet
+	target_account: u.NamedWallet,
+	cancel?: ()=>boolean
 ) {
 	if (!from_account) { return null; }
 	if (!target_account) { return null; }
 
-	let node = rc.get_node_urls(current_node);
-	return await app_node_actions.appTransfer({
-		node: node,
-		fromAccount: from_account,
-		toAccount: target_account,
-		amount: amount + "",
-		setStatus: console.log
-	});
+	return await rnode.transfer(current_node, from_account, target_account, amount, cancel);
+}
+
+export async function deploy_code(
+	current_node: Node,
+	code: string,
+	phlo_limit: number,
+	cancel?: ()=>boolean
+) {
+	if (!user) { return null; }
+	return await rnode.deploy(current_node, user, code, phlo_limit, cancel);
 }
 
 export let user_list: u.UserWallet[] = [];
-export let user: u.UserWallet | null = null;
+export let user: u.UserWallet | u.UserMetaMaskWallet | null = null;
 export let wallet_list: u.NamedWallet[] = [];
 
 export function restore_user_list() {
-	let stored_user_list = utils.get_local('user-list');
+	let stored_user_list = u.get_local('user-list');
 	if (stored_user_list !== null) {
 		for (let user of stored_user_list) {
 			user_list.push(user);
 		}
 	}
 
-	let stored_wallet_list = utils.get_local('wallet-list');
+	let stored_wallet_list = u.get_local('wallet-list');
 	if (stored_wallet_list !== null) {
 		for (let wallet of stored_wallet_list) {
 			wallet_list.push(wallet);
@@ -70,6 +73,17 @@ export function create_user(
 	return {
 		...wallet,
 		name, password,
+	};
+}
+
+export function create_user_metamask(
+	wallet: u.MetaMaskWallet
+): u.UserMetaMaskWallet {
+	return {
+		...wallet,
+		name: "My Wallet",
+		password: "",
+		is_metamask: true
 	};
 }
 
@@ -95,8 +109,8 @@ export function wallet_exists(wallets: u.NamedWallet[], wallet: u.NamedWallet | 
 	return wallet_index(wallets, wallet) !== -1;
 }
 
-export function set_active_user(account: u.UserWallet) {
-	if (account.password) {
+export function set_active_user(account: u.UserWallet | u.UserMetaMaskWallet) {
+	if (account.password || u.wallet_is_metamask(account)) {
 		user = account;
 		return;
 	}
@@ -121,13 +135,13 @@ export function clear_users() {
 	while (user_list.length > 0) {
 		user_list.pop();
 	}
-	utils.set_local('user-list', user_list);
+	u.set_local('user-list', user_list);
 }
 
 export function add_user(wallet: u.UserWallet) {
 	if (!wallet_exists(user_list, wallet)) {
 		user_list.push(wallet);
-		utils.set_local('user-list', user_list);
+		u.set_local('user-list', user_list);
 		return true;
 	}
 
@@ -137,7 +151,6 @@ export function add_user(wallet: u.UserWallet) {
 export function add_wallet(wallet: u.NamedWallet) {
 	if (!wallet_exists(wallet_list, wallet)) {
 		wallet_list.push(wallet);
-		utils.set_local('wallet-list', wallet_list);
+		u.set_local('wallet-list', wallet_list);
 	}
 }
-

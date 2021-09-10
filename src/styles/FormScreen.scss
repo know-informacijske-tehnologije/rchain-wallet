@@ -52,6 +52,23 @@
     margin-bottom: 0.5em;
     flex: 1 0 auto;
 
+    img { transition: 0.1s filter }
+    p.Alt { transition: 0.1s color }
+
+    &:hover {
+      background-color: #cc1e46;
+      p.Alt { color: white };
+      img { filter: saturate(0) brightness(10) }
+    }
+
+    &:disabled {
+      background: #fff4;
+      animation: pulse 2s infinite linear;
+
+      p.Alt { color: white };
+      img { filter: saturate(0) brightness(10) }
+    }
+
     img {
       margin-right: 1.5em;
     }
@@ -69,5 +86,17 @@
     p {
       margin: 0;
     }
+
+    @media only screen and (max-width: 600px) {
+      padding: 1.5em;
+      p.Alt { display: none }
+      h3 { margin: 0 }
+    }
   }
+}
+
+@keyframes pulse {
+  0%  { opacity: 0.4; }
+  50% { opacity: 0.8; }
+  100%  { opacity: 0.4; }
 }

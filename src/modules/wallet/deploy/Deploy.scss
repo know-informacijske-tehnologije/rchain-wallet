@@ -1,0 +1,24 @@
+.Deploy {
+    textarea {
+        height: 10em;
+        resize: vertical;
+    }
+
+    pre {
+        border: 1px solid #626171;
+        white-space: pre-line;
+        margin: 0;
+        padding: 1ch;
+
+        &.Error {
+            border-color: #8b0430;
+            background: linear-gradient(#8b0430, transparent);
+        }
+
+        &:empty::before {
+            content: "No message.";
+            opacity: 0.5;
+            font-style: italic;
+        }
+    }
+}

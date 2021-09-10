@@ -1,12 +1,13 @@
-// @TODO: Move restore styles so they can be reused.
 import 'styles/FormScreen.scss';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { bc, g } from 'utils';
 import * as u from 'utils';
 import { useHistory, Link } from 'react-router-dom';
+import { LayoutContext } from 'index';
 
 export function CreateMnemonic() {
   const history = useHistory();
+  const layout = useContext(LayoutContext);
   const [ mnemonic ] = useState(bc.generate_mnemonic(256));
   const [ step, set_step ] = useState(0);
   const word1  = u.useWritable("");
@@ -27,8 +28,13 @@ export function CreateMnemonic() {
     const account_data = bc.get_account_from_mnemonic(mnemonic);
 
     if (account_data === null) {
-      // @TODO: Show message.
-      console.error("Unable to get wallet data from generated mnemonic.");
+      layout.push_notif({
+        group_id: "create-mnemonic-error",
+        content: <>
+          <h3>Error</h3>
+          <p>An error occurred while trying to create a new wallet.</p>
+        </>
+      });
       return;
     }
 
@@ -167,7 +173,6 @@ export function CreateMnemonic() {
         { render_step() }
 
         <p className="Alt">
-          {/* @TODO: Don't show this if there are no saved wallets */}
           or
           <Link className="Alt" to="/access">access an existing wallet</Link>
         </p>

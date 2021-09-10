@@ -13,6 +13,7 @@ const get_account_from_mnemonic = u.memoize(u.bc.get_account_from_mnemonic);
 
 export function AccessMnemonic() {
   const history = useHistory();
+  const layout = u.useLayout();
   const [wallet, set_wallet] = useState<u.PrivateWallet | null>(null);
 
   function handle_change(event: ChangeEvent<HTMLTextAreaElement>) {
@@ -26,7 +27,13 @@ export function AccessMnemonic() {
   }
 
   function finish() {
-    if (wallet == null) { return; }
+    if (wallet == null) {
+      layout.push_notif({
+        group_id: "access-mnemonic-error",
+        content: u.notif.info("Error", "Couldn't get wallet from mnemonic!")
+      });
+      return;
+    }
 
     let w = u.g.create_user("My Wallet", "", wallet);
     u.g.set_active_user(w);

@@ -13,13 +13,21 @@ export function Settings() {
   const [keystore_op, set_keystore_op] = useState(u.OPERATION.INITIAL);
   const [is_local, set_is_local] = useState(!!u.g.user?.password);
 
-  if (!u.g.user?.privKey) {
+
+  if (!u.g.user) {
     history.push("/access");
     return <></>;
   }
 
+  if (u.wallet_is_metamask(u.g.user)) {
+    history.push("/wallet/dash");
+    return <></>;
+  }
+
+  let user = u.g.user as u.UserWallet;
+
   function get_keystore() {
-    if (u.g.user) {
+    if (user) {
       layout.push_modal({
         component: PassConfirmModal,
         props: {
@@ -37,12 +45,12 @@ export function Settings() {
   }
 
   async function generate_keystore(pass: string) {
-    if (u.g.user) {
+    if (user) {
       set_keystore_op(u.OPERATION.PENDING);
       let ret;
 
       try {
-        ret = await u.bc.generate_keystore(u.g.user.privKey, pass);
+        ret = await u.bc.generate_keystore(user.privKey, pass);
       } catch {
         ret = null;
       }
@@ -65,10 +73,10 @@ export function Settings() {
           button: "Save",
           onFinish: (val) => {
             if (!val) { return; }
-            if (!u.g.user) { return; }
-            u.g.user.name = val.name;
-            u.g.user.password = val.password;
-            u.g.add_user(u.g.user);
+            if (!user) { return; }
+            user.name = val.name;
+            user.password = val.password;
+            u.g.add_user(user);
             set_is_local(true);
           }
         }

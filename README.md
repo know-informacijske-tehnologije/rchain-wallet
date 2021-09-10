@@ -13,6 +13,7 @@
 		- [ ] 12 word
 	- [x] Keystore
 - [x] Access wallet
+	- [x] Via MetaMask
 	- [x] From mnemonic
 	- [x] Via keystore
 	- [x] From private key

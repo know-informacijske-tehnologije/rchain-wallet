@@ -1,7 +1,7 @@
 import './Dashboard.scss';
 import { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import { g, OPERATION, Unbox, useToggle } from 'utils';
+import { g, OPERATION, Unbox, useToggle, wallet_is_metamask } from 'utils';
 import { Spinner, ToggleString } from 'components';
 import { NodeContext } from "index";
 import * as Assets from "assets";
@@ -17,7 +17,7 @@ export function Dashboard() {
   let [balance, set_balance] = useState(0);
   let [error, set_error] = useState<string | null>(null);
 
-  if (!g?.user?.privKey) {
+  if (!g.user) {
     history.push("/access");
     return <></>;
   }
@@ -37,13 +37,13 @@ export function Dashboard() {
       return;
     }
 
-    if (res[1]) {
+    if (res.error) {
       set_balance_op(OPERATION.INITIAL);
-      set_error("Error while trying to fetch balance.");
+      set_error(res.error);
       return;
     }
 
-    set_balance(res[0]);
+    set_balance(res.balance);
     set_balance_op(OPERATION.DONE);
   }
 
@@ -74,6 +74,27 @@ export function Dashboard() {
     get_balance();
   }
 
+  function show_addr() {
+    if (!g.user) { return <></>; }
+    if (wallet_is_metamask(g.user)) {
+      return (<div className="Column" style={{width: "100%"}}>
+        <span style={{textAlign: "left"}}>Eth address</span>
+        <ToggleString className="Left SmallMargin SmallExpanded"
+                      str={g.user.ethAddr}
+                      toggle={show_pubkey}
+                      desc={"public key"} />
+      </div>);
+    } else {
+      return (<div className="Column" style={{width: "100%"}}>
+        <span style={{textAlign: "left"}}>Public key</span>
+        <ToggleString className="Left SmallMargin SmallExpanded"
+                      str={g.user.pubKey}
+                      toggle={show_pubkey}
+                      desc={"public key"} />
+      </div>);
+    }
+  }
+
   return (
     <div className="Card Content">
       <h3 className="Title">
@@ -84,13 +105,7 @@ export function Dashboard() {
         div className="Wallet Column Center">
           <img src={Assets.profile} alt="Wallet" />
           <p className="Name">{name}</p>
-          <div className="Column" style={{width: "100%"}}>
-            <span style={{textAlign: "left"}}>Public key</span>
-            <ToggleString className="Left SmallMargin SmallExpanded"
-                          str={g.user.pubKey}
-                          toggle={show_pubkey}
-                          desc={"public key"} />
-          </div>
+          { show_addr() }
         </div>
 
         <div className="Balance Column Separate-Y">

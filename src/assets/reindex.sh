@@ -2,6 +2,8 @@
 
 BASEDIR="$(dirname "${BASH_SOURCE[0]}")"
 
+bash $BASEDIR/optimize-svgs.sh
+
 find_files() {
 	find $BASEDIR -type f \( -name "*.svg" -or -name "*.png" \) | sort | xargs -L 1 realpath --relative-to $BASEDIR
 }

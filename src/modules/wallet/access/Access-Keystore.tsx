@@ -6,6 +6,7 @@ import * as u from 'utils';
 
 export function AccessKeystore() {
   const history = useHistory();
+  const layout = u.useLayout();
   const pass = u.useWritableWithToggle("", false);
   const [keystore_file, set_keystore_file] = useState<File|null>(null);
   const [unlocking, set_unlocking] = useState<u.OPERATION>(u.OPERATION.INITIAL);
@@ -29,17 +30,29 @@ export function AccessKeystore() {
     try {
       ks = await u.read_json_file(keystore_file) as Record<string, any>;
     } catch {
+      layout.push_notif({
+        group_id: "access-keystore-error",
+        content: u.notif.info("Error", "Failed to read keystore. File is possibly not formatted correctly.")
+      });
       set_unlocking(u.OPERATION.INITIAL);
       return;
     }
 
     if (!ks) {
       set_unlocking(u.OPERATION.INITIAL);
+      layout.push_notif({
+        group_id: "access-keystore-error",
+        content: u.notif.info("Error", "Failed to read keystore. File is possibly formatted incorrectly.")
+      });
       return;
     }
 
     let priv_wallet = await u.bc.get_account_from_keystore(ks, pass.value);
     if (priv_wallet == null) {
+      layout.push_notif({
+        group_id: "access-keystore-error",
+        content: u.notif.info("Error", "Failed to read keystore. Check your password.")
+      });
       set_unlocking(u.OPERATION.INITIAL);
       return;
     }

@@ -4,20 +4,33 @@ REINDEX_ROOT="$(realpath ${BASH_SOURCE[0]})"
 REINDEX_ROOT="$(dirname $REINDEX_ROOT)"
 REINDEX_ROOT="$(dirname $REINDEX_ROOT)"
 
-function map_name() {
-  case "$1" in
-    rho) echo " as rho" ;;
-    globals) echo " as g" ;;
-    rchain) echo " as rc" ;;
-    blockchain) echo " as bc" ;;
-    *) ;;
-  esac
+NO=`tput sgr0`
+RED=`tput setaf 1`
+GREEN=`tput setaf 2`
+BLUE=`tput setaf 4`
+
+function get_shortname() {
+  sn=$(grep "shortname" "$1" | cut -d: -f2 | xargs)
+  if [ "$sn" != "" ]; then
+    echo " as $sn"
+  fi
+  # case "$1" in
+    # rho) echo " as rho" ;;
+    # globals) echo " as g" ;;
+    # networks) echo " as nw" ;;
+    # blockchain) echo " as bc" ;;
+    # rnode) echo " as rnode" ;;
+    # *) ;;
+  # esac
 }
 
 for index_file in $(find $REINDEX_ROOT -wholename "$REINDEX_ROOT/src/**/index.ts"); do
   index_dir="$(dirname $index_file)"
 
+  echo "Reindexing ${BLUE}$(realpath --relative-to $REINDEX_ROOT $index_dir)${NO}..."
+
   if [ -f "$index_dir/reindex.sh" ]; then
+    echo "   ${RED}Found custom reindex script!${NO}"
     $index_dir/reindex.sh
     continue
   fi
@@ -37,8 +50,11 @@ for index_file in $(find $REINDEX_ROOT -wholename "$REINDEX_ROOT/src/**/index.ts
     BN="$(basename $BN .tsx)"
     FN="$(dirname "$PATHNAME")""/$BN"
     RO="$(basename $FN)"
-    text=$text"export "'*'"$(map_name $RO) from '$FN';\n"
+    text=$text"export "'*'"$(get_shortname $file) from '$FN';\n"
   done
 
   echo -e "$text" > $index_dir/index.ts
+  echo "   ${GREEN}Done!${NO}"
 done
+
+echo "${GREEN}Reindex operations finished!${NO}"

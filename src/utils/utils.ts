@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { LayoutContext, NodeContext } from 'index';
 import { useHistory } from 'react-router-dom';
+
 export type History = ReturnType<typeof useHistory>;
 
 export type Unbox<T> = T extends PromiseLike<infer U> ? Unbox<U> : T;
@@ -21,7 +23,29 @@ export interface PrivateWallet extends PublicWallet {
 	mnemonic?: string;
 };
 
+export interface MetaMaskWallet extends PublicWallet {
+	ethAddr: string;
+	is_metamask: boolean;
+};
+
+export function wallet_normalize(wallet: PublicWallet) {
+	if (wallet.ethAddr) {
+		wallet.ethAddr = wallet.ethAddr.replace(/^0x/, "");
+	}
+}
+
+export function wallet_is_metamask(obj: any): obj is MetaMaskWallet {
+	if (!obj) { return false; }
+	let has_rev_addr = typeof obj["revAddr"] == "string";
+	let has_eth_addr = typeof obj["ethAddr"] == "string";
+	let has_metamask = typeof obj["is_metamask"] == "boolean";
+	let is_metamask = obj["is_metamask"];
+	return has_rev_addr && has_eth_addr &&
+			has_metamask && is_metamask;
+}
+
 export function wallet_is_private(obj: any): obj is PrivateWallet {
+	if (!obj) { return false; }
 	let has_rev_addr = typeof obj["revAddr"] == "string";
 	let has_eth_addr = typeof obj["ethAddr"] == "string";
 	let has_pub_addr = typeof obj["pubKey"] == "string";
@@ -39,6 +63,8 @@ export interface UserWallet extends PrivateWallet {
 	name: string;
 	password: string;
 };
+
+export type UserMetaMaskWallet = NamedWallet & MetaMaskWallet;
 
 interface _LocallyStored {
 	"user-list": UserWallet[],
@@ -80,9 +106,9 @@ export function navigate(history: History, route: string) {
 }
 
 export function write_prop(set_prop: any) {
-  return (evt: any) => {
-    set_prop(evt.target.value);
-  }
+	return (evt: any) => {
+		set_prop(evt.target.value);
+	}
 }
 
 export function toggle(prop: any, set_prop: any) {
@@ -165,6 +191,14 @@ export function useWritableWithToggle<T>(
 	return prop;
 }
 
+export function useLayout() {
+	return useContext(LayoutContext);
+}
+
+export function useNodes() {
+	return useContext(NodeContext);
+}
+
 type Func<P extends Parameters<any>=any, R=any> = (...args: P) => R;
 type FuncFrom<T extends Func> = Func<Parameters<T>, ReturnType<T>>;
 
@@ -212,4 +246,58 @@ export async function download_blob(blob_url: string, filename: string) {
 	document.body.appendChild(link);
 	link.click();
 	link.remove();
+}
+
+export type Constructor<T> = (new (...args: any[]) => T) | ((...args: any[]) => T);
+
+export function range(a: number=0, b: number=a) {
+	let reverse = false;
+	if (a > b) {
+		[a, b] = [b, a];
+		reverse = true;
+	}
+	let rng = (b - a) + 1;
+
+	let arr = new Array(rng).fill(0).map((_, i) => i + a);
+
+	if (reverse) {
+		arr.reverse();
+	}
+
+	return arr;
+}
+
+export function repeat_string(str: string, times: number) {
+	return new Array(times).fill(str).join("");
+}
+
+export function is_nil(obj: any): obj is null {
+	return obj === null || obj === undefined;
+}
+
+export function is_type<T>(obj: any, type_: Constructor<T>): obj is T {
+	if (is_nil(obj)) { return false; }
+	return obj.constructor === type_ || obj instanceof type_;
+}
+
+export function has_prop<S extends string>(obj: any, prop: S): obj is Record<S, any> {
+	if (!obj) { return false; }
+	if (typeof obj !== "object") { return false; }
+	return prop in obj;
+}
+
+export function error_string(obj: any) {
+	if (typeof obj === "string") {
+		return obj;
+	}
+
+	if (has_prop(obj, "message")) {
+		return obj.message;
+	}
+
+	if (!obj) {
+		return null;
+	}
+
+	return String(obj);
 }

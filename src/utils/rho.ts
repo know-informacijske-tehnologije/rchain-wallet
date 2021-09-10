@@ -1,3 +1,5 @@
+// shortname: rho
+
 // Rholang code to transfer REVs
 // https://github.com/rchain/rchain/blob/3eca061/rholang/examples/vault_demo/3.transfer_funds.rho
 export const fn_transfer_funds = (rev_addr_from: string, rev_addr_to: string, amount: number|string) => `

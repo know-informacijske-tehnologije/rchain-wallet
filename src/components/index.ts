@@ -7,6 +7,7 @@ export * from './modals/ModalBase';
 export * from './modals/Pass-Confirm-Modal';
 export * from './modals/Wallet-Lock-Modal';
 export * from './navigation/Navigation';
+export * from './notification-host/NotifHost';
 export * from './pass-confirm/Pass-Confirm-Form';
 export * from './routes/Routes';
 export * from './sidebar/Sidebar';

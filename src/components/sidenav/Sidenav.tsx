@@ -1,14 +1,27 @@
 import './Sidenav.scss';
 import { useContext } from 'react';
 import { LayoutContext, NodeContext } from 'index';
-import { g, rc } from 'utils';
+import { g, nw, wallet_is_metamask } from 'utils';
 import { useLocation, Link } from "react-router-dom";
 import * as Assets from "assets";
 
-const links = [
+interface NavLink {
+  icon: string,
+  text: string,
+  to: string,
+  validator?: ()=>boolean;
+}
+
+const links: NavLink[] = [
   { icon: Assets.dash,         text: "DASHBOARD", to: "/wallet/dash" },
   { icon: Assets.trans,        text: "TRANSFER",  to: "/wallet/transfer" },
-  { icon: Assets.wallet_small, text: "SETTINGS",  to: "/wallet/settings" },
+  { icon: Assets.deploy,       text: "DEPLOY",    to: "/wallet/deploy" },
+  {
+    icon: Assets.wallet_small, text: "SETTINGS",  to: "/wallet/settings",
+    validator: () => {
+      return !wallet_is_metamask(g.user);
+    }
+  },
 ];
 
 export function Sidenav() {
@@ -23,6 +36,7 @@ export function Sidenav() {
   function Links() {
     let link_els = [];
     for (let link of links) {
+      if (!!link.validator && !link.validator()) { continue; }
       let is_current = location.pathname.startsWith(link.to);
       link_els.push(
         <Link className={is_current ? "Current" : ""}
@@ -46,11 +60,10 @@ export function Sidenav() {
 
       for (let j=0; j<network.hosts.length; j++) {
         let host = network.hosts[j];
-        let urls = rc.get_node_urls(host);
+        let urls = nw.get_node_urls(host);
         options.push(
           <option key={urls.httpUrl}
-                  value={`${i},${j}`}
-                  selected={node_context.node === host}>
+                  value={`${i},${j}`}>
             {urls.httpUrl}
           </option>
         );
@@ -73,11 +86,10 @@ export function Sidenav() {
     let network = node_context.network;
     for (let i=0; i<network.readOnlys.length; i++) {
       let read_only = network.readOnlys[i];
-      let urls = rc.get_node_urls(read_only);
+      let urls = nw.get_node_urls(read_only);
       options.push(
         <option key={urls.httpUrl}
-                value={i}
-                selected={node_context.read_only === read_only}>
+                value={i}>
           {urls.httpUrl}
         </option>
       );
@@ -95,17 +107,40 @@ export function Sidenav() {
     node_context.set_read_only(ev.target.value);
   };
 
+  let selected_node_value = "0,0";
+  let selected_readonly_value = 0;
+
+  OUT: for (let i=0; i<g.networks.length; i++) {
+    let network = g.networks[i];
+
+    for (let j=0; j<network.hosts.length; j++) {
+      let host = network.hosts[j];
+      if (node_context.node === host) {
+        selected_node_value = `${i},${j}`;
+        break OUT;
+      }
+    }
+  }
+
+  for (let i=0; i<node_context.network.readOnlys.length; i++) {
+    let read_only = node_context.network.readOnlys[i];
+    if (node_context.read_only === read_only) {
+      selected_readonly_value = i;
+      break;
+    }
+  }
+
   const NodeSelects = () => {
     return (<>
       <label>
         <p>Validator node</p>
-        <select onChange={set_node}>
+        <select onChange={set_node} value={selected_node_value}>
           { Nodes() }
         </select>
       </label>
       <label>
         <p>Read-only node</p>
-        <select onChange={set_readonly}>
+        <select onChange={set_readonly} value={selected_readonly_value}>
           { ReadOnlys() }
         </select>
         <p>&nbsp;</p>

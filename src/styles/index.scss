@@ -278,6 +278,9 @@ textarea, input, select {
 
 .FullWidth { width: 100%; }
 
+.Scroll-Hidden { overflow: hidden }
+.Scroll-Auto   { overflow: auto }
+
 .Row {
   display: flex;
   flex-flow: row nowrap;
@@ -407,4 +410,25 @@ textarea, input, select {
   grid-template-columns: auto          1fr;
   grid-template-rows: auto 1fr;
   height: 100%;
+
+  &::before {
+    content: "Careful! This is a beta app. You are connected to the main network. "
+             "If you just want to test it out, connect to a test network, or to a local node!";
+    position: fixed;
+    right: 1ch;
+    top: 1ch;
+    padding: 1ch;
+    background: #8b0430;
+    width: 60ch;
+    max-width: 50vw;
+    z-index: 1000000;
+    pointer-events: none;
+    text-align: right;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+
+  &.mainnet::before {
+    opacity: 0.8;
+  }
 }

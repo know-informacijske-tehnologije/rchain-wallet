@@ -37,7 +37,7 @@ export function Transfer() {
   async function make_transfer() {
     if (!u.g.user) { return; }
 
-    let from_wallet: u.UserWallet = {
+    let from_wallet: u.UserWallet | u.UserMetaMaskWallet = {
       ...u.g.user,
       name: sender_name.value,
       password: ""
@@ -57,7 +57,7 @@ export function Transfer() {
     }
   }
 
-  if (!u.g.user?.privKey) {
+  if (!u.g.user) {
     history.push("/access");
     return <></>;
   }
