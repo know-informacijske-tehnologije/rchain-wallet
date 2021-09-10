@@ -82,7 +82,7 @@ export function Landing() {
           </span>
         </h1>
         <h3 className="BigScreen">
-          <span>{lipsum1}</span>
+          <span>Locally stored web interface for interaction with RChain platform</span>
         </h3>
       </div>
 

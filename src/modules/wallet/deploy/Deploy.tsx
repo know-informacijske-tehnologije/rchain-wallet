@@ -11,6 +11,7 @@ export function Deploy() {
   const node_context = useContext(NodeContext);
   const code = u.useWritable("");
   const code_ref = createRef<HTMLTextAreaElement>();
+  const phlo_limit = u.useWritableNumber(500000);
   const [err,  set_err] = useState<string|null>();
   const [msg,  set_msg] = useState<string|null>();
   const [cost, set_cost] = useState<number|null>();
@@ -39,7 +40,7 @@ export function Deploy() {
     let res = await u.g.deploy_code(
       node_context.node,
       code.value,
-      500000
+      phlo_limit.value
     );
 
     if (!res) {
@@ -98,7 +99,24 @@ export function Deploy() {
           </textarea>
         </label>
 
-        <p className="Row Separate-X Center-Y">
+        <label>
+          <p>Phlo Limit</p>
+          <div className="Field">
+            <input className="Flex-Spacer"
+                   style={{ textAlign: "right" }}
+                   value={phlo_limit.str}
+                   onChange={phlo_limit.write}
+                   onBlur={phlo_limit.correct}/>
+            <p className="Alt Flex-Max NoMargin"
+               style={{ padding: "0 1em" }}>
+              ×10<sup>-8</sup> REV
+            </p>
+          </div>
+        </label>
+
+        <p></p>
+
+        <div className="Row Separate-X Center-Y">
           <button className="Subtle Fit"
                   onClick={clear}>
             Clear
@@ -107,11 +125,12 @@ export function Deploy() {
           <Spinner op={op}
                    children_initial={
                      <button className="Fit Row Center-X Center-Y"
+                             disabled={!code.value || phlo_limit.value <= 0}
                              onClick={deploy}>
                        <img src={Assets.run} alt="Deploy" />
                      </button>
                    } />
-        </p>
+        </div>
 
         { show_cost() }
         { show_error() }
