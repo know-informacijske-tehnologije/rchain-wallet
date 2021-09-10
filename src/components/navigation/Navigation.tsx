@@ -15,9 +15,9 @@ export function Navigation() {
   function Menu(show_menu:boolean){
     if (show_menu && !in_wallet) {
       return <div className="Menu Column Center-X Center-Y">
-        <a href="https://github.com">Community</a>
-        <a href="https://github.com">Blog</a>
-        <a href="https://github.com">Support</a>
+        <a href="https://blog.rchain.coop/">Community</a>
+        <a href="https://rchain.coop/community.html">Blog</a>
+        {/*<a href="https://github.com">Support</a>*/}
       </div>;
     }
 
@@ -51,7 +51,8 @@ export function Navigation() {
     if (!in_wallet) {
       return (<><a href="https://github.com">Community</a>
               <a href="https://github.com">Blog</a>
-              <a href="https://github.com">Support</a></>);
+              {/*<a href="https://github.com">Support</a>*/}
+      </>);
     }
   }
 
