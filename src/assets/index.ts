@@ -39,6 +39,8 @@ export { default as keystore } from "./keystore.svg";
 export { ReactComponent as Keystore } from "./keystore.svg";
 export { default as key } from "./key.svg";
 export { ReactComponent as Key } from "./key.svg";
+export { default as knowit } from "./knowit.svg";
+export { ReactComponent as Knowit } from "./knowit.svg";
 export { default as localpass } from "./localpass.svg";
 export { ReactComponent as Localpass } from "./localpass.svg";
 export { default as logo_notext } from "./logo-notext.png";

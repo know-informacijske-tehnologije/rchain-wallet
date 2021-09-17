@@ -56,9 +56,6 @@ function blink_lights(svg: SVGSVGElement & { blinking?: boolean }) {
   }, blink_interval_ms);
 }
 
-const lipsum1 = "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.";
-const lipsum2 = "To a degree, some methods for creating work, such as employing intuition, are shared across the disciplines within the applied arts and fine art. Mark Getlein, writer, suggests the principles of design are almost instinctive.";
-
 export function Landing() {
   let history = useHistory();
   let art_ref = createRef<SVGSVGElement>();
@@ -90,14 +87,18 @@ export function Landing() {
         <div className="Card">
           <img src={Assets.wallet} alt="Wallet"/>
           <h2>Create a new wallet</h2>
-          <h4 className="Dynamic">{lipsum1}</h4>
+          <h4 className="Dynamic">
+            Generate a new wallet address and choose your preferred method of access.
+          </h4>
           <button onClick={navigate(history, "/create")}>Create</button>
         </div>
 
         <div className="Card">
           <img src={Assets.globe} alt="Globe"/>
           <h2>Access your wallet</h2>
-          <h4 className="Dynamic">{lipsum1}</h4>
+          <h4 className="Dynamic">
+            Connect to the RChain platform to check your balance, transfer REV and deploy Rholang code.
+          </h4>
           <button onClick={navigate(history, "/access")}>Access</button>
         </div>
       </div>
@@ -105,16 +106,28 @@ export function Landing() {
       <h2>FAQ</h2>
 
       <Components.Expander
-        title={<h3 className="NoMargin Left">What is MyRChainWallet?</h3>}
-        content={<p>{lipsum2}</p>}/>
+        title={
+          <h3 className="NoMargin Left">
+            What is RChainWallet?
+          </h3>}
+        content={
+          <p>
+            RChainWallet is a free, open-source web application that provides a simple interface to interact with the RChain platform.
+          </p>}/>
 
       <Components.Expander
-        title={<h3 className="NoMargin Left">How do we handle private keys?</h3>}
-        content={<p>{lipsum2}</p>}/>
-
-      <Components.Expander
-        title={<h3 className="NoMargin Left">How can I send a transaction?</h3>}
-        content={<p>{lipsum2}</p>}/>
+        title={
+          <h3 className="NoMargin Left">
+            How do we handle private keys?
+          </h3>}
+        content={<>
+            <p>
+              Your private key is stored locally, and will never leave your computer. All locally stored data, including your private key, will be deleted after you clear your browser cache.
+            </p>
+            <p>
+              Please, take care of your mnemonics and keystore files by storing them somewhere safe.
+            </p>
+          </>}/>
 
       <Components.Expander
         title={
@@ -123,7 +136,10 @@ export function Landing() {
           </h3>}
         content={
           <p>
-            {lipsum2}
+            If you are a coop member, please use the <b>#wallet</b> channel on
+            <a className="Alt" href="https://discord.gg/NWkQnfH">the official Discord server.</a>
+            Otherwise, feel free to
+            <a className="Alt" href="https://t.me/RChainOfficial">ask a question on Telegram.</a>
           </p>}/>
 
       <div className="Footer">
@@ -137,6 +153,7 @@ export function Landing() {
         </div>
 
         <div className="LinksList">
+
           <figure>
             <figcaption>
               <h4>Discover</h4>
@@ -144,39 +161,44 @@ export function Landing() {
 
             <div className="Content">
               <ul>
-                <li><a href="/">Discover 1</a></li>
-                <li><a href="/">Discover 2</a></li>
-                <li><a href="/">Discover 3</a></li>
-                <li><a href="/">Discover 4</a></li>
-              </ul>
-            </div>
-
-          </figure>
-
-          <figure>
-            <figcaption>
-              <h4>Affiliates</h4>
-            </figcaption>
-
-            <div className="Content">
-              <ul>
-                <li><a href="/">Affiliates 1</a></li>
-                <li><a href="/">Affiliates 2</a></li>
-                <li><a href="/">Affiliates 3</a></li>
-                <li><a href="/">Affiliates 4</a></li>
+                <li><a href="https://rchain-community.github.io">Rholang</a></li>
+                <li><a href="https://revdefine.io">Revdefine</a></li>
+                <li><a href="https://dappy.tech">Dappy</a></li>
+                <li><a href="https://github.com/rchain-community">Community Github</a></li>
               </ul>
             </div>
           </figure>
 
           <figure>
             <figcaption>
-              <h4>Donate</h4>
+              <h4>Donate REV</h4>
             </figcaption>
 
             <div className="Content">
-              <p>{lipsum2}</p>
+              <p className="Key">111151LUEfjJhpLjmJNECvo7PWT8fce8Gau481jWLQ1ZDfGYc2K7W</p>
             </div>
           </figure>
+
+          <figure>
+            <figcaption>
+              <h4>Donate ETH</h4>
+            </figcaption>
+
+            <div className="Content">
+              <p className="Key">be165c0e00dce91375ebd15ea98f93006bbf4e1f</p>
+            </div>
+          </figure>
+
+          <figure>
+            <div className="Content">
+              <a href="https://knowit.hr">
+                <img src={ Assets.knowit }
+                     alt="KnowIT Logo" />
+              </a>
+            </div>
+          </figure>
+
+
         </div>
       </div>
 

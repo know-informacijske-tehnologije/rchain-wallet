@@ -198,8 +198,19 @@
         .Content {
           flex: 1 1 0;
 
+          img {
+            max-width: 20ch;
+            width: 75%;
+            height: 75%;
+          }
+
           p {
             text-align: justify;
+
+            &.Key {
+              word-break: break-all;
+              max-width: 25ch;
+            }
           }
         }
 
