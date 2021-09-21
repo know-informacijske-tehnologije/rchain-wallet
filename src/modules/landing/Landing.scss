@@ -169,7 +169,8 @@
       display: flex;
       flex-flow: row nowrap;
       align-items: stretch;
-      padding: 6vw;
+      padding: 4em 6vw;
+      padding-bottom: 0;
 
       @media only screen and (max-width: 900px) {
         flex-flow: column nowrap;
@@ -198,12 +199,6 @@
         .Content {
           flex: 1 1 0;
 
-          img {
-            max-width: 20ch;
-            width: 75%;
-            height: 75%;
-          }
-
           p {
             text-align: justify;
 
@@ -231,6 +226,22 @@
           margin: 0;
           margin-bottom: 20px;
         }
+      }
+    }
+
+    .Dev {
+
+      p {
+        font-size: 75%;
+        margin: 0;
+        padding: 0;
+        line-height: 1;
+      }
+
+      img {
+        height: 16px;
+        padding: 8px;
+        vertical-align: middle;
       }
     }
   }

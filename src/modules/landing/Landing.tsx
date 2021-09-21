@@ -146,58 +146,72 @@ export function Landing() {
         <div className="Logo">
           <img className="BigScreen"
                src={Assets.logo_white}
-               alt="MyRChainWallet Logo" />
+               alt="RChainWallet Logo" />
           <img className="SmallScreen"
                src={Assets.logo_white_oneline}
-               alt="MyRChainWallet Logo" />
+               alt="RChainWallet Logo" />
         </div>
 
-        <div className="LinksList">
+        <div className="Column Flex-Spacer">
 
-          <figure>
-            <figcaption>
-              <h4>Discover</h4>
-            </figcaption>
+          <div className="LinksList">
 
-            <div className="Content">
-              <ul>
-                <li><a href="https://rchain-community.github.io">Rholang</a></li>
-                <li><a href="https://revdefine.io">Revdefine</a></li>
-                <li><a href="https://dappy.tech">Dappy</a></li>
-                <li><a href="https://github.com/rchain-community">Community Github</a></li>
-              </ul>
-            </div>
-          </figure>
+            <figure>
+              <figcaption>
+                <h4>Discover</h4>
+              </figcaption>
 
-          <figure>
-            <figcaption>
-              <h4>Donate REV</h4>
-            </figcaption>
+              <div className="Content">
+                <ul>
+                  <li><a href="https://rchain-community.github.io">Rholang</a></li>
+                  <li><a href="https://revdefine.io">Revdefine</a></li>
+                  <li><a href="https://dappy.tech">Dappy</a></li>
+                  <li><a href="https://github.com/rchain-community">Community Github</a></li>
+                </ul>
+              </div>
+            </figure>
 
-            <div className="Content">
-              <p className="Key">111151LUEfjJhpLjmJNECvo7PWT8fce8Gau481jWLQ1ZDfGYc2K7W</p>
-            </div>
-          </figure>
+            <figure>
+              <figcaption>
+                <h4>Donate REV</h4>
+              </figcaption>
 
-          <figure>
-            <figcaption>
-              <h4>Donate ETH</h4>
-            </figcaption>
+              <div className="Content">
+                <p className="Key">111151LUEfjJhpLjmJNECvo7PWT8fce8Gau481jWLQ1ZDfGYc2K7W</p>
+              </div>
+            </figure>
 
-            <div className="Content">
-              <p className="Key">be165c0e00dce91375ebd15ea98f93006bbf4e1f</p>
-            </div>
-          </figure>
+            <figure>
+              <figcaption>
+                <h4>Donate ETH</h4>
+              </figcaption>
 
-          <figure>
-            <div className="Content">
+              <div className="Content">
+                <p className="Key">be165c0e00dce91375ebd15ea98f93006bbf4e1f</p>
+              </div>
+            </figure>
+
+          </div>
+
+          <div className="BigScreen">
+            <div className="Dev Row End-X Center-Y" style={{paddingRight: "6vw"}}>
+              <p className="Alt">Developed by</p>
               <a href="https://knowit.hr">
                 <img src={ Assets.knowit }
                      alt="KnowIT Logo" />
               </a>
             </div>
-          </figure>
+          </div>
 
+          <div className="SmallScreen">
+            <div className="Dev Row Center-X Center-Y">
+              <p className="Alt">Developed by</p>
+              <a href="https://knowit.hr">
+                <img src={ Assets.knowit }
+                     alt="KnowIT Logo" />
+              </a>
+            </div>
+          </div>
 
         </div>
       </div>

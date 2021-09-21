@@ -1,4 +1,4 @@
-# MyRChainWallet
+# RChainWallet
 
 ## TASKS (MVP)
 
@@ -26,8 +26,8 @@
 	- [x] Transfer screen
 	- [x] Settings screen
 	- [x] Design for mobile
-	- [ ] Deploy code screen
+	- [x] Deploy code screen
 	- [ ] Offline signing
 - [ ] Other
-	- [ ] Display errors when they happen and inform user about what went wrong
+	- [x] Display errors when they happen and inform user about what went wrong
 	- [ ] Inform user when transfer is complete

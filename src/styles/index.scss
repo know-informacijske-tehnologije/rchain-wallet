@@ -293,6 +293,14 @@ textarea, input, select {
     justify-content: center;
   }
 
+  &.End-Y {
+    align-items: flex-end;
+  }
+
+  &.End-X {
+    justify-content: flex-end;
+  }
+
   &.Separate-Y {
     align-items: space-between;
   }
@@ -316,6 +324,14 @@ textarea, input, select {
 
   &.Center-X, &.Center {
     align-items: center;
+  }
+
+  &.End-Y {
+    justify-content: flex-end;
+  }
+
+  &.End-X {
+    align-items: flex-end;
   }
 
   &.Separate-Y {

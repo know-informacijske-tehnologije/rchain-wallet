@@ -69,10 +69,10 @@ export function Navigation() {
         <Link className="Logo" to="/">
           <img className="Large"
                src={Assets.logo}
-               alt="MyRChainWallet" />
+               alt="RChainWallet" />
           <img className="Small"
                src={Assets.logo_notext}
-               alt="MyRChainWallet" />
+               alt="RChainWallet" />
         </Link>
 
         { MenuToggle() }
