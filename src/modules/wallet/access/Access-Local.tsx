@@ -12,6 +12,8 @@ export function AccessLocal() {
   const password = u.useWritableWithToggle("", false);
 
   function access() {
+    if (!name.value) { return; }
+
     let user_index = g.wallet_index(g.user_list, name.value);
     if (user_index === -1) {
       layout.push_notif({
@@ -35,11 +37,17 @@ export function AccessLocal() {
     history.push("/wallet/dash");
   }
 
+  function handle_keypress(ev: any) {
+    if (ev.nativeEvent.keyCode === 13) {
+      access();
+    }
+  }
+
   return (
     <div className="FormScreen Column Center-X">
       <h2 className="Alt">Access Locally Stored Wallet</h2>
 
-      <div className="Column Center-X" style={{width: "min-content"}}>
+      <div className="Column Center-X" style={{width: "min-content"}} onKeyPress={handle_keypress}>
         <p className="Alt" style={{marginBottom: "3em"}}>
           Unlock a wallet that you have previously locally stored in your browser
         </p>

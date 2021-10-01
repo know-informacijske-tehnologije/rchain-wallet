@@ -79,7 +79,7 @@ export function Dashboard() {
     if (wallet_is_metamask(g.user)) {
       return (<div className="Column" style={{width: "100%"}}>
         <span style={{textAlign: "left"}}>Eth address</span>
-        <ToggleString className="Left SmallMargin SmallExpanded"
+        <ToggleString className="Left Below SmallMargin SmallExpanded"
                       str={g.user.ethAddr}
                       toggle={show_pubkey}
                       desc={"public key"} />
@@ -87,7 +87,7 @@ export function Dashboard() {
     } else {
       return (<div className="Column" style={{width: "100%"}}>
         <span style={{textAlign: "left"}}>Public key</span>
-        <ToggleString className="Left SmallMargin SmallExpanded"
+        <ToggleString className="Left Below SmallMargin SmallExpanded"
                       str={g.user.pubKey}
                       toggle={show_pubkey}
                       desc={"public key"} />
@@ -112,7 +112,7 @@ export function Dashboard() {
 
           <div className="Column">
             <span style={{textAlign: "right"}}>Rev Address</span>
-            <ToggleString className="Right SmallMargin SmallExpanded"
+            <ToggleString className="Right Below SmallMargin SmallExpanded"
                           str={g.user.revAddr}
                           toggle={show_rev_addr}
                           desc={"rev address"} />

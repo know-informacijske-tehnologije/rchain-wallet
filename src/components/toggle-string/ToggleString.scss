@@ -24,6 +24,11 @@
         align-items: flex-end;
         p { text-align: right; }
 
+        &.Below {
+            width: max-content;
+            align-self: flex-end;
+        }
+
         &.Expanded {
             justify-content: space-between;
             align-items: center;
@@ -35,11 +40,21 @@
         align-items: flex-start;
         p { text-align: left; }
 
+        &.Below {
+            width: max-content;
+            align-self: flex-start;
+        }
+
         &.Expanded {
             justify-content: space-between;
             align-items: center;
             flex-flow: row nowrap;
         }
+    }
+
+    &.Below.Expanded {
+        flex-flow: column nowrap;
+        align-items: center;
     }
 
     .Toggle {
