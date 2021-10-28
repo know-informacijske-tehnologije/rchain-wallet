@@ -68,7 +68,7 @@ export async function transfer(
 
     let signature: string|null;
     try {
-        signature = (await send_deploy(urls, from_wallet, code)).signature;
+        signature = (await send_deploy(urls, from_wallet, code, 500000)).signature;
     } catch (err) {
         return {
             cost: null,

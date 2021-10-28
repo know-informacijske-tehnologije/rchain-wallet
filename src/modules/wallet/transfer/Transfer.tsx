@@ -18,6 +18,8 @@ export function Transfer() {
   const receiver_name = u.useWritable("");
   const amount = u.useWritableNumber(0);
   const node_context = useContext(NodeContext);
+  const layout = u.useLayout();
+
   const [op, set_op] = useState(u.OPERATION.INITIAL);
 
   function reset() {
@@ -44,15 +46,44 @@ export function Transfer() {
     };
 
     let receiver_wallet = u.bc.get_account(receiver.value);
-    if (receiver_wallet === null) { return; }
 
+    if (receiver_wallet === null) {
+      layout.push_notif({
+        group_id: "transfer-error",
+        content: u.notif.info("Error", "Invalid receiver wallet!")
+      });
+      set_op(u.OPERATION.INITIAL);
+      return;
+    }
 
     let to_wallet: u.NamedWallet = { ...receiver_wallet, name: receiver_name.value };
     try {
       set_op(u.OPERATION.PENDING);
-      await u.g.transfer(node_context.node, amount.value * 100000000, from_wallet, to_wallet);
+      let res = await u.g.transfer(node_context.node, amount.value * 100000000, from_wallet, to_wallet);
+
+      if (!res) {
+        layout.push_notif({
+          group_id: "transfer-error",
+          content: u.notif.info("Error", `Transfer failed!`)
+        });
+      } else if (res.error) {
+        layout.push_notif({
+          group_id: "transfer-error",
+          content: u.notif.info("Error", `Transfer failed!\n${res.error}`)
+        });
+      } else {
+        layout.push_notif({
+          group_id: "transfer-success",
+          content: u.notif.info("Success!", "Your transfer is successful, but not finalized yet. Check your balance again in a few minutes.")
+        });
+      }
+
       set_op(u.OPERATION.INITIAL);
-    } catch {
+    } catch (err) {
+      layout.push_notif({
+        group_id: "transfer-error",
+        content: u.notif.info("Error", `Transfer failed!\n${String(err)}`)
+      });
       set_op(u.OPERATION.INITIAL);
     }
   }
