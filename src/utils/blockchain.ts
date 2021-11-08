@@ -182,12 +182,8 @@ interface HDKey {
 };
 
 function get_hdkey(key: eth_wallet.hdkey): HDKey {
-	// @NOTE: ethereumjs-wallet does not include the type of the HDKey.
-	// Instead, it is typed as "any". The above interface
-	// and this function are a temporary measure to mitigate this.
-	// The properties of the _hdkey object can be seen at
-	// https://github.com/cryptocoinjs/hdkey, in hdkey/lib/hdkey.js,
-	// if more needs to be exposed.
+	// @NOTE: Probably should find a cleaner way of doing this.
+	// Using private api could break at any point...
 	return key["_hdkey"];
 }
 
@@ -196,22 +192,13 @@ export function get_account_from_mnemonic(mnemonic: string): PrivateWallet | nul
 	let hd_wallet = eth.hdkey.fromMasterSeed(seed);
 	let key = hd_wallet.derivePath("m/44'/60'/0'/0/0");
 	let hdkey = get_hdkey(key);
-
 	let private_key = eth.util.bufferToHex(hdkey._privateKey);
-	let public_key = eth.util.bufferToHex(hdkey._publicKey);
 
-	const eth_address_buffer = eth.util.pubToAddress(hdkey._publicKey, true);
-	const eth_addr_hex = eth_address_buffer.toString('hex');
-	const to_checksum = eth_addr_hex.startsWith('0x') ? eth_addr_hex : '0x' + eth_addr_hex;
-	const eth_addr = eth.util.toChecksumAddress(to_checksum);
-
-	const acc = get_account_from_eth(eth_addr);
+	const acc = get_account_from_private_key(private_key);
 	if (!acc) { return null; }
 
 	return {
 		...acc,
-		privKey: private_key,
-		pubKey: public_key,
 		mnemonic: mnemonic
 	};
 }
