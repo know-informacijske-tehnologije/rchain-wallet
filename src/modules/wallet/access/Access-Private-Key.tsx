@@ -11,7 +11,12 @@ export function AccessPrivateKey() {
   function handle_change(event: ChangeEvent<HTMLInputElement>) {
     set_wallet(null);
 
-    let pkey = u.bc.is_valid_private_key(event.target.value);
+    let val = event.target.value;
+    if (!val.startsWith("0x")) {
+      val = "0x" + val;
+    }
+
+    let pkey = u.bc.is_valid_private_key(val);
     if (!pkey) { return; }
 
     set_wallet(u.bc.get_account_from_private_key(pkey));
