@@ -15,10 +15,14 @@ export function CreateMnemonic() {
   const word16 = u.useWritable("");
   const [ words_correct, set_words_correct ] = useState(false);
 
+  function mnemonic_word(word: string) {
+    return <div className="Word" key={word}>
+      {word}
+    </div>;
+  }
+
   function mnemonic_words() {
-    let words = mnemonic.split(" ").map(w => {
-      return (<div className="Word" key={w}>{w}</div>)
-    });
+    let words = mnemonic.split(" ").map(mnemonic_word);
     return <div className="MnemonicWords">
       { words }
     </div>;

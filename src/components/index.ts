@@ -16,5 +16,6 @@ export * from './spinner/Spinner';
 export * from './tabs/Tabs';
 export * from './toggle-button/ToggleButton';
 export * from './toggle-string/ToggleString';
+export * from './transaction-list/TransactionList';
 export * from './wallet-lock/Wallet-Lock-Form';
 

@@ -1,3 +1,15 @@
+.Layout-Dash {
+	.Content {
+		padding: 0 2em;
+		height: 100%;
+		overflow: auto;
+	}
+
+	.Card {
+		margin-bottom: 2em;
+	}
+}
+
 .Dashboard {
 	.Wallet, .Balance {
 		flex: 1 1 0;

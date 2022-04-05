@@ -1,0 +1,130 @@
+.TransactionSpinner {
+    height: 25vh;
+}
+
+
+.TransactionTable {
+    margin: 0 -1em;
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 90%;
+        margin-top: -1em;
+    }
+
+    tr {
+        border-bottom: 1px solid #090721;
+    }
+
+    thead tr {
+        background: transparent !important;
+    }
+
+    tr:nth-child(odd) {
+        background: #090721;
+    }
+
+    @media only screen and (max-width: 1280px) {
+        thead {
+            display: none;
+        }
+
+        tr {
+            display: flex;
+            flex-flow: column;
+            padding: 1em 0;
+
+            &:nth-child(even) {
+                background: #090721;
+            }
+
+            &:nth-child(odd) {
+                background: transparent;
+            }
+        }
+
+        td {
+            display: flex;
+
+            &::before {
+                display: block;
+                content: attr(data-title);
+                padding-right: 1em;
+                font-weight: bold;
+                width: 6ch;
+                text-align: left;
+            }
+        }
+    }
+
+    th {
+        text-align: center;
+
+        div {
+            display: inline-block;
+            text-align: left;
+            width: 20ch;
+        }
+
+        &:last-child {
+            text-align: right;
+
+            div { width: auto }
+        }
+    }
+
+    td, th {
+        padding: 1em 2em;
+    }
+
+    td.AddrType {
+        text-align: center;
+        vertical-align: middle;
+
+        button {
+            display: inline-block;
+            position: relative;
+            width: 16px;
+            height: 16px;
+            margin-right: .25em;
+            background: transparent;
+            padding: 0;
+
+            img {
+                position: absolute;
+                width: 16px;
+                height: 16px;
+                left: 0;
+                top: 0;
+            }
+        }
+
+        a {
+            display: inline-block;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            max-width: 20ch;
+            font-size: 1em;
+
+            @media only screen and (max-width: 512px) {
+                max-width: 15ch;
+            }
+        }
+    }
+
+    td.AmountType {
+        text-align: right;
+
+        div {
+            overflow: hidden;
+
+            &::after {
+                content: "REV";
+                color: #626171;
+                margin-left: .5em;
+                font-size: 80%;
+            }
+        }
+    }
+}

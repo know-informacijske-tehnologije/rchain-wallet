@@ -21,6 +21,8 @@ export { default as check } from "./check.svg";
 export { ReactComponent as Check } from "./check.svg";
 export { default as chevron } from "./chevron.svg";
 export { ReactComponent as Chevron } from "./chevron.svg";
+export { default as copy } from "./copy.svg";
+export { ReactComponent as Copy } from "./copy.svg";
 export { default as dash } from "./dash.svg";
 export { ReactComponent as Dash } from "./dash.svg";
 export { default as deploy } from "./deploy.svg";

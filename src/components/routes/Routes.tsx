@@ -11,7 +11,7 @@ let layout_map: Record<string, string> = {
 	"/access/keystore": "Layout-Default",
 	"/access/mnemonic": "Layout-Default",
 	"/access/private-key": "Layout-Default",
-	"/wallet/dash": "Layout-Wallet",
+	"/wallet/dash": "Layout-Dash",
 	"/wallet/transfer": "Layout-Wallet",
 	"/wallet/deploy":   "Layout-Wallet",
 	"/wallet/settings": "Layout-Wallet",

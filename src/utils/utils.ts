@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useRef, useEffect } from 'react';
 import { LayoutContext, NodeContext } from 'index';
 import { useHistory } from 'react-router-dom';
 
@@ -125,6 +125,17 @@ export async function Get<T>(url: string, headers: {[key: string]: string} = {})
 export async function Post<T>(url: string, body: any, headers: {[key: string]: string} = {}) {
 	let response = await fetch(url, { body: JSON.stringify(body), method: "POST", headers });
 	return (await response.json()) as T;
+}
+
+export function useMounted() {
+	const is_mounted = useRef(false);
+
+	useEffect(() => {
+		is_mounted.current = true;
+		return () => { is_mounted.current = false; }
+	}, []);
+
+	return is_mounted;
 }
 
 export function useToggle(init: boolean) {

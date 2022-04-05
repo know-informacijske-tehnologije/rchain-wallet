@@ -1,8 +1,8 @@
 import './Dashboard.scss';
 import { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import { g, OPERATION, Unbox, useToggle, wallet_is_metamask } from 'utils';
-import { Spinner, ToggleString } from 'components';
+import { g, OPERATION, Unbox, useToggle, wallet_is_metamask, useMounted } from 'utils';
+import { Spinner, ToggleString, TransactionList } from 'components';
 import { NodeContext } from "index";
 import * as Assets from "assets";
 
@@ -16,6 +16,7 @@ export function Dashboard() {
   let [balance_op, set_balance_op] = useState(OPERATION.INITIAL);
   let [balance, set_balance] = useState(0);
   let [error, set_error] = useState<string | null>(null);
+  const mounted = useMounted();
 
   if (!g.user) {
     history.push("/access");
@@ -30,6 +31,8 @@ export function Dashboard() {
     } catch {
       res = null;
     }
+
+    if (!mounted.current) { return; }
 
     if (!res) {
       set_balance_op(OPERATION.INITIAL);
@@ -95,40 +98,43 @@ export function Dashboard() {
     }
   }
 
-  return (
-    <div className="Card Content">
+  return <div className="Content">
+    <div className="Card">
       <h3 className="Title">
-        Wallet
+        <span>Wallet</span>
+        <div>
+          { get_balance_button() }
+        </div>
       </h3>
-      <div className="Body Dashboard Row Wrap Center-Y Separate-X">
-        <
-        div className="Wallet Column Center">
-          <img src={Assets.profile} alt="Wallet" />
-          <p className="Name">{name}</p>
-          { show_addr() }
+      <div className="Body">
+        <div className="Dashboard Row Wrap Stretch-Y Separate-X">
+          <div className="Wallet Column Center-X Stretch-Y">
+            <div>
+              <img src={Assets.profile} alt="Wallet" />
+              <p className="Name">{name}</p>
+            </div>
+            { show_addr() }
+          </div>
+
+          <div className="Balance Column Separate-Y">
+
+            <div className="Column">
+              <span style={{textAlign: "right"}}>Rev Address</span>
+              <ToggleString className="Right Below SmallMargin SmallExpanded"
+                            str={g.user.revAddr}
+                            toggle={show_rev_addr}
+                            desc={"rev address"} />
+            </div>
+
+            <div className="Column Center-X Center-Y Flex-Dynamic">
+              <Spinner op={balance_op}
+                       children_done={ show_balance() }/>
+            </div>
+          </div>
         </div>
-
-        <div className="Balance Column Separate-Y">
-
-          <div className="Column">
-            <span style={{textAlign: "right"}}>Rev Address</span>
-            <ToggleString className="Right Below SmallMargin SmallExpanded"
-                          str={g.user.revAddr}
-                          toggle={show_rev_addr}
-                          desc={"rev address"} />
-          </div>
-
-          <div className="Column Center-X Center-Y">
-            <Spinner op={balance_op}
-                     children_done={ show_balance() }/>
-          </div>
-
-          <div className="Row Center-X Center-Y">
-            { get_balance_button() }
-          </div>
-        </div>
-
       </div>
     </div>
-  )
+
+    <TransactionList />
+  </div>;
 }

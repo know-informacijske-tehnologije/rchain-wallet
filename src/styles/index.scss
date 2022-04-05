@@ -175,7 +175,7 @@ h3 {
   &.Title {
     border-bottom: 1px solid #090721;
     margin: 0;
-    padding: 0.75em 1.5em;
+    padding: 0.75em 1rem;
   }
 }
 
@@ -309,6 +309,14 @@ textarea, input, select {
     justify-content: space-between;
   }
 
+  &.Stretch-Y {
+    align-items: stretch;
+  }
+
+  &.Stretch-X {
+    justify-content: stretch;
+  }
+
   &.Wrap {
     flex-flow: row wrap;
   }
@@ -342,9 +350,21 @@ textarea, input, select {
     align-items: space-between;
   }
 
+  &.Stretch-Y {
+    justify-content: stretch;
+  }
+
+  &.Stretch-X {
+    align-items: stretch;
+  }
+
   &.Wrap {
     flex-flow: column wrap;
   }
+}
+
+.Flex-Dynamic {
+  flex: 1 0 auto;
 }
 
 .Flex-Spacer {
@@ -377,7 +397,12 @@ textarea, input, select {
   align-items: stretch;
 
   .Title {
+    display: flex;
     flex: 0 0 auto;
+    text-align: left;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .Body {
@@ -412,14 +437,15 @@ textarea, input, select {
 .Layout-Default {
   display: grid;
   grid-template-areas:   "navbar  sidebar"
+                         "content sidebar"
                          "content sidebar";
   grid-template-columns: 1fr auto;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto 1fr 1fr;
   height: 100%;
   overflow: auto;
 }
 
-.Layout-Wallet {
+.Layout-Wallet, .Layout-Dash {
   display: grid;
   grid-template-areas:   "sidenav   navbar"
                          "sidenav  content";
@@ -428,8 +454,7 @@ textarea, input, select {
   height: 100%;
 
   &::before {
-    content: "Careful! This is a beta app. You are connected to the main network. "
-             "If you just want to test it out, connect to a test network, or to a local node!";
+    content: "You are connected to the main network. ";
     position: fixed;
     right: 1ch;
     top: 1ch;
@@ -439,7 +464,7 @@ textarea, input, select {
     max-width: 50vw;
     z-index: 1000000;
     pointer-events: none;
-    text-align: right;
+    text-align: center;
     opacity: 0;
     transition: opacity 0.5s;
   }
@@ -448,3 +473,8 @@ textarea, input, select {
     opacity: 0.8;
   }
 }
+
+.Layout-Dash {
+  .Card.Content .Body { overflow: auto }
+}
+
