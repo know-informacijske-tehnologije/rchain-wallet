@@ -2,7 +2,7 @@ import React from 'react';
 import { ReactElement, ReactNode } from 'react';
 import { render } from 'react-dom';
 import './styles/index.scss';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { g, nw } from 'utils';
 import * as Components from 'components';
 import { ModalBase } from 'components/modals/ModalBase';
@@ -124,9 +124,9 @@ function App() {
 	return (<>
 		<NodeContext.Provider value={initial_data}>
 			<LayoutContext.Provider value={initial_layout}>
-				<BrowserRouter>
+				<HashRouter>
 					<Components.Routes />
-				</BrowserRouter>
+				</HashRouter>
 				<Components.ModalHost />
 				<Components.NotifHost />
 			</LayoutContext.Provider>

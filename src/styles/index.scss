@@ -112,6 +112,11 @@ h1, h2, h3, h4 {
   text-align: center;
 }
 
+span.Alt {
+  color: #626171;
+  font-size: 14px;
+}
+
 p {
   line-height: 1.86;
   text-align: center;
@@ -293,6 +298,14 @@ textarea, input, select {
     justify-content: center;
   }
 
+  &.Start-Y {
+    align-items: flex-start;
+  }
+
+  &.Start-X {
+    justify-content: flex-start;
+  }
+
   &.End-Y {
     align-items: flex-end;
   }
@@ -332,6 +345,14 @@ textarea, input, select {
 
   &.Center-X, &.Center {
     align-items: center;
+  }
+
+  &.Start-Y {
+    justify-content: flex-start;
+  }
+
+  &.Start-X {
+    align-items: flex-start;
   }
 
   &.End-Y {

@@ -1,5 +1,5 @@
 import { useState, useContext, ReactNode } from 'react';
-import { g, OPERATION, useLayout, useMounted } from "utils";
+import { g, OPERATION, useLayout, useMounted, RevDefine } from "utils";
 import { useHistory } from "react-router-dom";
 import { NodeContext } from "index";
 import { Spinner } from "components";
@@ -7,45 +7,13 @@ import * as Assets from "assets";
 
 import "./TransactionList.scss";
 
-const revdefine_api_url = "https://revdefine.io/define/api"
-
-export interface PageInfo {
-  totalPage: number;
-  currentPage: number;
-}
-
-export interface Transaction {
-  transactionType: string;
-  fromAddr: string;
-  toAddr: string;
-  amount: number;
-  blockHash: string;
-  blockNumber: number;
-  deployId: string;
-  timestamp: number;
-  isFinalized: boolean;
-  isSucceeded: boolean;
-  reason: string;
-}
-
-export interface TransactionsResponse {
-  transactions: Transaction[];
-  pageInfo: PageInfo;
-}
-
-async function rev_transactions(rev_addr: string, page=1, rows=20) {
-  let res = await fetch(`${revdefine_api_url}/transactions/${rev_addr}/transfer?rowsPerPage=${rows}&page=${page}`);
-  let data: TransactionsResponse = await res.json();
-  return data.transactions;
-}
-
 export function TransactionList() {
   const history = useHistory();
   const node_context = useContext(NodeContext);
   const netname = node_context.network.name || "";
   const layout = useLayout();
 
-  const [list, set_list] = useState<Transaction[]>([]);
+  const [list, set_list] = useState<RevDefine.Transaction[]>([]);
   const [list_op, set_list_op] = useState(OPERATION.INITIAL);
   const [error, set_error] = useState(null as string|null);
 
@@ -88,11 +56,10 @@ export function TransactionList() {
     if (!g.user) { return; }
     set_list_op(OPERATION.PENDING);
 
-    let transactions: Transaction[] | null;
+    let transactions: RevDefine.Transaction[] | null;
     try {
       let rev_addr = g?.user.revAddr;
-      // rev_addr = "1111fTFCBE727Ex5AHDhAD38HyNca66U5vKVCoQDLwauVCY9DDbBX";
-      transactions = await rev_transactions(rev_addr);
+      transactions = await RevDefine.transactions(rev_addr);
     } catch {
       transactions = null;
     }

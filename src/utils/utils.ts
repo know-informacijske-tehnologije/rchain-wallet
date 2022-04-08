@@ -138,6 +138,40 @@ export function useMounted() {
 	return is_mounted;
 }
 
+export function useAsync<T>(initial: T|null=null, op=OPERATION.INITIAL) {
+	// const mounted = useMounted();
+	const last_promise = useRef<Promise<T|null>|null>(null);
+
+	let [val, set_val] = useState(initial);
+	let [val_op, set_val_op] = useState(op);
+	let [error, set_error] = useState<any|null>(null);
+
+	const set = async (prom: Promise<T|null>) => {
+		set_error(null);
+		set_val_op(OPERATION.PENDING);
+		let res: T|null = null;
+		try {
+			last_promise.current = prom;
+			res = await prom;
+		} catch (err) {
+			set_val_op(OPERATION.INITIAL);
+			set_error( err);
+			return null;
+		}
+
+		// if (!mounted.current) { return null; }
+		if (last_promise.current !== prom) { return null; }
+
+		console.log(res);
+		set_val(res);
+		set_val_op(OPERATION.DONE);
+
+		return res;
+	};
+
+	return { value: val, op: val_op, error, set };
+}
+
 export function useToggle(init: boolean) {
 	let [value, set] = useState(init);
 	let prop = {
